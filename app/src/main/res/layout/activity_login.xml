@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    android:padding="20dp">
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#F0F0F0">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <EditText
+                android:padding="10dp"
+                android:inputType="number"
+                android:id="@+id/et_loginphone"
+                android:textColorHint="#E2E2E5"
+                android:background="@drawable/edit_login_background"
+                android:hint="@string/plaseinputphonenum"
+                android:layout_width="244dp"
+                android:layout_height="44dp" />
+            <Button
+                android:layout_marginLeft="10dp"
+                android:id="@+id/btn_phone_login_send_code"
+                android:textColor="@color/white"
+                android:text="验证"
+                android:background="@drawable/btn_yzm_background"
+                android:layout_width="60dp"
+                android:layout_height="50dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:padding="10dp"
+                android:id="@+id/et_logincode"
+                android:textColorHint="#E2E2E5"
+                android:background="@drawable/edit_login_background"
+                android:hint="请填写短信验证码"
+                android:layout_width="314dp"
+                android:layout_height="44dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:layout_marginTop="128dp"
+        android:id="@+id/btn_dologin"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:background="@drawable/background_global_btn"
+        android:text="立即登陆"
+        android:layout_width="314dp"
+        android:layout_height="44dp" />
+
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <!-- 导航标题栏 -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/ll_title"
+        android:background="@color/global"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/iv_private_chat_back"
+            android:layout_centerVertical="true"
+            android:src="@drawable/global_back"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_18"
+            android:text="消息"
+            android:layout_marginLeft="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        style="@style/fill_fill"
+        android:background="@color/gray2"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_title"
+        >
+    </android.support.v4.view.ViewPager>
+
+    <RelativeLayout
+        android:layout_marginTop="56dp"
+        android:background="@color/gray2"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+        <com.weilian.phonelive.widget.PagerSlidingTabStrip
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tabs"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            />
+    </RelativeLayout>
+</RelativeLayout>

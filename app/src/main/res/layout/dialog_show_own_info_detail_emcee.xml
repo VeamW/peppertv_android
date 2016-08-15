@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:padding="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp">
+            <ImageButton
+                android:id="@+id/ib_show_dialog_back"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/room_pop_up_shut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <com.weilian.phonelive.widget.CircleImageView
+            android:id="@+id/av_show_dialog_u_head"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/tv_show_dialog_u_name"
+                android:textSize="@dimen/text_size_15"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/iv_show_dialog_sex"
+                style="@style/live_sex_style"/>
+            <ImageView
+                android:id="@+id/iv_show_dialog_level"
+                style="@style/live_level_style"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/live_map_dark"
+                android:layout_width="10dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:textColor="@color/gray"
+                android:text="@string/default_address"
+                android:id="@+id/tv_show_dialog_u_address"
+                android:textSize="@dimen/text_size_12"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <TextView
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:maxEms="10"
+            android:id="@+id/tv_show_dialog_u_sign"
+            android:textSize="@dimen/text_size_15"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="@color/red"
+                android:text="送出0"
+                android:id="@+id/tv_show_dialog_u_send_num"
+                android:textSize="@dimen/text_size_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@drawable/me_myaccount_reddiamond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3">
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/violet"
+                android:id="@+id/tv_show_dialog_u_fllow_num"
+                android:textSize="@dimen/text_size_12"
+                android:text="关注:0"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/violet"
+                android:id="@+id/tv_show_dialog_u_fans"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/text_size_12"
+                android:text="粉丝:0"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/violet"
+                android:id="@+id/tv_show_dialog_u_ticket"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/text_size_12"
+                android:text="映票:0"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

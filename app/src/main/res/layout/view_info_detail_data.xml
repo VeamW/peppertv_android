@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <com.weilian.phonelive.widget.AvatarView
+            android:layout_gravity="center"
+            android:id="@+id/iv_avatar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:duplicateParentState="true"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@null"
+            android:src="@drawable/null_blacklist" />
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_15" />
+                <!--性别-->
+                <ImageView
+                    android:id="@+id/iv_gender"
+                    android:layout_marginLeft="7dp"
+                    style="@style/live_sex_style"
+                    android:src="@drawable/choice_sex_male"/>
+                <!--等级-->
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/iv_info_level"
+                    android:layout_marginLeft="7dp"
+                    style="@style/live_level_style" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/space_5"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_15" />
+            <TextView
+                android:id="@+id/tv_signature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/space_5"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_15" />
+            <!--送出-->
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="送出0"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/space_5"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_size_15" />
+                <ImageView
+                    android:layout_marginLeft="2dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/redpacket_diamond"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!--贡献榜-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/rl_info_order_btn"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <com.weilian.phonelive.widget.AvatarView
+                android:id="@+id/iv_info_order_no1"
+                style="@style/user_info_order_top_three_head" />
+            <com.weilian.phonelive.widget.AvatarView
+                android:id="@+id/iv_info_order_no2"
+                android:layout_marginLeft="10dp"
+                style="@style/user_info_order_top_three_head"  />
+            <com.weilian.phonelive.widget.AvatarView
+                android:id="@+id/iv_info_order_no3"
+                android:layout_marginLeft="10dp"
+                style="@style/user_info_order_top_three_head"  />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="@color/white"
+                android:text="@string/yporder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+
+                android:src="@drawable/me_jiantou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

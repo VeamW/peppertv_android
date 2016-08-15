@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--头部-->
+            <include layout="@layout/view_home_page_head"></include>
+            <!--选项卡按钮-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                style="@style/v_line"></View>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:weightSum="2">
+                <TextView
+                    android:id="@+id/tv_home_page_index_btn"
+                    android:textColor="@color/global"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/home"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <View
+                    style="@style/v_line"/>
+                <TextView
+                    android:textColor="@color/black"
+                    android:id="@+id/tv_home_page_video_btn"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/live"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                style="@style/v_line"></View>
+
+
+            <!--直播录像-->
+            <include layout="@layout/view_home_page_video"></include>
+            <!--主页-->
+            <include layout="@layout/view_home_page_index"></include>
+
+        </LinearLayout>
+
+    </ScrollView>
+    <include layout="@layout/view_home_page_bottom_menu"></include>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray2">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:paddingLeft="10dp">
+            <View
+                android:background="@color/red"
+                android:layout_width="5dp"
+                android:layout_height="15dp"></View>
+            <TextView
+                style="@style/attent_title_ll"
+                android:text="@string/attentionlive"
+                />
+        </LinearLayout>
+        <include layout="@layout/view_attention_no_live"/>
+        <LinearLayout
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:paddingLeft="10dp">
+            <View
+                android:visibility="gone"
+                android:background="@color/red"
+                android:layout_width="5dp"
+                android:layout_height="15dp"></View>
+            <TextView
+                android:text="精彩回放"
+                style="@style/attent_title_ll" />
+        </LinearLayout>
+    </LinearLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/mSwipeRefreshLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ListView
+            android:visibility="gone"
+            android:id="@+id/lv_attentions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

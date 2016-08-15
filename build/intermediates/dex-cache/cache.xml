@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.github.johnkil.android-appmsg\appmsg\1.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="398ec51345409df9e36a1de1a81f2b3ad5234bfb">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-5af054e0f2f36b5c58488de6e2de48800ca99c22.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\io.socket\socket.io-client\0.7.0\ce278c97bc9f74c7945d647f6d441d6013163362\socket.io-client-0.7.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="ce278c97bc9f74c7945d647f6d441d6013163362">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\socket.io-client-0.7.0-731c5d3e5031d8ac9b7c91cf2170a1db9acddd94.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-ShortMessage-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1ce4cbfcdd65819736f36e5ba84e8b650ed382fd">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-ShortMessage-2.7.1-574d3e8e40a2386a6b46f7c709be8daf72605f84.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\universal-image-loader-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="f667a2f4f27542fe11a6781f5f7ac572d27afcec">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.0-c0f54e92f2449fc3add3961963c8d31ac801cb62.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-456ba40c9273c457a55079d5154e8e61a922e8cf.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Wechat-Core-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="7e84965381088ee19bf975e906eb5b60af623dcb">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-Core-2.7.1-2a8fee6f03f66e46029ae39b70dce8594c5ec2a0.jar" />
+    </item>
+    <item
+        jar="F:\android_tools\android-studio-sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\support-annotations-23.4.0-7d8c07eba9495e50369b2fbbe85f6b1bb83397ce.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Core-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="99b4bf0f2e87da6145faf7726db45186cf29f9a4">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Core-2.7.1-d8d706efe58959ce1de6d8bf929ebb91dcf52709.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\jpush-android-2.1.3.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="fad60eea64007823d74948fc6708371dee57fe36">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\jpush-android-2.1.3-b62136aed413a02357e005a7b7155467644a8795.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-QZone-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d62b83a8630b38e7d6eb5681b2a456de319174c5">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-QZone-2.7.1-d08a6f3baf0104985be1268b0421ded4e8f0ddc0.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Wechat-Moments-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="81694c2a408d13da024d36bfcd4f8d9285d8c2dc">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-Moments-2.7.1-9e83690d9cf0510bb9481ddebb1278e34820549c.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\MobCommons-2016.0406.1915.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="9c067e1bbc04c64332957c9f3d901de7d1773c6a">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\MobCommons-2016.0406.1915-3116ed6b7058496fdc05c244df3978df7f8e1d69.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\hyphenatechat_3.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="22a4ff480112010d0af271770fa40bced7e68a70">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\hyphenatechat_3.1.1-1ac0ce14edece7546aac6859f71e7b2361180b10.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\in.srain.cube\ultra-ptr\1.0.11\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="a0bdf70123d26dd83d8462d602b3a83a41934cf6">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-c132bb0264000fbe98086a76023d11455226a8a9.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-SinaWeibo-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="de63bdf57f4d25c390de653ecab4a5a5ec8f3209">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-SinaWeibo-2.7.1-3cbb14a9baac2efae9101c7e8298265407aeffb9.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-QQ-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7fc4d18bfdfcee533691ec367f476e001075c8a0">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-QQ-2.7.1-f6f13aefd9e9b3b015096d1054756a08f705395f.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-TencentWeibo-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="d59e4f5360cea9b8e1bb4ee4811d6cbff393f30a">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-TencentWeibo-2.7.1-8019d1edda93e553c142f05ffefdd1b41c317f67.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\bottomView.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="6fa32f8884cd4f0d50ea5875619cfcf82417a0a4">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\bottomView-b42cc92355d2541b371685c5668763c24145ea3d.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.zhy\okhttputils\2.3.5\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3323489bac36e888b398004ade10ee084bed6bcf">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-f898ea12af215ba5a86955b450d301b8e6499e4e.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ksylive3.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="aee5bf38fc9362fbf8719b3ce38684d28ee37035">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ksylive3.0-a068906a0589b10f675d3478ee699169fe0d8185.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.squareup.haha\haha\1.1\b7b2e61ee1ad2d1ac6ae3122de9c940fb0d0e635\haha-1.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="b7b2e61ee1ad2d1ac6ae3122de9c940fb0d0e635">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\haha-1.1-810bc4046035307c1278c21c4e94dc1793124bbe.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-e2f778e6858b87572a085cd2202690959f981624.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.daimajia.numberprogressbar\library\1.2\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4196173ec5799ff211761f90874802789c6cc4ac">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-3d4256624d056268d9eda1560a7a4d26dae9923a.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-2caa53d99f1a1153a35a142910d8365f0d4cbbf2.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-3b9fbb3d61bfb6baa316562ae22304ad88b5c0e1.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.umeng.analytics\analytics\6.0.1\aab9085bca0c26dcb9cb11837a5f5e22cc102a5e\analytics-6.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="aab9085bca0c26dcb9cb11837a5f5e22cc102a5e">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\analytics-6.0.1-b0534c9edfc968b5cbf9e33589fdad2770f64885.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-456ba40c9273c457a55079d5154e8e61a922e8cf.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-ws\3.0.1\bd9b51a0188fc8f14bf840a0d326755545206116\okhttp-ws-3.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="bd9b51a0188fc8f14bf840a0d326755545206116">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\okhttp-ws-3.0.1-5fa1508cedf450fff25ace3c8e0263fcc3321713.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-ShortMessage-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="1ce4cbfcdd65819736f36e5ba84e8b650ed382fd">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-ShortMessage-2.7.1-574d3e8e40a2386a6b46f7c709be8daf72605f84.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-watcher\1.3\632482a61ad24b7ec864072945d221369f9a606\leakcanary-watcher-1.3.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="0632482a61ad24b7ec864072945d221369f9a606">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\leakcanary-watcher-1.3-22211c152c23396eb25b62163ff95ea93499e4f0.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Wechat-Core-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7e84965381088ee19bf975e906eb5b60af623dcb">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-Core-2.7.1-2a8fee6f03f66e46029ae39b70dce8594c5ec2a0.jar" />
+    </item>
+    <item
+        jar="F:\android_tools\android-studio-sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\support-annotations-23.4.0-7d8c07eba9495e50369b2fbbe85f6b1bb83397ce.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\internal_impl-23.4.0-0db7adae4fb42778c78dc338e2316c1a2e25f050.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.github.dmytrodanylyk.circular-progress-button\library\1.1.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8a6ed980c74ad35b2dfc4e1daf97bfc0eea5d7c9">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-8f0bcaa886f39a69e04f33b3ddb1e489ff771bc1.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Core-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="99b4bf0f2e87da6145faf7726db45186cf29f9a4">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Core-2.7.1-d8d706efe58959ce1de6d8bf929ebb91dcf52709.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\okio-1.6.0-9ea3ea539f34811d91b7305c61b98ac13788bf3d.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.2.0\f7873a2ebde246a45c2a8d6f3247108b4c88a879\okhttp-3.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\okhttp-3.2.0-b8e3baaedc071e7576d08feb006ae936f99c7416.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\MobTools-2016.0406.1915.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="11ec74fc87119785f9815055ec1258045803d8d6">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\MobTools-2016.0406.1915-435db483f86bf4ae1f4edb5ca896eed2900c96b8.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\hyphenatechat_3.1.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="22a4ff480112010d0af271770fa40bced7e68a70">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\hyphenatechat_3.1.1-1ac0ce14edece7546aac6859f71e7b2361180b10.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.zhy\okhttputils\2.3.5\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="3323489bac36e888b398004ade10ee084bed6bcf">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-f898ea12af215ba5a86955b450d301b8e6499e4e.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-SinaWeibo-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="de63bdf57f4d25c390de653ecab4a5a5ec8f3209">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-SinaWeibo-2.7.1-3cbb14a9baac2efae9101c7e8298265407aeffb9.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\bottomView.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6fa32f8884cd4f0d50ea5875619cfcf82417a0a4">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\bottomView-b42cc92355d2541b371685c5668763c24145ea3d.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-c16e13f8cbc90e3c59dc25f9cc92614e6c9aae8a.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-QQ-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="7fc4d18bfdfcee533691ec367f476e001075c8a0">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-QQ-2.7.1-f6f13aefd9e9b3b015096d1054756a08f705395f.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\alipaySDK-20151014.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9ab493c0f7a15797cda937737d8924528f3cab02">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\alipaySDK-20151014-76ac911415d67236f80f570e08e2361142d207c4.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Twitter-2.7.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="52021b53ffa0195ec82b2ecc021422becb22d842">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Twitter-2.7.2-aff6420d0e2fd440c8f182917ec92c3ec7c49f13.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.astuetz\pagerslidingtabstrip\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7912610ed96381c25c36d986eba422731b9641b6">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-d429615fd6fcaaf0a1035c0c9f0c8ef1c5ab876d.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\io.socket\engine.io-client\0.7.0\c1b1d30e2d2231b2eae1438a44943a409b976dac\engine.io-client-0.7.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c1b1d30e2d2231b2eae1438a44943a409b976dac">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\engine.io-client-0.7.0-598fb64e3c34952286a7622571a4918b11380c73.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-e2f778e6858b87572a085cd2202690959f981624.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\libammsdk.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="d7c2f29c05b35e8c8713be2b81c41cf18f98b64a">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\libammsdk-a2ecc048900c9a341e16f84df8b29afcd8fb68b1.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\AMap_Location_V2.4.0_20160308.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="dd8aedb3d0d87b92777ab997ec883427d88f379a">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\AMap_Location_V2.4.0_20160308-9763b06abad52b298f0f75b6050912419076f03a.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.daimajia.numberprogressbar\library\1.2\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4196173ec5799ff211761f90874802789c6cc4ac">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-3d4256624d056268d9eda1560a7a4d26dae9923a.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\libksyplayer.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="e133423f6b5a2bb22f1c7e485ece5a7d646f5b54">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\libksyplayer-5a203bd1272d4f1c116d711fcc751f8d21db06c8.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-2caa53d99f1a1153a35a142910d8365f0d4cbbf2.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\MobCommons-2016.0406.1915.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9c067e1bbc04c64332957c9f3d901de7d1773c6a">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\MobCommons-2016.0406.1915-3116ed6b7058496fdc05c244df3978df7f8e1d69.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-ws\3.0.1\bd9b51a0188fc8f14bf840a0d326755545206116\okhttp-ws-3.0.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="bd9b51a0188fc8f14bf840a0d326755545206116">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\okhttp-ws-3.0.1-5fa1508cedf450fff25ace3c8e0263fcc3321713.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.umeng.analytics\analytics\6.0.1\aab9085bca0c26dcb9cb11837a5f5e22cc102a5e\analytics-6.0.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="aab9085bca0c26dcb9cb11837a5f5e22cc102a5e">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\analytics-6.0.1-b0534c9edfc968b5cbf9e33589fdad2770f64885.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\okio-1.6.0-9ea3ea539f34811d91b7305c61b98ac13788bf3d.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\glide-3.7.0-6df9af4c281c6cabed689566852dac1872e61e61.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.2.0\f7873a2ebde246a45c2a8d6f3247108b4c88a879\okhttp-3.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\okhttp-3.2.0-b8e3baaedc071e7576d08feb006ae936f99c7416.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\internal_impl-23.4.0-0db7adae4fb42778c78dc338e2316c1a2e25f050.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Wechat-Favorite-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e01404c25658c16f8375b7cc18da694db61e22da">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-Favorite-2.7.1-73743e45ced899df95d05a2342b8da96d58e0a90.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.github.dmytrodanylyk.circular-progress-button\library\1.1.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8a6ed980c74ad35b2dfc4e1daf97bfc0eea5d7c9">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-8f0bcaa886f39a69e04f33b3ddb1e489ff771bc1.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\gson-2.3.1-e6c5111adc073e0c20165aa2ffa1b2eed7bf5f7e.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\me.drakeet.materialdialog\library\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e79701ed34126d644387847d96e96e66b34e18b7">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-1e3097a23e761fe406c9b45114620f57aba1066c.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Twitter-2.7.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="52021b53ffa0195ec82b2ecc021422becb22d842">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Twitter-2.7.2-aff6420d0e2fd440c8f182917ec92c3ec7c49f13.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\6.1.0\63735f48b82bcd24cdd33821342428252eb1ca5a\butterknife-6.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="63735f48b82bcd24cdd33821342428252eb1ca5a">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\butterknife-6.1.0-d956b691e09702a077a7275801f06a5d721b991b.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-QZone-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="d62b83a8630b38e7d6eb5681b2a456de319174c5">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-QZone-2.7.1-d08a6f3baf0104985be1268b0421ded4e8f0ddc0.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\MobTools-2016.0406.1915.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="11ec74fc87119785f9815055ec1258045803d8d6">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\MobTools-2016.0406.1915-435db483f86bf4ae1f4edb5ca896eed2900c96b8.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\libksystat.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="ac4e9f4d755a0e7cedd3807cb723521d96fb4a04">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\libksystat-17ea556a38ff4a83e7ddc89a85a2fa78476844ea.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.astuetz\pagerslidingtabstrip\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="7912610ed96381c25c36d986eba422731b9641b6">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-d429615fd6fcaaf0a1035c0c9f0c8ef1c5ab876d.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-c16e13f8cbc90e3c59dc25f9cc92614e6c9aae8a.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Wechat-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="04bbea1c0f4330ec171bea024a7939e91ce410f4">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-2.7.1-1f6fb2188b49f14c84257fa949db0b16ecb33a1f.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\io.socket\engine.io-client\0.7.0\c1b1d30e2d2231b2eae1438a44943a409b976dac\engine.io-client-0.7.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c1b1d30e2d2231b2eae1438a44943a409b976dac">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\engine.io-client-0.7.0-598fb64e3c34952286a7622571a4918b11380c73.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\alipaySDK-20151014.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="9ab493c0f7a15797cda937737d8924528f3cab02">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\alipaySDK-20151014-76ac911415d67236f80f570e08e2361142d207c4.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\pl.droidsonroids.gif\android-gif-drawable\1.1.7\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d6825a79ca6c134dd6f26fc15eff443b5215dbdc">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-517817a724238fe1fda855d90c9480dc9a39db43.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\libammsdk.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d7c2f29c05b35e8c8713be2b81c41cf18f98b64a">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\libammsdk-a2ecc048900c9a341e16f84df8b29afcd8fb68b1.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Facebook-2.7.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="21f20693cb1f5526552c6b6dd506905af7594239">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Facebook-2.7.2-1c9b22ecaf8734750ed4ec59b7a7530a6069b608.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\AMap_Location_V2.4.0_20160308.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="dd8aedb3d0d87b92777ab997ec883427d88f379a">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\AMap_Location_V2.4.0_20160308-9763b06abad52b298f0f75b6050912419076f03a.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.zhy\percent-support-extends\1.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="29ff8e178d6ef33c8673f430651500068642f833">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-9a1a1c19648e08f02c809d7ac319331b6d136780.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\libksyplayer.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e133423f6b5a2bb22f1c7e485ece5a7d646f5b54">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\libksyplayer-5a203bd1272d4f1c116d711fcc751f8d21db06c8.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\org.kymjs.kjframe\kjframe\2.6\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="60538003caaf7201ec4945bae8071c9e38b3cd91">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-c24cdfdb40bc07527907480b75f34b589e2af874.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\io.socket\socket.io-client\0.7.0\ce278c97bc9f74c7945d647f6d441d6013163362\socket.io-client-0.7.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ce278c97bc9f74c7945d647f6d441d6013163362">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\socket.io-client-0.7.0-731c5d3e5031d8ac9b7c91cf2170a1db9acddd94.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\universal-image-loader-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f667a2f4f27542fe11a6781f5f7ac572d27afcec">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.0-c0f54e92f2449fc3add3961963c8d31ac801cb62.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.github.johnkil.android-appmsg\appmsg\1.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="398ec51345409df9e36a1de1a81f2b3ad5234bfb">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-5af054e0f2f36b5c58488de6e2de48800ca99c22.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-analyzer\1.3\c5399b18a672f7973c8a9b9d6b731a3a36e590cc\leakcanary-analyzer-1.3.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c5399b18a672f7973c8a9b9d6b731a3a36e590cc">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\leakcanary-analyzer-1.3-61dc89cbeec22f9c00c0299597ff117bc7d0db75.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\glide-3.7.0-6df9af4c281c6cabed689566852dac1872e61e61.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\pl.droidsonroids.gif\android-gif-drawable\1.1.7\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="d6825a79ca6c134dd6f26fc15eff443b5215dbdc">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-517817a724238fe1fda855d90c9480dc9a39db43.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\jpush-android-2.1.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="fad60eea64007823d74948fc6708371dee57fe36">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\jpush-android-2.1.3-b62136aed413a02357e005a7b7155467644a8795.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Wechat-Favorite-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="e01404c25658c16f8375b7cc18da694db61e22da">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-Favorite-2.7.1-73743e45ced899df95d05a2342b8da96d58e0a90.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\gson-2.3.1-e6c5111adc073e0c20165aa2ffa1b2eed7bf5f7e.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Wechat-Moments-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="81694c2a408d13da024d36bfcd4f8d9285d8c2dc">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-Moments-2.7.1-9e83690d9cf0510bb9481ddebb1278e34820549c.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\me.drakeet.materialdialog\library\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="e79701ed34126d644387847d96e96e66b34e18b7">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-1e3097a23e761fe406c9b45114620f57aba1066c.jar" />
+    </item>
+    <item
+        jar="C:\Users\administrato\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\6.1.0\63735f48b82bcd24cdd33821342428252eb1ca5a\butterknife-6.1.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="63735f48b82bcd24cdd33821342428252eb1ca5a">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\butterknife-6.1.0-d956b691e09702a077a7275801f06a5d721b991b.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\in.srain.cube\ultra-ptr\1.0.11\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a0bdf70123d26dd83d8462d602b3a83a41934cf6">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-c132bb0264000fbe98086a76023d11455226a8a9.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\libksystat.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ac4e9f4d755a0e7cedd3807cb723521d96fb4a04">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\libksystat-17ea556a38ff4a83e7ddc89a85a2fa78476844ea.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-TencentWeibo-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d59e4f5360cea9b8e1bb4ee4811d6cbff393f30a">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-TencentWeibo-2.7.1-8019d1edda93e553c142f05ffefdd1b41c317f67.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ksylive3.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="aee5bf38fc9362fbf8719b3ce38684d28ee37035">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ksylive3.0-a068906a0589b10f675d3478ee699169fe0d8185.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Wechat-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="04bbea1c0f4330ec171bea024a7939e91ce410f4">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-2.7.1-1f6fb2188b49f14c84257fa949db0b16ecb33a1f.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.zhy\percent-support-extends\1.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="29ff8e178d6ef33c8673f430651500068642f833">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-9a1a1c19648e08f02c809d7ac319331b6d136780.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\libs\ShareSDK-Facebook-2.7.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="21f20693cb1f5526552c6b6dd506905af7594239">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\ShareSDK-Facebook-2.7.2-1c9b22ecaf8734750ed4ec59b7a7530a6069b608.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.squareup.leakcanary\leakcanary-android\1.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="f4e7adebf49e683db82fb6efac2caaf3d768b8d4">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-4638c82ba78be10ed36547c4b093d948b8df71ce.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-3b9fbb3d61bfb6baa316562ae22304ad88b5c0e1.jar" />
+    </item>
+    <item
+        jar="F:\work\peppertv_android\peppertv_android\app\build\intermediates\exploded-aar\org.kymjs.kjframe\kjframe\2.6\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="60538003caaf7201ec4945bae8071c9e38b3cd91">
+        <dex dex="F:\work\peppertv_android\peppertv_android\app\build\intermediates\pre-dexed\debug\classes-c24cdfdb40bc07527907480b75f34b589e2af874.jar" />
+    </item>
+
+</items>

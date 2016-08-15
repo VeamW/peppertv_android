@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout style="@style/user_profit_ll">
+
+            <TextView
+                android:id="@+id/tv_votes"
+                style="@style/user_profit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/global2"
+                android:textSize="20dp" />
+
+            <TextView
+                style="@style/user_profit_text"
+                android:text="*币" />
+        </LinearLayout>
+
+        <View style="@style/v_line" />
+
+        <LinearLayout style="@style/user_profit_ll">
+
+            <TextView
+                android:id="@+id/tv_profit_withdraw"
+                style="@style/user_profit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/global2"
+                android:textSize="20dp" />
+
+            <TextView
+                style="@style/user_profit_text"
+                android:text="可提现金额" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:background="@drawable/label_but_sel3x"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="兑换"
+                android:textColor="@color/white"
+                android:textSize="@dimen/abc_text_size_subhead_material" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/me_harvest_exchange" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_profit_cash"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/background_global_btn"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提现"
+                android:textColor="@color/white"
+                android:textSize="@dimen/abc_text_size_subhead_material" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/TextView"
+            android:layout_width="84dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.70"
+            android:gravity="center"
+            android:text="@string/commonproblem"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

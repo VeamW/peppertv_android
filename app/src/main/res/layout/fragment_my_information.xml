@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:background="@color/default_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <LinearLayout
+            android:id="@+id/rootview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/default_background">
+            <!--头部导航-->
+            <RelativeLayout
+                android:padding="5dp"
+                android:background="@color/global"
+                android:layout_width="match_parent"
+                android:layout_height="56dp">
+                <TextView
+                    android:layout_marginLeft="12dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_18"
+                    android:textColor="@color/white"
+                    android:layout_centerVertical="true"
+                    android:text="个人中心"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_marginRight="5dp"
+                    android:orientation="horizontal"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <!--编辑资料-->
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:id="@+id/iv_editInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/me_btn_bianji"
+                        />
+                    <!--私信-->
+                    <RelativeLayout
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12dp">
+                        <ImageView
+                            android:id="@+id/iv_info_private_core"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/sixinchat" />
+                        <ImageView
+                            android:visibility="gone"
+                            android:id="@+id/iv_hot_new_message"
+                            android:layout_marginTop="10dp"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/icon_new"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+            </RelativeLayout>
+            <!--个人信息头部-->
+            <include layout="@layout/fragment_my_information_head" />
+            <!--菜单item-->
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:id="@+id/ll_live"
+                style="@style/option_item_rl" >
+
+                <ImageView
+                    style="@style/option_item_img"
+                    android:background="@drawable/me_under_live"
+                    android:contentDescription="@null"
+                    android:layout_marginLeft="12dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        style="@style/option_item_text"
+                        android:text="@string/live" />
+                    <ImageView
+                        android:layout_marginRight="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/me_next_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+            </LinearLayout>
+            <View
+                style="@style/h_line" />
+            <LinearLayout
+                android:background="@color/white"
+                android:id="@+id/ll_profit"
+                style="@style/option_item_rl" >
+
+                <ImageView
+                    style="@style/option_item_img"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/me_under_harvest"
+                    android:contentDescription="@null" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        style="@style/option_item_text"
+                        android:text="@string/message" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/me_next_grey"
+                        android:layout_marginRight="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_mes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/space_10"
+                    android:gravity="right" />
+            </LinearLayout>
+
+            <View
+                style="@style/h_line" />
+
+
+            <LinearLayout
+                android:background="@color/white"
+                android:id="@+id/ll_diamonds"
+                style="@style/option_item_rl" >
+
+                <ImageView
+                    style="@style/option_item_img"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/me_under_myaccount"
+                    android:contentDescription="@null" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        style="@style/option_item_text"
+                        android:text="@string/note" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/me_next_grey"
+                        android:layout_marginRight="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+            </LinearLayout>
+            <View
+                style="@style/h_line" />
+
+            <LinearLayout
+                android:background="@color/white"
+                android:id="@+id/ll_level"
+                style="@style/option_item_rl" >
+
+                <ImageView
+                    style="@style/option_item_img"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/me_under_grade"
+                    android:contentDescription="@null" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        style="@style/option_item_text"
+                        android:text="@string/blog" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/me_next_grey"
+                        android:layout_marginRight="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:id="@+id/ll_gx"
+                style="@style/option_item_rl" >
+                <ImageView
+                    style="@style/option_item_img"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/me_under_gx"
+                    android:contentDescription="@null" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        style="@style/option_item_text"
+                        android:text="@string/gx_order" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/me_next_grey"
+                        android:layout_marginRight="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+            </LinearLayout>
+            <View
+                style="@style/h_line" />
+
+            <LinearLayout
+                android:background="@color/white"
+                android:id="@+id/ll_authenticate"
+                style="@style/option_item_rl" >
+                <ImageView
+                    style="@style/option_item_img"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/me_under_renzheng"
+                    android:contentDescription="@null" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        style="@style/option_item_text"
+                        android:text="@string/authenticate" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/me_next_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_marginRight="12dp"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_marginTop="20dp"
+                android:id="@+id/ll_setting"
+                style="@style/option_item_rl" >
+
+                <ImageView
+                    style="@style/option_item_img"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/me_under_nodisturbing"
+                    android:contentDescription="@null" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        style="@style/option_item_text"
+                        android:text="@string/team" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/me_next_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_marginRight="12dp"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:id="@+id/ll_loginout"
+                style="@style/option_item_rl" >
+                <TextView
+                    android:text="@string/loginout"
+                    style="@style/option_item_text"
+                    android:layout_width="fill_parent"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
