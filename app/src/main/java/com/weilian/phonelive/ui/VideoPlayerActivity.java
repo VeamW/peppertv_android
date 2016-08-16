@@ -47,6 +47,7 @@ import com.weilian.phonelive.adapter.UserListAdapter;
 import com.weilian.phonelive.adapter.ViewPageGridViewAdapter;
 import com.weilian.phonelive.api.remote.ApiUtils;
 import com.weilian.phonelive.api.remote.PhoneLiveApi;
+import com.weilian.phonelive.base.BaseApplication;
 import com.weilian.phonelive.base.ShowLiveActivityBase;
 import com.weilian.phonelive.bean.ChatBean;
 import com.weilian.phonelive.bean.GiftBean;
@@ -75,7 +76,10 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import okhttp3.Call;
@@ -168,6 +172,7 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
     private int lastX;
     private int lastY;
 
+    private ExecutorService mService;
 
     @Override
     protected void onResume() {
@@ -196,9 +201,14 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
     @Override
     protected void onDestroy() {//释放
         videoPlayEnd();
-        //解除广播
-        unregisterReceiver(broadCastReceiver);
+        try {
+            unregisterReceiver(broadCastReceiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         super.onDestroy();
+        finish();
+        System.gc();
     }
 
     @Override
@@ -217,7 +227,7 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
         mEmceeHead.setClickable(true);
         mTvEmceeName.setClickable(true);
         mLiveNum.setClickable(true);
-
+        mService = Executors.newFixedThreadPool(3);
 
     }
 
@@ -357,7 +367,7 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
         mEmceeHead.setAvatarUrl(mEmceeInfo.getAvatar());
         //连接socket服务器
         try {
-            mChatServer = new ChatServer(new ChatListenUIRefresh(), this, mEmceeInfo.getId());
+            mChatServer = new ChatServer(new ChatListenUIRefresh(), BaseApplication.context(), mEmceeInfo.getId());
         } catch (URISyntaxException e) {
             e.printStackTrace();
             TLog.log("connect error");
@@ -400,7 +410,16 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
         String mrl = AppConfig.RTMP_URL + mEmceeInfo.getId();//getIntent().getStringExtra("path");
         Log.e(getLocalClassName(), mrl);
         //视频播放器init
-        ksyMediaPlayer = new KSYMediaPlayer.Builder(this).build();
+        ksyMediaPlayer = new KSYMediaPlayer.Builder(BaseApplication.context()).build();
+        ksyMediaPlayer.setBufferTimeMax(5);
+        try {
+            ksyMediaPlayer.setDataSource(mrl);
+            //rtmp://live.hkstv.hk.lxdns.com/live/hks
+            ksyMediaPlayer.prepareAsync();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         /*
         * 参数：OnBufferingUpdateListener
         * 功能：设置Buffering的监听器，当播放器在Buffering时会发出此回调，通知外界Buffering的进度
@@ -419,6 +438,7 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
         * 返回值：无
         * */
         ksyMediaPlayer.setOnPreparedListener(mOnPreparedListener);
+
         /*
         *参数：OnInfoListener
         *功能：设置Info监听器，播放器可通过此回调接口将消息通知开发者
@@ -443,14 +463,8 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
         /*参数：直播音频缓存最大值，单位为秒
         功能：设置直播音频缓存上限，由此可控制追赶功能的阈值。该值为负数时，关闭直播追赶功能。此接口只对直播有效
         返回值：无*/
-        ksyMediaPlayer.setBufferTimeMax(5);
 
-        try {
-            ksyMediaPlayer.setDataSource(mrl);
-            ksyMediaPlayer.prepareAsync();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
 
@@ -933,7 +947,8 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
                 @Override
                 public void run() {
                     try {
-                        if (contentJson==null||contentJson.length()<=0||!contentJson.has("touid")) return;
+                        if (contentJson == null || contentJson.length() <= 0 || !contentJson.has("touid"))
+                            return;
                         if (contentJson.getInt("touid") == mUser.getId()) {
                             AppContext.showToastAppMsg(VideoPlayerActivity.this, "您已被设为管理员");
                         }
@@ -954,7 +969,8 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
                 public void run() {
                     try {
                         TLog.error(contentJson.toString());
-                        if (contentJson==null||contentJson.length()<=0||!contentJson.has("touid")) return;
+                        if (contentJson == null || contentJson.length() <= 0 || !contentJson.has("touid"))
+                            return;
                         if (contentJson.getInt("touid") == mUser.getId()) {
                             AppContext.showToastAppMsg(VideoPlayerActivity.this, "您已被禁言");
                             mIsShutUp = true;
@@ -1043,16 +1059,21 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
 
 
     private IMediaPlayer.OnPreparedListener mOnPreparedListener = new IMediaPlayer.OnPreparedListener() {
+
         @Override
         public void onPrepared(IMediaPlayer mp) {
+            ksyMediaPlayer.start();
+            TLog.error("加载完成" + mp.getDataSource());
             //直播开始
-            if (null != mLoadingView) {
+            if (null != mLoadingView && null != mRoot) {
                 mRoot.removeView(mLoadingView);
                 mLoadingView = null;
+
+                mLayoutLoading.setVisibility(View.GONE);
+                mLayoutLoading = null;
             }
-            mLayoutLoading.setVisibility(View.GONE);
-            mLayoutLoading = null;
-            ksyMediaPlayer.start();
+
+
         }
     };
 
@@ -1074,6 +1095,7 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
 
                     // maybe we could call scaleVideoView here.
                     if (mVideoSurfaceView != null) {
+
                         mVideoSurfaceView.setVideoDimension(mVideoWidth, mVideoHeight);
                         mVideoSurfaceView.requestLayout();
                     }
@@ -1108,7 +1130,7 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
                     Log.e(TAG, "OnErrorListener, Error Unknown:" + what + ",extra:" + extra);
                     break;
                 default:
-                    Log.e(TAG, "OnErrorListener, Error:" + what + ",extra:" + extra);
+                    Log.e(TAG, "OnErrorListener, Error:" + what + ",extra:" + extra + ",source:" + mp.getDataSource());
             }
 
             return false;
@@ -1124,10 +1146,18 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
     };
 
 
+    /**
+     * 检测状态栏
+     *
+     * @param keyCode 返回键
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            videoPlayEnd();
+//            videoPlayEnd();
+            ButterKnife.reset(this);
         }
 
         return super.onKeyDown(keyCode, event);
@@ -1212,24 +1242,46 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
 
     //直播结束释放资源
     private void videoPlayEnd() {
-        mButtonMenuFrame.setVisibility(View.GONE);//隐藏菜单栏
-        mLvChatList.setVisibility(View.GONE);
-        mChatServer.close();
-        if (ksyMediaPlayer != null) {
-            ksyMediaPlayer.release();
-            ksyMediaPlayer = null;
-        }
-        if (null != mHandler) {
-            mHandler.removeCallbacksAndMessages(null);
-            //mHandler = null;
-        }
+        mService.execute(new Runnable() {
+            @Override
+            public void run() {
+                if (mButtonMenuFrame != null) {
+                    mButtonMenuFrame.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (mButtonMenuFrame != null)
+                                mButtonMenuFrame.setVisibility(View.GONE);//隐藏菜单栏
+                        }
+                    });
+                }
+                if (mLvChatList != null) {
+                    mLvChatList.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (mLvChatList != null)
+                                mLvChatList.setVisibility(View.GONE);
+                        }
+                    });
+                }
+                if (mChatServer != null) {
+                    mChatServer.close();
+                }
 
-        if (mQosThread != null) {
-            mQosThread.stopThread();
-            mQosThread = null;
-        }
-        System.gc();
+                if (ksyMediaPlayer != null) {
+                    ksyMediaPlayer.release();
+                    ksyMediaPlayer = null;
+                }
+                if (null != mHandler) {
+                    mHandler.removeCallbacksAndMessages(null);
+                    //mHandler = null;
+                }
 
+                if (mQosThread != null) {
+                    mQosThread.stopThread();
+                    mQosThread = null;
+                }
+            }
+        });
 
     }
 
@@ -1295,25 +1347,30 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
     private final SurfaceHolder.Callback mSurfaceCallback = new Callback() {
         @Override
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
             if (ksyMediaPlayer != null) {
                 final Surface newSurface = holder.getSurface();
-                ksyMediaPlayer.setDisplay(holder);
-                ksyMediaPlayer.setScreenOnWhilePlaying(true);
                 if (mSurface != newSurface) {
                     mSurface = newSurface;
-                    ksyMediaPlayer.setSurface(mSurface);
                 }
+                ksyMediaPlayer.setDisplay(holder);
+                ksyMediaPlayer.setSurface(mSurface);
+                ksyMediaPlayer.setScreenOnWhilePlaying(true);
             }
         }
 
         @Override
         public void surfaceCreated(SurfaceHolder holder) {
+            TLog.error("holder被创建---->" + holder.getSurface().toString());
+
         }
 
         @Override
         public void surfaceDestroyed(SurfaceHolder holder) {
             Log.d(TAG, "surfaceDestroyed");
             if (ksyMediaPlayer != null) {
+                ksyMediaPlayer.setDisplay(null);
+
                 mSurface = null;
             }
         }

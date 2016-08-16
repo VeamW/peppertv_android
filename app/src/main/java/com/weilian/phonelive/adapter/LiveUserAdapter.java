@@ -60,9 +60,11 @@ public class LiveUserAdapter extends BaseAdapter {
             viewHolder.mUserPic = (LoadUrlImageView) convertView.findViewById(R.id.iv_live_user_pic);
             viewHolder.mRoomTitle = (TextView) convertView.findViewById(R.id.tv_hot_room_title);
             convertView.setTag(viewHolder);
+        }else{
+            viewHolder = (ViewHolder) convertView.getTag();
         }
+
         UserBean user = mUserList.get(position);
-        viewHolder = (ViewHolder) convertView.getTag();
         viewHolder.mUserNick.setText(user.getUser_nicename());
         viewHolder.mUserLocal.setText(user.getCity());
         //viewHolder.mUserPic.setImageLoadUrl(user.getAvatar());
@@ -87,6 +89,7 @@ public class LiveUserAdapter extends BaseAdapter {
         public LoadUrlImageView mUserPic;
         public AvatarView mUserHead;
     }
+
 }
 
 

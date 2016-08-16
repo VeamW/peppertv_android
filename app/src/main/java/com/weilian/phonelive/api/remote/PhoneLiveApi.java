@@ -272,6 +272,7 @@ public class PhoneLiveApi {
         OkHttpUtils.get()
                 .url(API_URL)
                 .addParams("service", "User.getAttention")
+
                 .addParams("uid",String.valueOf(uid))
                 .addParams("ucuid",String.valueOf(ucid))
                 .build()
@@ -330,6 +331,7 @@ public class PhoneLiveApi {
                 .url(API_URL + "appapi/?service=User.upload")
                 .build()
                 .execute(callback);
+
 
     }
 
@@ -487,11 +489,11 @@ public class PhoneLiveApi {
     public static void otherLogin(String type,PlatformDb platDB, StringCallback callback) {
         OkHttpUtils.get()
                 .url(API_URL)
-                .addParams("service","User.userLoginByThird")
-                .addParams("openid",platDB.getUserId())
-                .addParams("nicename",platDB.getUserName())
-                .addParams("type",type)
-                .addParams("avatar",platDB.getUserIcon())
+                .addParams("service", "User.userLoginByThird")
+                .addParams("openid", platDB.getUserId())
+                .addParams("nicename", platDB.getUserName())
+                .addParams("type", type)
+                .addParams("avatar", platDB.getUserIcon())
                 .build()
                 .execute(callback);
     }

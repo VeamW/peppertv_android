@@ -71,6 +71,7 @@ public class LiveLoginSelectActivity extends BaseActivity implements PlatformAct
     @OnClick({R.id.iv_qqlogin,R.id.iv_sllogin,R.id.iv_wxlogin,R.id.iv_mblogin})
     public void onClick(View v) {
         int id = v.getId();
+        //初始化shareSDK
         ShareSDK.initSDK(this);
         switch (id){
             case R.id.iv_qqlogin:

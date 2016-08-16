@@ -46,7 +46,7 @@
                         android:ellipsize="end"
                         android:maxEms="6"
                         android:singleLine="true"
-                        android:text="111"
+                        android:text=""
                         android:textSize="@dimen/text_size_15" />
 
                 </LinearLayout>
@@ -81,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginLeft="10dp"
-                        android:text="111"
+                        android:text=""
                         android:textColor="@color/global"
                         android:textSize="@dimen/text_size_17" />
                 </LinearLayout>

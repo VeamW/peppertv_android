@@ -15,9 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.leakcanary.LeakCanary;
 import com.weilian.phonelive.R;
-import com.weilian.phonelive.utils.StringUtils;
 
 public class BaseApplication extends Application {
     private static String PREF_NAME = "creativelocker.pref";
@@ -40,7 +38,6 @@ public class BaseApplication extends Application {
         super.onCreate();
         _context = getApplicationContext();
         _resource = _context.getResources();
-        LeakCanary.install(this);
     }
 
     public static synchronized BaseApplication context() {

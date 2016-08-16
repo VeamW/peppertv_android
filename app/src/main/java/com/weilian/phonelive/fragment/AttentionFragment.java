@@ -71,13 +71,13 @@ public class AttentionFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        int uid = AppContext.getInstance().getLoginUid();
+        final int uid = AppContext.getInstance().getLoginUid();
         if (!(0 < uid))
             return;
         StringCallback callback = new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
-
+                TLog.error("加载正在直播列表失败!");
             }
 
             @Override
@@ -90,15 +90,15 @@ public class AttentionFragment extends BaseFragment {
 
                     try {
                         JSONObject jsonObject = new JSONObject(res);
-                        TLog.error(jsonObject.toString());
-                        JSONArray liveAndAttentionUserJson = jsonObject.getJSONArray("playback");
+                        TLog.error(jsonObject.toString() + ",userId:" + uid);
+                        //playback
+                        JSONArray liveAndAttentionUserJson = jsonObject.getJSONArray("attentionlive");
                         if (0 == liveAndAttentionUserJson.length())
                             return;
                         Gson g = new Gson();
                         for (int i = 0; i < liveAndAttentionUserJson.length(); i++) {
                             mUserList.add(g.fromJson(liveAndAttentionUserJson.getString(i), UserBean.class));
                         }
-
                         fillUI();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -112,8 +112,16 @@ public class AttentionFragment extends BaseFragment {
     }
 
     private void fillUI() {
-        mAttentionNoLiveShowView.setVisibility(View.GONE);
-        mLvAttentions.setVisibility(View.VISIBLE);
+        //判断正在直播的有没有我关注的人
+        if (null != mUserList && !mUserList.isEmpty() && mUserList.size() > 0) {
+            mAttentionNoLiveShowView.setVisibility(View.GONE);
+            mLvAttentions.setVisibility(View.VISIBLE);
+
+        } else {
+            mAttentionNoLiveShowView.setVisibility(View.VISIBLE);
+            mLvAttentions.setVisibility(View.GONE);
+        }
+        TLog.logv("mUserList.size()-->" + mUserList.size());
         if (mAdapter == null) {
             mAdapter = new LiveUserAdapter(this, getActivity().getLayoutInflater(), mUserList);
         }

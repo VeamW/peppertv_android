@@ -14,6 +14,7 @@ import com.weilian.phonelive.api.remote.ApiUtils;
 import com.weilian.phonelive.api.remote.PhoneLiveApi;
 import com.weilian.phonelive.base.BaseActivity;
 import com.weilian.phonelive.bean.UserBean;
+import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.utils.UIHelper;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -69,6 +70,7 @@ public class AttentionActivity extends BaseActivity {
                 if(res != null){
                     try {
                         JSONArray fansJsonArr = new JSONArray(res);
+                        TLog.error("uid:" + getIntent().getIntExtra("uid", 0) + ",ucuid:" + AppContext.getInstance().getLoginUid());
                         if(fansJsonArr.length() > 0){
                             Gson gson = new Gson();
                             mAttentionList = new ArrayList<>();
@@ -83,6 +85,7 @@ public class AttentionActivity extends BaseActivity {
                 }
             }
         };
+
         PhoneLiveApi.getAttentionList(getIntent().getIntExtra("uid", 0), AppContext.getInstance().getLoginUid(), callback);
     }
 

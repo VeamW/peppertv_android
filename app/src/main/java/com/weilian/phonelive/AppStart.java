@@ -14,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 
 import com.hyphenate.chat.EMClient;
+import com.weilian.phonelive.base.BaseApplication;
 import com.weilian.phonelive.ui.LiveLoginSelectActivity;
 import com.weilian.phonelive.ui.MainActivity;
 import com.weilian.phonelive.utils.TDevice;
@@ -35,7 +36,8 @@ public class AppStart extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        checkAPP(this);
+        checkAPP(BaseApplication
+                .context());
         // 防止第三方跳转时出现双实例
         Activity aty = AppManager.getActivity(MainActivity.class);
         if (aty != null && !aty.isFinishing()) {
@@ -43,7 +45,8 @@ public class AppStart extends Activity {
         }
         // SystemTool.gc(this); //针对性能好的手机使用，加快应用相应速度
 
-        final View view = View.inflate(this, R.layout.app_start, null);
+        final View view = View.inflate(BaseApplication
+                .context(), R.layout.app_start, null);
         setContentView(view);
         // 渐变展示启动屏
         AlphaAnimation aa = new AlphaAnimation(0.5f, 1.0f);
@@ -67,11 +70,11 @@ public class AppStart extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        int cacheVersion = PreferenceHelper.readInt(this, "first_install",
+        int cacheVersion = PreferenceHelper.readInt(BaseApplication.context(), "first_install",
                 "first_install", -1);
         int currentVersion = TDevice.getVersionCode();
         if (cacheVersion < currentVersion) {
-            PreferenceHelper.write(this, "first_install", "first_install",
+            PreferenceHelper.write(BaseApplication.context(), "first_install", "first_install",
                     currentVersion);
             cleanImageCache();
         }

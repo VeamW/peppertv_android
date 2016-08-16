@@ -16,10 +16,13 @@ import java.util.Properties;
 public class AppConfig {
     //    public static final String MAIN_URL = "http://yy.yunbaozhibo.com/public";
     //    public static final String CHAT_URL = "http://123.56.243.107:19967";
+    //    public static final String RTMP_URL = "rtmp://xp.taianweb.com/5showcam/";
+
     //    测试服务器地址
     public static final String MAIN_URL = "http://139.224.18.21/public/";
     public static final String CHAT_URL = "http://139.224.18.21:19967";
-    public static final String RTMP_URL = "rtmp://xp.taianweb.com/5showcam/";
+    public static final String RTMP_URL = "rtmp://xb.yunbaozhibo.com/5showcam/";
+    public static final String RTMP_PUSH_URL = "rtmp://xp.yunbaozhibo.com/5showcam/";
 
 
     private final static String APP_CONFIG = "config";

@@ -122,7 +122,7 @@
 -dontwarn okhttp3.**
 -keep class okhttp3.**{*;}
 -keep interface okhttp3.**{*;}
-
+-libraryjars libs/libksyplayer.jar
 #phonelive
  #-keep class com.weilian.phonelive.ui.**{ *;}
 
@@ -252,3 +252,15 @@
   **[] $VALUES;
   public *;
 }
+ -keep class com.google.android.gms.** { *; }
+ -dontwarn com.google.android.gms.**
+ -dontwarn java.nio.file.Files
+ -dontwarn java.nio.file.Path
+ -dontwarn java.nio.file.OpenOption
+ -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+
+ -dontwarn android.support.v7.**
+ -keep class android.support.v7.** { *; }
+ -keep interface android.support.v7.** { *; }
+
+

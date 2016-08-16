@@ -1,7 +1,5 @@
 package com.weilian.phonelive.bean;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -50,6 +48,47 @@ public class UserBean implements Serializable {
 
     public void setuType(int uType) {
         this.uType = uType;
+    }
+
+
+    @Override
+    public String toString() {
+        return "UserBean{" +
+                "id=" + id +
+                ", user_login='" + user_login + '\'' +
+                ", user_pass='" + user_pass + '\'' +
+                ", user_nicename='" + user_nicename + '\'' +
+                ", user_email='" + user_email + '\'' +
+                ", user_url='" + user_url + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", sex=" + sex +
+                ", birthday='" + birthday + '\'' +
+                ", signature='" + signature + '\'' +
+                ", last_login_ip='" + last_login_ip + '\'' +
+                ", last_login_time='" + last_login_time + '\'' +
+                ", create_time='" + create_time + '\'' +
+                ", user_activation_key='" + user_activation_key + '\'' +
+                ", user_status='" + user_status + '\'' +
+                ", score='" + score + '\'' +
+                ", user_type=" + user_type +
+                ", coin='" + coin + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", token='" + token + '\'' +
+                ", expiretime='" + expiretime + '\'' +
+                ", votes='" + votes + '\'' +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                ", consumption='" + consumption + '\'' +
+                ", level=" + level +
+                ", isattention=" + isattention +
+                ", attentionnum=" + attentionnum +
+                ", fansnum='" + fansnum + '\'' +
+                ", liverecordnum=" + liverecordnum +
+                ", title='" + title + '\'' +
+                ", nums='" + nums + '\'' +
+                ", coinrecord3=" + coinrecord3 +
+                ", uType=" + uType +
+                '}';
     }
 
     public List<OrderBean> getCoinrecord3() {

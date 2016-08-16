@@ -1,6 +1,7 @@
 package com.weilian.phonelive;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -58,7 +59,6 @@ public class AppContext extends BaseApplication {
     public static String address = "好像在黑洞";
     public static String province;
     private Socket mSocket;
-
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
     //声明mLocationOption对象
@@ -100,7 +100,6 @@ public class AppContext extends BaseApplication {
         }
     };
 
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -111,6 +110,7 @@ public class AppContext extends BaseApplication {
 //                .getAppExceptionHandler(this));
         UIHelper.sendBroadcastForNotice(this);
     }
+
 
     private void init() {
 

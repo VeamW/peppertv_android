@@ -14,10 +14,8 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -52,7 +50,6 @@ import com.weilian.phonelive.utils.DialogHelp;
 import com.weilian.phonelive.utils.InputMethodUtils;
 import com.weilian.phonelive.utils.MD5;
 import com.weilian.phonelive.utils.ShareUtils;
-import com.weilian.phonelive.utils.TDevice;
 import com.weilian.phonelive.utils.ThreadManager;
 import com.weilian.phonelive.utils.UIHelper;
 import com.weilian.phonelive.viewpagerfragment.PrivateChatCorePagerDialogFragment;
@@ -66,7 +63,6 @@ import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -195,7 +191,11 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
             mStreamer.onDestroy();
         }
         //解除广播
-        unregisterReceiver(broadCastReceiver);
+        try {
+            unregisterReceiver(broadCastReceiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         super.onDestroy();
     }
@@ -466,7 +466,7 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
     private void initLivePlay() {
         //直播参数配置start
         KSYStreamerConfig.Builder builder = new KSYStreamerConfig.Builder();
-        String url = AppConfig.RTMP_URL + mUser.getId();
+        String url = AppConfig.RTMP_PUSH_URL + mUser.getId();
         builder.setmUrl(url);
         String timeSec = String.valueOf(System.currentTimeMillis() / 1000);
         String skSign = MD5.md5sum("s6539d4f91a16ed6ba27db3ea863b943" + timeSec);
