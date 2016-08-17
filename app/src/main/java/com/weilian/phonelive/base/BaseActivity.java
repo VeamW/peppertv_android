@@ -18,6 +18,7 @@ import com.weilian.phonelive.interf.BaseViewInterface;
 import com.weilian.phonelive.ui.dialog.CommonToast;
 import com.weilian.phonelive.interf.DialogControl;
 import com.weilian.phonelive.utils.DialogHelp;
+import com.weilian.phonelive.utils.InputMethodUtils;
 import com.weilian.phonelive.utils.StringUtils;
 import com.weilian.phonelive.utils.TDevice;
 
@@ -41,6 +42,7 @@ public abstract class BaseActivity extends ActionBarActivity implements
     protected void onDestroy() {
         super.onDestroy();
         TDevice.hideSoftKeyboard(getCurrentFocus());
+        InputMethodUtils.fixInputMethodManagerLeak(this);
         ButterKnife.reset(this);
     }
 

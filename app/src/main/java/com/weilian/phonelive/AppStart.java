@@ -17,6 +17,7 @@ import com.hyphenate.chat.EMClient;
 import com.weilian.phonelive.base.BaseApplication;
 import com.weilian.phonelive.ui.LiveLoginSelectActivity;
 import com.weilian.phonelive.ui.MainActivity;
+import com.weilian.phonelive.utils.InputMethodUtils;
 import com.weilian.phonelive.utils.TDevice;
 
 import org.kymjs.kjframe.http.KJAsyncTask;
@@ -29,9 +30,9 @@ import cn.jpush.android.api.JPushInterface;
 
 /**
  * 应用启动界面
- *
  */
 public class AppStart extends Activity {
+    private View view = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,8 +46,7 @@ public class AppStart extends Activity {
         }
         // SystemTool.gc(this); //针对性能好的手机使用，加快应用相应速度
 
-        final View view = View.inflate(BaseApplication
-                .context(), R.layout.app_start, null);
+        view = View.inflate(this, R.layout.app_start, null);
         setContentView(view);
         // 渐变展示启动屏
         AlphaAnimation aa = new AlphaAnimation(0.5f, 1.0f);
@@ -60,10 +60,12 @@ public class AppStart extends Activity {
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) {}
+            public void onAnimationRepeat(Animation animation) {
+            }
 
             @Override
-            public void onAnimationStart(Animation animation) {}
+            public void onAnimationStart(Animation animation) {
+            }
         });
     }
 
@@ -103,7 +105,7 @@ public class AppStart extends Activity {
      * 跳转到...
      */
     private void redirectTo() {
-        if(!AppContext.getInstance().isLogin()){
+        if (!AppContext.getInstance().isLogin()) {
             Intent intent = new Intent(this, LiveLoginSelectActivity.class);
             startActivity(intent);
             finish();
@@ -117,6 +119,7 @@ public class AppStart extends Activity {
         startActivity(intent);
         finish();
     }
+
     int checkAPP(Context context) {
         try {
             PackageInfo packageInfo = context.getPackageManager()
@@ -133,4 +136,14 @@ public class AppStart extends Activity {
         }
         return -1;
     }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //解决有inputMethodManager带来的leak问题
+        InputMethodUtils.fixInputMethodManagerLeak(this);
+    }
+
+
 }

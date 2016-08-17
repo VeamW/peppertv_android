@@ -75,6 +75,7 @@ public class SimpleBackActivity extends BaseActivity {
             Fragment fragment = (Fragment) page.getClz().newInstance();
 
             Bundle args = data.getBundleExtra(BUNDLE_KEY_ARGS);
+
             if (args != null) {
                 fragment.setArguments(args);
             }

@@ -18,6 +18,7 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.util.NetUtils;
+import com.squareup.leakcanary.RefWatcher;
 import com.weilian.phonelive.base.BaseApplication;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.cache.DataCleanManager;

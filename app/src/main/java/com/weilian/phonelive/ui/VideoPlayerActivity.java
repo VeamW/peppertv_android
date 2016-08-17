@@ -201,12 +201,11 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
     @Override
     protected void onDestroy() {//释放
         videoPlayEnd();
-        try {
-            unregisterReceiver(broadCastReceiver);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         super.onDestroy();
+        if (mService != null && !mService.isShutdown()) {
+            mService.shutdownNow();
+        }
+        mService = null;
         finish();
         System.gc();
     }
@@ -228,7 +227,6 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
         mTvEmceeName.setClickable(true);
         mLiveNum.setClickable(true);
         mService = Executors.newFixedThreadPool(3);
-
     }
 
     @Override
@@ -1041,6 +1039,7 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
 
             }
         };
+
         PhoneLiveApi.getIsFollow(mUser.getId(), mEmceeInfo.getId(), callback);//判断当前主播是否已经关注
     }
     //socket客户端事件监听处理end
@@ -1206,6 +1205,10 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
         mVideoSurfaceView.setLayoutParams(lp);
 
         mVideoSurfaceView.invalidate();
+
+
+
+
     }
 
     //进度条更新

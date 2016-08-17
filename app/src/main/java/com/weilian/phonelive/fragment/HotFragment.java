@@ -22,6 +22,7 @@ import com.weilian.phonelive.AppContext;
 import com.weilian.phonelive.R;
 import com.weilian.phonelive.api.remote.ApiUtils;
 import com.weilian.phonelive.api.remote.PhoneLiveApi;
+import com.weilian.phonelive.base.BaseApplication;
 import com.weilian.phonelive.base.BaseFragment;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.ui.VideoPlayerActivity;
@@ -64,6 +65,7 @@ public class HotFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
         this.inflater = inflater;
         initView();
         initData();
+
         return view;
     }
     private void initView(){
@@ -78,6 +80,13 @@ public class HotFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
                 UIHelper.showLookLiveActivity(getActivity(),bundle);
             }
         });
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        BaseApplication.getRefWatcher(BaseApplication.context()).watch(this);
     }
 
     @Override

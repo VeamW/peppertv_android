@@ -63,8 +63,10 @@ public class MessageDetailFragment extends BaseFragment {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iv_private_chat_send:
-                if(mMessageInput.getText().toString().equals(""))
+                if(mMessageInput.getText().toString().equals("")){
                     AppContext.showToastAppMsg(getActivity(),"内容为空");
+                    return;
+                }
                 updateChatList(PhoneLivePrivateChat.sendChatMessage(
                         mMessageInput.getText().toString()
                         ,mToUser

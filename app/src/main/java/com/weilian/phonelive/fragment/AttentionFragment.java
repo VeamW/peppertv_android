@@ -92,6 +92,9 @@ public class AttentionFragment extends BaseFragment {
                         JSONObject jsonObject = new JSONObject(res);
                         TLog.error(jsonObject.toString() + ",userId:" + uid);
                         //playback
+                        TLog.error("attentionlive>>>>>>>>" + jsonObject.get("attentionlive").toString());
+                        if (jsonObject.get("attentionlive") == null || jsonObject.get("attentionlive").toString().equals("{}") || jsonObject.get("attentionlive").toString().isEmpty() || jsonObject.get("attentionlive").toString().equals("[]"))
+                            return;
                         JSONArray liveAndAttentionUserJson = jsonObject.getJSONArray("attentionlive");
                         if (0 == liveAndAttentionUserJson.length())
                             return;

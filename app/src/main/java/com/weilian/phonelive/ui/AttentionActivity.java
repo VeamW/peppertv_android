@@ -48,7 +48,10 @@ public class AttentionActivity extends BaseActivity {
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mAttentionList.clear();
+                if (mAttentionList != null) {
+                    mAttentionList.clear();
+                }
+
                 initData();
                 mRefreshLayout.setRefreshing(false);
             }
@@ -67,14 +70,14 @@ public class AttentionActivity extends BaseActivity {
             @Override
             public void onResponse(String response) {
                 String res = ApiUtils.checkIsSuccess(response, AttentionActivity.this);
-                if(res != null){
+                if (res != null) {
                     try {
                         JSONArray fansJsonArr = new JSONArray(res);
                         TLog.error("uid:" + getIntent().getIntExtra("uid", 0) + ",ucuid:" + AppContext.getInstance().getLoginUid());
-                        if(fansJsonArr.length() > 0){
+                        if (fansJsonArr.length() > 0) {
                             Gson gson = new Gson();
                             mAttentionList = new ArrayList<>();
-                            for(int i =0;i<fansJsonArr.length(); i++){
+                            for (int i = 0; i < fansJsonArr.length(); i++) {
                                 mAttentionList.add(gson.fromJson(fansJsonArr.getString(i), UserBean.class));
                             }
                             fillUI();
@@ -90,11 +93,14 @@ public class AttentionActivity extends BaseActivity {
     }
 
     private void fillUI() {
+        if (mAttentionView == null) {
+            return;
+        }
         mAttentionView.setAdapter(new UserBaseInfoAdapter(mAttentionList));
         mAttentionView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                UIHelper.showHomePageActivity(AttentionActivity.this,mAttentionList.get(position).getId());
+                UIHelper.showHomePageActivity(AttentionActivity.this, mAttentionList.get(position).getId());
             }
         });
 
@@ -121,6 +127,7 @@ public class AttentionActivity extends BaseActivity {
         MobclickAgent.onPageStart("关注列表"); //统计页面(仅有Activity的应用中SDK自动调用，不需要单独写。"SplashScreen"为页面名称，可自定义)
         MobclickAgent.onResume(this);          //统计时长
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd("关注列表"); // （仅有Activity的应用中SDK自动调用，不需要单独写）保证 onPageEnd 在onPause 之前调用,因为 onPause 中会保存信息。"SplashScreen"为页面名称，可自定义

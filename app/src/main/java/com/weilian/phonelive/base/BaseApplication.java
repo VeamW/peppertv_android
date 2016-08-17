@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 import com.weilian.phonelive.R;
 
 public class BaseApplication extends Application {
@@ -26,7 +28,7 @@ public class BaseApplication extends Application {
     private static long lastToastTime;
 
     private static boolean sIsAtLeastGB;
-
+    private RefWatcher mRefWatcher;
     static {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
             sIsAtLeastGB = true;
@@ -38,6 +40,12 @@ public class BaseApplication extends Application {
         super.onCreate();
         _context = getApplicationContext();
         _resource = _context.getResources();
+        mRefWatcher = LeakCanary.install(this);
+    }
+
+
+    public static RefWatcher getRefWatcher(Context context) {
+        return ((BaseApplication) context.getApplicationContext()).mRefWatcher;
     }
 
     public static synchronized BaseApplication context() {

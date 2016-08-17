@@ -220,6 +220,8 @@ public abstract class ShowLiveActivityBase extends BaseActivity {
             e.printStackTrace();
         }
 
+
+
     }
 
     @Override

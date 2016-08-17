@@ -68,19 +68,20 @@ public class FansActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response) {
-                String res = ApiUtils.checkIsSuccess(response,FansActivity.this);
-                if(res != null){
+                String res = ApiUtils.checkIsSuccess(response, FansActivity.this);
+                if (res != null) {
                     try {
                         JSONArray fansJsonArr = new JSONArray(res);
-                        if(fansJsonArr.length() > 0){
+                        if (fansJsonArr.length() > 0) {
                             Gson gson = new Gson();
-                            for(int i =0;i<fansJsonArr.length(); i++){
+                            for (int i = 0; i < fansJsonArr.length(); i++) {
                                 mFanList.add(gson.fromJson(fansJsonArr.getString(i), UserBean.class));
                             }
 
                             fillUI();
-                        }else {
-                            mFansView.setVisibility(View.GONE);
+                        } else {
+                            if (mFansView != null)
+                                mFansView.setVisibility(View.GONE);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -88,10 +89,13 @@ public class FansActivity extends BaseActivity {
                 }
             }
         };
-        PhoneLiveApi.getFansList(getIntent().getIntExtra("uid",0), AppContext.getInstance().getLoginUid(),callback);
+        PhoneLiveApi.getFansList(getIntent().getIntExtra("uid", 0), AppContext.getInstance().getLoginUid(), callback);
     }
 
     private void fillUI() {
+        if (mLlDefaultBg == null && mFansView == null) {
+            return;
+        }
         mLlDefaultBg.setVisibility(View.GONE);
         mFansView.setVisibility(View.VISIBLE);
         mFansView.setAdapter(new UserBaseInfoAdapter(mFanList));
@@ -118,11 +122,13 @@ public class FansActivity extends BaseActivity {
     protected boolean hasBackButton() {
         return true;
     }
+
     public void onResume() {
         super.onResume();
         MobclickAgent.onPageStart("粉丝列表"); //统计页面(仅有Activity的应用中SDK自动调用，不需要单独写。"SplashScreen"为页面名称，可自定义)
         MobclickAgent.onResume(this);          //统计时长
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd("粉丝列表"); // （仅有Activity的应用中SDK自动调用，不需要单独写）保证 onPageEnd 在onPause 之前调用,因为 onPause 中会保存信息。"SplashScreen"为页面名称，可自定义

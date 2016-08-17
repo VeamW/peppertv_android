@@ -108,12 +108,6 @@ public class MyInformationFragment extends BaseFragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        getActivity().unregisterReceiver(broadcastReceiver);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_information,
@@ -211,6 +205,7 @@ public class MyInformationFragment extends BaseFragment {
 
         @Override
         public void onResponse(String s) {
+            TLog.error("MyinformationFragment--->" + s);
             String res = ApiUtils.checkIsSuccess(s, getActivity());
             if (res == null || res.isEmpty()) {
                 UIHelper.showLoginSelectActivity(getActivity());
@@ -241,7 +236,7 @@ public class MyInformationFragment extends BaseFragment {
         switch (id) {
             case R.id.ll_authenticate://申请认证
                 TLog.log("申请认证被点击了");
-                UIHelper.showWebView(getActivity(), AppConfig.MAIN_URL + "/appcmf/index.php?g=User&m=Rz&a=auth&uid=" + AppContext.getInstance().getLoginUid(), "申请认证");
+                UIHelper.showWebView(getActivity(), AppConfig.MAIN_URL + "/appcmf/index.php?g=User&m=Rz&a=index&uid=" + AppContext.getInstance().getLoginUid(), "申请认证");
                 break;
             case R.id.iv_info_private_core:
                 mIvNewMessage.setVisibility(View.GONE);
@@ -324,7 +319,13 @@ public class MyInformationFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         if (broadcastReceiver==null||broadcastReceiver.getAbortBroadcast()) return;
-
-        getActivity().unregisterReceiver(broadcastReceiver);
+        try {
+            getActivity().unregisterReceiver(broadcastReceiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            broadcastReceiver.setDebugUnregister(true);
+            broadcastReceiver = null;
+        }
     }
 }

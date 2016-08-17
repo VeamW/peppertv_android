@@ -176,39 +176,40 @@ public class HomePageActivity extends BaseActivity {
     }
 
     private void pullTheBlack() {// black list
-        PhoneLiveApi.pullTheBlack(AppContext.getInstance().getLoginUid(),uid,
+        TLog.error("要拉黑人的Id----->" + uid);
+        PhoneLiveApi.pullTheBlack(AppContext.getInstance().getLoginUid(), uid,
                 AppContext.getInstance().getToken(),
-                new StringCallback(){
+                new StringCallback() {
 
-            @Override
-            public void onError(Call call, Exception e) {
-                AppContext.showToastAppMsg(HomePageActivity.this,"操作失败");
-            }
-
-            @Override
-            public void onResponse(String response) {
-                String res = ApiUtils.checkIsSuccess(response,HomePageActivity.this);
-                if(null == res)return;
-                if(mUserHomePageBean.getIsblack() == 0){
-                    //第二个参数如果为true，则把用户加入到黑名单后双方发消息时对方都收不到；false，则我能给黑名单的中用户发消息，但是对方发给我时我是收不到的
-                    try {
-                        EMClient.getInstance().contactManager().addUserToBlackList(String.valueOf(mUserHomePageBean.getId()),true);
-                    } catch (HyphenateException e) {
-                        e.printStackTrace();
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        AppContext.showToastAppMsg(HomePageActivity.this, "操作失败");
                     }
-                }else{
-                    try {
-                        EMClient.getInstance().contactManager().removeUserFromBlackList(String.valueOf(mUserHomePageBean.getId()));
-                    } catch (HyphenateException e) {
-                        e.printStackTrace();
-                    }
-                }
-                AppContext.showToastAppMsg(HomePageActivity.this,mUserHomePageBean.getIsblack() == 0?"拉黑成功":"解除拉黑");
-                mUserHomePageBean.setIsblack(mUserHomePageBean.getIsblack() == 0?1:0);
-                mTvBlackState.setText(mUserHomePageBean.getIsblack() == 0?getString(R.string.pullblack):getString(R.string.relieveblack));
 
-            }
-        });
+                    @Override
+                    public void onResponse(String response) {
+                        String res = ApiUtils.checkIsSuccess(response, HomePageActivity.this);
+                        if (null == res) return;
+                        if (mUserHomePageBean.getIsblack() == 0) {
+                            //第二个参数如果为true，则把用户加入到黑名单后双方发消息时对方都收不到；false，则我能给黑名单的中用户发消息，但是对方发给我时我是收不到的
+                            try {
+                                EMClient.getInstance().contactManager().addUserToBlackList(String.valueOf(mUserHomePageBean.getId()), true);
+                            } catch (HyphenateException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            try {
+                                EMClient.getInstance().contactManager().removeUserFromBlackList(String.valueOf(mUserHomePageBean.getId()));
+                            } catch (HyphenateException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        AppContext.showToastAppMsg(HomePageActivity.this, mUserHomePageBean.getIsblack() == 0 ? "拉黑成功" : "解除拉黑");
+                        mUserHomePageBean.setIsblack(mUserHomePageBean.getIsblack() == 0 ? 1 : 0);
+                        mTvBlackState.setText(mUserHomePageBean.getIsblack() == 0 ? getString(R.string.pullblack) : getString(R.string.relieveblack));
+
+                    }
+                });
     }
 
     //私信

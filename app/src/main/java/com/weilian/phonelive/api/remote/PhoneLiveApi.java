@@ -575,7 +575,7 @@ public class PhoneLiveApi {
                 .url(API_URL)
                 .addParams("service","User.setBlackList")
                 .addParams("uid", String.valueOf(uid))
-                .addParams("showid", String.valueOf(touid))
+                .addParams("touid", String.valueOf(touid))
                 .addParams("token",token)
                 .build()
                 .execute(callback);

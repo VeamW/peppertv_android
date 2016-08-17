@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class IndexPagerFragment extends BaseFragment{
+public class IndexPagerFragment extends BaseFragment {
 
     private View view;
     @InjectView(R.id.mviewpager)
@@ -47,12 +47,12 @@ public class IndexPagerFragment extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        if(view == null){
-            view = inflater.inflate(R.layout.fragment_hot,null);
-            ButterKnife.inject(this,view);
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_hot, null);
+            ButterKnife.inject(this, view);
             initView();
             initData();
-        }else{
+        } else {
             tabs.setViewPager(pager);
         }
 
@@ -63,7 +63,7 @@ public class IndexPagerFragment extends BaseFragment{
     public void initData() {
         //获取私信未读数量
         int count = EMClient.getInstance().chatManager().getUnreadMsgsCount();
-        if(count > 0){
+        if (count > 0) {
             mIvNewMessage.setVisibility(View.VISIBLE);
         }
         IntentFilter intentFilter = new IntentFilter("com.weilian.phonelive");
@@ -73,20 +73,20 @@ public class IndexPagerFragment extends BaseFragment{
                 mIvNewMessage.setVisibility(View.VISIBLE);
             }
         };
-        getActivity().registerReceiver(broadcastReceiver,intentFilter);
+        getActivity().registerReceiver(broadcastReceiver, intentFilter);
 
     }
 
-    @OnClick({R.id.iv_hot_private_chat,R.id.iv_hot_search})
+
+    @OnClick({R.id.iv_hot_private_chat, R.id.iv_hot_search})
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.iv_hot_private_chat:
                 int uid = AppContext.getInstance().getLoginUid();
-                if(0 < uid){
+                if (0 < uid) {
                     mIvNewMessage.setVisibility(View.GONE);
-                    UIHelper.showPrivateChatSimple(getActivity(),uid);
+                    UIHelper.showPrivateChatSimple(getActivity(), uid);
                 }
 
                 break;
@@ -98,7 +98,7 @@ public class IndexPagerFragment extends BaseFragment{
 
     private void initView() {
 
-        viewPageFragmentAdapter = new ViewPageFragmentAdapter(getFragmentManager(),pager);
+        viewPageFragmentAdapter = new ViewPageFragmentAdapter(getFragmentManager(), pager);
         viewPageFragmentAdapter.addTab(getString(R.string.attention), "gz", AttentionFragment.class, getBundle());
         viewPageFragmentAdapter.addTab(getString(R.string.hot), "rm", HotFragment.class, getBundle());
         viewPageFragmentAdapter.addTab(getString(R.string.daren), "dr", NewestFragment.class, getBundle());
@@ -118,9 +118,9 @@ public class IndexPagerFragment extends BaseFragment{
         tabs.setIndicatorColorResource(R.color.global);
         tabs.setPagerSlidingListen(new PagerSlidingInterface() {
             @Override
-            public void onItemClick(View v,int currentPosition,int position) {
+            public void onItemClick(View v, int currentPosition, int position) {
 
-                if(currentPosition == position && position == 1){
+                if (currentPosition == position && position == 1) {
                     UIHelper.showSelectArea(getActivity());
                 }
             }
@@ -136,7 +136,7 @@ public class IndexPagerFragment extends BaseFragment{
 
             @Override
             public void onPageSelected(int position) {
-                mRegion.setVisibility(1 == position? View.VISIBLE:View.GONE);
+                mRegion.setVisibility(1 == position ? View.VISIBLE : View.GONE);
                 //tabs.setIndicatorColorResource(1 == position? R.color.white:R.color.global);
             }
 
@@ -150,14 +150,17 @@ public class IndexPagerFragment extends BaseFragment{
 
     @Override
     public void onDestroy() {
-        getActivity().unregisterReceiver(broadcastReceiver);
+        try {
+            getActivity().unregisterReceiver(broadcastReceiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         super.onDestroy();
-
     }
 
-    private Bundle getBundle( ) {
-       Bundle bundle = new Bundle();
+    private Bundle getBundle() {
+        Bundle bundle = new Bundle();
 
-       return bundle;
-   }
+        return bundle;
+    }
 }
