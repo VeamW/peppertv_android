@@ -13,8 +13,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TabHost;
+
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
@@ -26,15 +26,17 @@ import com.weilian.phonelive.R;
 import com.weilian.phonelive.api.remote.ApiUtils;
 import com.weilian.phonelive.api.remote.PhoneLiveApi;
 import com.weilian.phonelive.em.MainTab;
+import com.weilian.phonelive.interf.BaseViewInterface;
 import com.weilian.phonelive.utils.LoginUtils;
 import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.utils.UIHelper;
 import com.weilian.phonelive.utils.UpdateManager;
 import com.weilian.phonelive.widget.MyFragmentTabHost;
-import com.weilian.phonelive.interf.BaseViewInterface;
 import com.zhy.http.okhttp.callback.StringCallback;
+
 import java.util.List;
 import java.util.Set;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import cn.jpush.android.api.JPushInterface;
@@ -91,6 +93,7 @@ public class MainActivity extends ActionBarActivity implements
         });
 
     }
+
     private void initTabs() {
         MainTab[] tabs = MainTab.values();
         final int size = tabs.length;
@@ -105,7 +108,7 @@ public class MainActivity extends ActionBarActivity implements
             Drawable drawable = this.getResources().getDrawable(
                     mainTab.getResIcon());
             tabImg.setImageDrawable(drawable);
-            if(i == 1){
+            if (i == 1) {
                 tabImg.setVisibility(View.GONE);
             }
             tab.setIndicator(indicator);
@@ -135,6 +138,7 @@ public class MainActivity extends ActionBarActivity implements
         checkNewVersion();
 
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
@@ -149,19 +153,20 @@ public class MainActivity extends ActionBarActivity implements
             }
         }
     }
+
     //请求服务端开始直播
     private void requestStartLive() {
-        PhoneLiveApi.getLevelLimit(AppContext.getInstance().getLoginUid(),new StringCallback(){
+        PhoneLiveApi.getLevelLimit(AppContext.getInstance().getLoginUid(), new StringCallback() {
 
             @Override
             public void onError(Call call, Exception e) {
-                AppContext.showToastAppMsg(MainActivity.this,"开始直播失败");
+                AppContext.showToastAppMsg(MainActivity.this, "开始直播失败");
             }
 
             @Override
             public void onResponse(String response) {
                 String res = ApiUtils.checkIsSuccess(response);
-                if(null != res){
+                if (null != res) {
                     UIHelper.showStartLiveActivity(MainActivity.this);
                 }
             }
@@ -170,53 +175,52 @@ public class MainActivity extends ActionBarActivity implements
 
     //登录环信即时聊天
     private void loginIM() {
-
         EMClient.getInstance().login(
-                String.valueOf(AppContext.getInstance().getLoginUid()),
-                "wl" + AppContext.getInstance().getLoginUid(),new EMCallBack() {//回调
-            @Override
-            public void onSuccess() {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        EMClient.getInstance().groupManager().loadAllGroups();
-                        EMClient.getInstance().chatManager().loadAllConversations();
-                        TLog.log("主页登录聊天服务器成功");
+                String.valueOf("pt" + AppContext.getInstance().getLoginUid()),
+                "wl" + AppContext.getInstance().getLoginUid(), new EMCallBack() {//回调
+                    @Override
+                    public void onSuccess() {
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                EMClient.getInstance().groupManager().loadAllGroups();
+                                EMClient.getInstance().chatManager().loadAllConversations();
+                                TLog.log("主页登录聊天服务器成功" + "pt" + AppContext.getInstance().getLoginUid());
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onProgress(int progress, String status) {
+
+                    }
+
+                    @Override
+                    public void onError(int code, String message) {
+                        if (204 == code) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    AppContext.showToastAppMsg(MainActivity.this, "聊天服务器登录和失败,请重新登录");
+                                }
+                            });
+
+                        }
+                        TLog.log("主页登录聊天服务器失败" + "code:" + code + "    MESSAGE:" + message);
                     }
                 });
-            }
-
-            @Override
-            public void onProgress(int progress, String status) {
-
-            }
-
-            @Override
-            public void onError(int code, String message) {
-                if(204 == code){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            AppContext.showToastAppMsg(MainActivity.this,"聊天服务器登录和失败,请重新登录");
-                        }
-                    });
-
-                }
-                TLog.log("主页登录聊天服务器失败" + "code:" +code + "MESSAGE:" + message);
-            }
-        });
 
 
     }
 
     /**
-    * @dw 注册极光推送
-    * */
+     * @dw 注册极光推送
+     */
     private void registerJpush() {
         JPushInterface.setAlias(this, AppContext.getInstance().getLoginUid() + "PUSH",
                 new TagAliasCallback() {
                     @Override
                     public void gotResult(int i, String s, Set<String> set) {
-                        TLog.log(i +"I" +s + "S");
+                        TLog.log(i + "I" + s + "S");
                     }
                 });
 
@@ -224,7 +228,7 @@ public class MainActivity extends ActionBarActivity implements
 
     /**
      * @dw 检查token是否过期
-     * */
+     */
     private void checkTokenIsOutTime() {
         LoginUtils.tokenIsOutTime(new StringCallback() {
             @Override
@@ -234,11 +238,11 @@ public class MainActivity extends ActionBarActivity implements
 
             @Override
             public void onResponse(String response) {
-                String res = ApiUtils.checkIsSuccess(response,MainActivity.this);
+                String res = ApiUtils.checkIsSuccess(response, MainActivity.this);
 
-                if(null == res)return;
-                if(res.equals(ApiUtils.TOKEN_TIMEOUT)){
-                    AppContext.showToastAppMsg(MainActivity.this,"登陆过期,请重新登陆");
+                if (null == res) return;
+                if (res.equals(ApiUtils.TOKEN_TIMEOUT)) {
+                    AppContext.showToastAppMsg(MainActivity.this, "登陆过期,请重新登陆");
                     UIHelper.showLoginSelectActivity(MainActivity.this);
                     return;
                 }
@@ -248,10 +252,10 @@ public class MainActivity extends ActionBarActivity implements
     }
 
     /**
-    * @dw 检查是否有最新版本
-    * */
+     * @dw 检查是否有最新版本
+     */
     private void checkNewVersion() {
-        UpdateManager manager = new UpdateManager(this,false);
+        UpdateManager manager = new UpdateManager(this, false);
         manager.checkUpdate();
 
     }
@@ -280,8 +284,10 @@ public class MainActivity extends ActionBarActivity implements
         }
 
         @Override
-        public void onMessageChanged(EMMessage message, Object change) {}
+        public void onMessageChanged(EMMessage message, Object change) {
+        }
     };
+
     @Override
     protected void onStop() {
         EMClient.getInstance().chatManager().removeMessageListener(messageListener);
@@ -296,6 +302,7 @@ public class MainActivity extends ActionBarActivity implements
         MobclickAgent.onResume(this);          //统计时长
 
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd("主页"); // （仅有Activity的应用中SDK自动调用，不需要单独写）保证 onPageEnd 在onPause 之前调用,因为 onPause 中会保存信息。"SplashScreen"为页面名称，可自定义
@@ -304,16 +311,16 @@ public class MainActivity extends ActionBarActivity implements
 
     //开始直播初始化
     public void startLive() {
-       if(android.os.Build.VERSION.SDK_INT >= 23) {
-           //摄像头权限检测
-           if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                   != PackageManager.PERMISSION_GRANTED) {
-               //进行权限请求
-               ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
-                       5);
-               return;
-           }
-       }
+        if (android.os.Build.VERSION.SDK_INT >= 23) {
+            //摄像头权限检测
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+                //进行权限请求
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
+                        5);
+                return;
+            }
+        }
         requestStartLive();
 
     }

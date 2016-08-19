@@ -18,26 +18,30 @@ import com.hyphenate.exceptions.HyphenateException;
 import com.umeng.analytics.MobclickAgent;
 import com.weilian.phonelive.AppContext;
 import com.weilian.phonelive.R;
-import com.weilian.phonelive.base.PrivateChatPageBase;
 import com.weilian.phonelive.adapter.UserBaseInfoPrivateChatAdapter;
 import com.weilian.phonelive.api.remote.ApiUtils;
 import com.weilian.phonelive.api.remote.PhoneLiveApi;
+import com.weilian.phonelive.base.PrivateChatPageBase;
 import com.weilian.phonelive.bean.PrivateChatUserBean;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.utils.UIHelper;
 import com.zhy.http.okhttp.callback.StringCallback;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+
 import okhttp3.Call;
 
 public class FollowPrivateChatFragment extends PrivateChatPageBase {
 
 
     private int action;
-    private ArrayList<PrivateChatUserBean>  mPrivateChatListData = new ArrayList<>();
+    private ArrayList<PrivateChatUserBean> mPrivateChatListData = new ArrayList<>();
     private ListView mPrivateListView;
     private int mPosition;
     private UserBaseInfoPrivateChatAdapter mUserInfoPrivateAdapter;
@@ -49,24 +53,28 @@ public class FollowPrivateChatFragment extends PrivateChatPageBase {
     @Override
     public void initView(View view) {
         mPrivateListView = (ListView) view.findViewById(R.id.lv_privatechat);
+        mUserInfoPrivateAdapter = new UserBaseInfoPrivateChatAdapter(mPrivateChatListData);
+        mPrivateListView.setAdapter(mUserInfoPrivateAdapter);
+
         mPrivateListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mPosition = position;
                 mPrivateChatListData.get(position).setUnreadMessage(false);
-                if(getParentFragment() instanceof DialogFragment){
+                if (getParentFragment() instanceof DialogFragment) {
                     MessageDetailDialogFragment messageFragment = new MessageDetailDialogFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("user",mPrivateChatListData.get(position));
+                    bundle.putSerializable("user", mPrivateChatListData.get(position));
                     messageFragment.setArguments(bundle);
-                    messageFragment.setStyle(MessageDetailDialogFragment.STYLE_NO_TITLE,0);
-                    messageFragment.show(getFragmentManager(),"MessageDetailDialogFragment");
-                }else {
-                    UIHelper.showPrivateChatMessage(getActivity(),mPrivateChatListData.get(position));
+                    messageFragment.setStyle(MessageDetailDialogFragment.STYLE_NO_TITLE, 0);
+                    messageFragment.show(getFragmentManager(), "MessageDetailDialogFragment");
+                } else {
+                    UIHelper.showPrivateChatMessage(getActivity(), mPrivateChatListData.get(position));
                 }
             }
         });
     }
+
 
     @Override
     protected void initCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,40 +85,36 @@ public class FollowPrivateChatFragment extends PrivateChatPageBase {
     protected void onNewMessage(final EMMessage messages) {
         //收到消息
         try {
-            if((messages.getIntAttribute("isfollow") != 1)) return;
-            if(!emConversationMap.containsKey(messages.getFrom())){
-                TLog.log("not in conversations");
+            if ((messages.getIntAttribute("isfollow") != 1)) return;
+            if (!emConversationMap.containsKey(messages.getFrom())) {
                 emConversationMap = EMClient.getInstance().chatManager().getAllConversations();
-                PhoneLiveApi.getPmUserInfo(mUser.getId(),Integer.parseInt(messages.getFrom()), new StringCallback() {
+                PhoneLiveApi.getPmUserInfo(mUser.getId(), Integer.parseInt(messages.getFrom().replace("pt", "")), new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e) {
-
+                        TLog.error(e.getMessage());
                     }
 
                     @Override
                     public void onResponse(String response) {
-                        String res = ApiUtils.checkIsSuccess(response,getActivity());
-                        TLog.log(response);
-                        if(null == res) return;
-                        PrivateChatUserBean privateChatUserBean = mGson.fromJson(res,PrivateChatUserBean.class);
-                        privateChatUserBean.setLastMessage(((EMTextMessageBody)(messages.getBody())).getMessage());
+                        String res = ApiUtils.checkIsSuccess(response, getActivity());
+                        if (null == res) return;
+                        PrivateChatUserBean privateChatUserBean = mGson.fromJson(res, PrivateChatUserBean.class);
+                        privateChatUserBean.setLastMessage(((EMTextMessageBody) (messages.getBody())).getMessage());
                         privateChatUserBean.setUnreadMessage(true);
                         mPrivateChatListData.add(privateChatUserBean);
-                        mUserInfoPrivateAdapter.setPrivateChatUserList(mPrivateChatListData);
-                        mPrivateListView.setAdapter(mUserInfoPrivateAdapter);
+                        mUserInfoPrivateAdapter.notifyDataSetChanged();
+                        TLog.error(privateChatUserBean.getId() + "");
                     }
                 });
 
-            }else{
-                if(mPrivateChatListData == null)return;
-                TLog.log("not null");
-                for(int i =0; i<mPrivateChatListData.size(); i++){
+            } else {
+                if (mPrivateChatListData == null) return;
+                for (int i = 0; i < mPrivateChatListData.size(); i++) {
                     PrivateChatUserBean privateChatUserBean = mPrivateChatListData.get(i);
-                    if(privateChatUserBean.getId() == Integer.parseInt(messages.getFrom())){
-                        privateChatUserBean.setLastMessage(((EMTextMessageBody)(messages.getBody())).getMessage());
+                    if (privateChatUserBean.getId() == Integer.parseInt(messages.getFrom().replace("pt", ""))) {
+                        privateChatUserBean.setLastMessage(((EMTextMessageBody) (messages.getBody())).getMessage());
                         privateChatUserBean.setUnreadMessage(true);
-                        mPrivateChatListData.set(i, privateChatUserBean);
-                        mUserInfoPrivateAdapter.setPrivateChatUserList(mPrivateChatListData);
+                        mPrivateChatListData.add(privateChatUserBean);
                         mUserInfoPrivateAdapter.notifyDataSetChanged();
                         continue;
                     }
@@ -131,9 +135,7 @@ public class FollowPrivateChatFragment extends PrivateChatPageBase {
     public void initData() {
         mUser = AppContext.getInstance().getLoginUser();
         action = getArguments().getInt("ACTION");
-        mUserInfoPrivateAdapter = new UserBaseInfoPrivateChatAdapter(mPrivateChatListData);
         initConversationList();
-
     }
 
     @Override
@@ -141,75 +143,78 @@ public class FollowPrivateChatFragment extends PrivateChatPageBase {
         super.onResume();
         MobclickAgent.onPageStart("关注私信"); //统计页面(仅有Activity的应用中SDK自动调用，不需要单独写。"SplashScreen"为页面名称，可自定义)
         MobclickAgent.onResume(getActivity());          //统计时长
-        if(null == mPrivateChatListData || mPrivateChatListData.size() == 0) return;
+
+        if (null == mPrivateChatListData || mPrivateChatListData.size() == 0) return;
 
         try {
             EMConversation conversation = EMClient.getInstance()
                     .chatManager()
-                    .getConversation(String.valueOf(mPrivateChatListData.get(mPosition).getId()));
+                    .getConversation("pt" + String.valueOf(mPrivateChatListData.get(mPosition).getId()));
             conversation.markAllMessagesAsRead();
             mPrivateChatListData.get(mPosition).setLastMessage(((EMTextMessageBody) conversation.getLastMessage().getBody()).getMessage());
-            mUserInfoPrivateAdapter.setPrivateChatUserList(mPrivateChatListData);
-        }catch (Exception e){
+        } catch (Exception e) {
             //无最后一条消息
         }
-
-        mUserInfoPrivateAdapter.notifyDataSetChanged();
-
+  /*      mPrivateListView.setAdapter(mUserInfoPrivateAdapter);
+        mUserInfoPrivateAdapter.notifyDataSetChanged();*/
     }
 
     private void initConversationList() {
         emConversationMap = EMClient.getInstance().chatManager().getAllConversations();
-
         StringBuilder keys = new StringBuilder();
-        for(String key : emConversationMap.keySet()){
-            keys.append(key + ",");
+        for (String key : emConversationMap.keySet()) {
+            keys.append(key.replace("pt","") + ",");
         }
-        if(keys.toString().length() == 0)return;
-        String uidList = keys.toString().substring(0,keys.length()-1);
-        PhoneLiveApi.getMultiBaseInfo(action,mUser.getId(),uidList,new StringCallback(){
+        if (keys.toString().length() == 0) return;
+        String uidList = keys.toString().substring(0, keys.length() - 1);
+        PhoneLiveApi.getMultiBaseInfo(action, mUser.getId(), uidList, new StringCallback() {
 
             @Override
             public void onError(Call call, Exception e) {
-
+                TLog.error("获取好友消息错误" + e.getMessage());
             }
 
             @Override
             public void onResponse(String response) {
-                String res = ApiUtils.checkIsSuccess(response,getActivity());
-                if(null != res){
+
+                String res = ApiUtils.checkIsSuccess(response, getActivity());
+                TLog.error("获取好友消息：" + res);
+                if (null != res) {
                     try {
+                        mPrivateChatListData.clear();
                         JSONArray fansJsonArr = new JSONArray(res);
-                        if(fansJsonArr.length() > 0){
+                        if (fansJsonArr.length() > 0) {
                             Gson gson = new Gson();
-                            for(int i =0;i<fansJsonArr.length(); i++){
+                            for (int i = 0; i < fansJsonArr.length(); i++) {
                                 PrivateChatUserBean chatUserBean = gson.fromJson(fansJsonArr.getString(i), PrivateChatUserBean.class);
                                 EMConversation conversation = EMClient.getInstance()
                                         .chatManager()
-                                        .getConversation(String.valueOf(chatUserBean.getId()));
+                                        .getConversation("pt" + String.valueOf(chatUserBean.getId()));
                                 try {
                                     chatUserBean.setLastMessage(((EMTextMessageBody) conversation.getLastMessage().getBody()).getMessage());
-                                    chatUserBean.setUnreadMessage(conversation.getUnreadMsgCount() > 0?true:false);
-                                }catch (Exception e){
+                                    chatUserBean.setUnreadMessage(conversation.getUnreadMsgCount() > 0 ? true : false);
+                                } catch (Exception e) {
                                     //无最后一条消息纪录
                                 }
                                 mPrivateChatListData.add(chatUserBean);
                             }
-                            fillUI();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
+
+                fillUI();
             }
         });
     }
 
     private void fillUI() {
-        if(mPrivateChatListData == null){
+        if (mPrivateChatListData == null || mPrivateChatListData.isEmpty()) {
             return;
         }
-        mPrivateListView.setAdapter(mUserInfoPrivateAdapter);
+        mUserInfoPrivateAdapter.notifyDataSetChanged();
+        TLog.error("刷新好友信息列表：" + mPrivateChatListData.size() + ">>>>>>>>" + mPrivateChatListData.get(0).getLastMessage());
     }
 
     public void onPause() {

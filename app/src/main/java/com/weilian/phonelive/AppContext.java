@@ -1,7 +1,6 @@
 package com.weilian.phonelive;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -11,28 +10,27 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.devspark.appmsg.AppMsg;
+import com.hyphenate.EMCallBack;
 import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMError;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMOptions;
+import com.hyphenate.exceptions.HyphenateException;
 import com.hyphenate.util.NetUtils;
-import com.squareup.leakcanary.RefWatcher;
 import com.weilian.phonelive.base.BaseApplication;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.cache.DataCleanManager;
-import com.weilian.phonelive.model.MyNotifier;
 import com.weilian.phonelive.utils.CyptoUtils;
 import com.weilian.phonelive.utils.MethodsCompat;
 import com.weilian.phonelive.utils.StringUtils;
 import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.utils.UIHelper;
+
 import org.kymjs.kjframe.Core;
 
 import java.net.URISyntaxException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
@@ -47,6 +45,7 @@ import static com.weilian.phonelive.AppConfig.KEY_TWEET_DRAFT;
 
 /**
  * 全局应用程序类：用于保存和调用全局应用配置及访问网络数据
+ *
  * @version 1.0
  */
 public class AppContext extends BaseApplication {
@@ -88,11 +87,11 @@ public class AppContext extends BaseApplication {
                     amapLocation.getCityCode();//城市编码
                     amapLocation.getAdCode();//地区编码*/
                     province = amapLocation.getProvince();
-                    address =  amapLocation.getCity();
+                    address = amapLocation.getCity();
 
                 } else {
                     //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
-                    TLog.log("AmapError","location Error, ErrCode:"
+                    TLog.log("AmapError", "location Error, ErrCode:"
                             + amapLocation.getErrorCode() + ", errInfo:"
                             + amapLocation.getErrorInfo());
                 }
@@ -113,6 +112,9 @@ public class AppContext extends BaseApplication {
     }
 
 
+    /**
+     * 初始化操作
+     */
     private void init() {
 
         // 初始化网络请求
@@ -122,26 +124,25 @@ public class AppContext extends BaseApplication {
 
         // Bitmap缓存地址
        */
-
         //环信初始化
         EMOptions options = new EMOptions();
         // 默认添加好友时，是不需要验证的，改成需要验证
         options.setAcceptInvitationAlways(false);
 
         //初始化
-        EMClient.getInstance().init(this, options);
-        //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
-        EMClient.getInstance().setDebugMode(true);
-        setGlobalListeners();
+        EMClient.getInstance().init(context(), options);
 
+
+        //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
+        EMClient.getInstance().setDebugMode(false);
+        setGlobalListeners();
 
 
         //初始化jpush
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
         try {
-            mSocket  = IO.socket(AppConfig.CHAT_URL);
-
+            mSocket = IO.socket(AppConfig.CHAT_URL);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -150,14 +151,15 @@ public class AppContext extends BaseApplication {
         initAMap();
     }
 
-    public Socket getSocket(){
+
+    public Socket getSocket() {
         return mSocket;
     }
 
     private void initAMap() {
-       //初始化定位
+        //初始化定位
         mLocationClient = new AMapLocationClient(getApplicationContext());
-       //设置定位回调监听
+        //设置定位回调监听
         mLocationClient.setLocationListener(mLocationListener);
 
         //初始化定位参数
@@ -176,17 +178,18 @@ public class AppContext extends BaseApplication {
         mLocationOption.setInterval(2000);
         //给定位客户端对象设置定位参数
         mLocationClient.setLocationOption(mLocationOption);
-       //启动定位
+        //启动定位
         mLocationClient.startLocation();
     }
+
     //停止定位
-    public void stopLocation(){
+    public void stopLocation() {
         mLocationClient.stopLocation();
         mLocationClient.onDestroy();//销毁定位客户端。
 
     }
 
-    protected void setGlobalListeners(){
+    protected void setGlobalListeners() {
         EMClient.getInstance().addConnectionListener(new MyConnectionListener());
         EMClient.getInstance().chatManager().addMessageListener(msgListener);
     }
@@ -196,20 +199,23 @@ public class AppContext extends BaseApplication {
     private class MyConnectionListener implements EMConnectionListener {
         @Override
         public void onConnected() {
+            TLog.log("连接聊天服务器成功！");
         }
+
         @Override
         public void onDisconnected(final int error) {
-            if(error == EMError.USER_REMOVED){
+
+            if (error == EMError.USER_REMOVED) {
                 // 显示帐号已经被移除
                 TLog.log("显示帐号已经被移除");
-            }else if (error == EMError.USER_LOGIN_ANOTHER_DEVICE) {
+            } else if (error == EMError.USER_LOGIN_ANOTHER_DEVICE) {
                 // 显示帐号在其他设备登陆
                 TLog.log("显示帐号在其他设备登陆");
             } else {
-                if (NetUtils.hasNetwork(AppContext.getInstance())){
+                if (NetUtils.hasNetwork(AppContext.getInstance())) {
                     //连接不到聊天服务器
                     TLog.log("连接不到聊天服务器");
-                }else{
+                } else {
                     //当前网络不可用，请检查网络设置
                     TLog.log("当前网络不可用，请检查网络设置");
                 }
@@ -217,13 +223,14 @@ public class AppContext extends BaseApplication {
             }
         }
     }
+
     private EMMessageListener msgListener = new EMMessageListener() {
 
         @Override
         public void onMessageReceived(List<EMMessage> messages) {
             TLog.log("收到消息:" + messages);
             Intent broadcastIntent = new Intent("com.weilian.phonelive");
-            broadcastIntent.putExtra("cmd_value",messages.get(0));
+            broadcastIntent.putExtra("cmd_value", messages.get(0));
             sendBroadcast(broadcastIntent, null);
             //MyNotifier notifier = new MyNotifier();
             //notifier.init(AppContext.getInstance());
@@ -263,6 +270,28 @@ public class AppContext extends BaseApplication {
             login = true;
             loginUid = user.getId();
             Token = user.getToken();
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    EMClient.getInstance().logout(true, new EMCallBack() {
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onError(int i, String s) {
+
+                        }
+
+                        @Override
+                        public void onProgress(int i, String s) {
+
+                        }
+                    });
+                }
+            }).start();
         } else {
             this.cleanLoginInfo();
         }
@@ -362,10 +391,10 @@ public class AppContext extends BaseApplication {
 
 
                 setProperty("user.city", user.getCity());
-                setProperty("user.coin",user.getCoin());
+                setProperty("user.coin", user.getCoin());
                 setProperty("user.sex", String.valueOf(user.getSex()));
-                setProperty("user.signature",user.getSignature());
-                setProperty("user.avatar",user.getAvatar());
+                setProperty("user.signature", user.getSignature());
+                setProperty("user.avatar", user.getAvatar());
                 setProperty("user.level", String.valueOf(user.getLevel()));
 
             }
@@ -379,7 +408,7 @@ public class AppContext extends BaseApplication {
      */
     @SuppressWarnings("serial")
     public void updateUserInfo(final UserBean user) {
-        if (user==null) return;
+        if (user == null) return;
         setProperties(new Properties() {
             {
                 setProperty("user.uid", String.valueOf(user.getId()));
@@ -391,10 +420,10 @@ public class AppContext extends BaseApplication {
                         CyptoUtils.encode("PhoneLiveApp", user.getUser_pass()));
 
                 setProperty("user.city", user.getCity());
-                setProperty("user.coin",user.getCoin());
+                setProperty("user.coin", user.getCoin());
                 setProperty("user.sex", String.valueOf(user.getSex()));
-                setProperty("user.signature",user.getSignature());
-                setProperty("user.avatar",user.getAvatar());
+                setProperty("user.signature", user.getSignature());
+                setProperty("user.avatar", user.getAvatar());
                 setProperty("user.level", String.valueOf(user.getLevel()));
             }
         });
@@ -417,11 +446,11 @@ public class AppContext extends BaseApplication {
         user.setCity(getProperty("user.city"));
         user.setCoin(getProperty("user.coin"));
         String sex = getProperty("user.sex");
-        user.setSex(Integer.parseInt(sex == null?"0":sex));
+        user.setSex(Integer.parseInt(sex == null ? "0" : sex));
         user.setSignature(getProperty("user.signature"));
         user.setAvatar(getProperty("user.avatar"));
         String level = getProperty("user.level");
-        user.setLevel(Integer.parseInt(level == null?"0":level));
+        user.setLevel(Integer.parseInt(level == null ? "0" : level));
 
         return user;
     }
@@ -438,6 +467,7 @@ public class AppContext extends BaseApplication {
     public int getLoginUid() {
         return loginUid;
     }
+
     public String getToken() {
         return Token;
     }
@@ -542,7 +572,7 @@ public class AppContext extends BaseApplication {
         set(KEY_NIGHT_MODE_SWITCH, on);
     }
 
-    public static void showToastAppMsg(Activity context,String msg){
+    public static void showToastAppMsg(Activity context, String msg) {
         AppMsg.makeText(context, msg, new AppMsg.Style(1000, R.drawable.toast_background)).show();
     }
 

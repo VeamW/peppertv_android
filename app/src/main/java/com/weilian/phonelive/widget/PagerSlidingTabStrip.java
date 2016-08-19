@@ -23,9 +23,9 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.weilian.phonelive.R;
 import com.weilian.phonelive.interf.PagerSlidingInterface;
-import com.weilian.phonelive.utils.TLog;
 
 import org.kymjs.kjframe.widget.ViewHelper;
 
@@ -118,6 +118,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         this(context, attrs, 0);
     }
 
+
+    @SuppressWarnings("ResourceType")
     public PagerSlidingTabStrip(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.context = context;
@@ -275,8 +277,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         framelayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mPagerSlidingInterface != null){
-                    mPagerSlidingInterface.onItemClick(v,currentPosition,position);
+                if (mPagerSlidingInterface != null) {
+                    mPagerSlidingInterface.onItemClick(v, currentPosition, position);
                 }
                 mFadeEnabled = false;//点击时没有文字颜色渐变效果
                 pager.setCurrentItem(position, smoothScrollWhenClickTab);
@@ -296,7 +298,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
         tabViews.add(position, map);
     }
-    public void setPagerSlidingListen(PagerSlidingInterface pagerSlidingListen){
+
+    public void setPagerSlidingListen(PagerSlidingInterface pagerSlidingListen) {
         this.mPagerSlidingInterface = pagerSlidingListen;
     }
 

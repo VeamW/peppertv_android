@@ -111,8 +111,6 @@ public class AppStart extends Activity {
             finish();
             return;
         }
-        //Intent uploadLog = new Intent(this, LogUploadService.class);
-        //startService(uploadLog);
         EMClient.getInstance().groupManager().loadAllGroups();
         EMClient.getInstance().chatManager().loadAllConversations();
         Intent intent = new Intent(this, MainActivity.class);

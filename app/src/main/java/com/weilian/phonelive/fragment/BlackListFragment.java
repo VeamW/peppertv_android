@@ -67,9 +67,13 @@ public class BlackListFragment extends BaseFragment {
         requestData(false);
     }
 
+    /**
+     * 移除黑名单
+     * @param position
+     */
     private void relieveBlack(final int position) {
         try {
-            EMClient.getInstance().contactManager().removeUserFromBlackList(String.valueOf(mBlackList.get(position).getId()));
+
             PhoneLiveApi.pullTheBlack(AppContext.getInstance().getLoginUid(),mBlackList.get(position).getId(),
                     AppContext.getInstance().getToken(),
                     new StringCallback() {
@@ -80,13 +84,17 @@ public class BlackListFragment extends BaseFragment {
 
                         @Override
                         public void onResponse(String response) {
-
                             AppContext.showToastAppMsg(getActivity(),"解除拉黑成功");
                             mBlackList.remove(position);
                             mAdapter.notifyDataSetChanged();
+                            try {
+                                EMClient.getInstance().contactManager().removeUserFromBlackList(String.valueOf(mBlackList.get(position).getId()));
+                            } catch (HyphenateException e) {
+                                e.printStackTrace();
+                            }
                         }
                     });
-        } catch (HyphenateException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

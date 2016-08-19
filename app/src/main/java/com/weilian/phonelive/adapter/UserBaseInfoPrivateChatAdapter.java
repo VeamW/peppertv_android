@@ -10,6 +10,7 @@ import com.weilian.phonelive.AppContext;
 import com.weilian.phonelive.R;
 import com.weilian.phonelive.bean.PrivateChatUserBean;
 import com.weilian.phonelive.ui.DrawableRes;
+import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.widget.CircleImageView;
 
 import org.kymjs.kjframe.Core;
@@ -68,7 +69,13 @@ public class UserBaseInfoPrivateChatAdapter extends BaseAdapter {
     }
 
     public void setPrivateChatUserList(ArrayList<PrivateChatUserBean> privateChatUserList) {
-        this.users = privateChatUserList;
+        if (this.users != null) {
+            this.users.clear();
+            if (privateChatUserList != null) {
+                this.users.addAll(privateChatUserList);
+            }
+        }
+        notifyDataSetChanged();
     }
 
     private class ViewHolder{

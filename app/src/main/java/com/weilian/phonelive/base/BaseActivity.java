@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,7 +28,7 @@ import butterknife.ButterKnife;
 /**
  * baseActionBar Activity
  */
-public abstract class BaseActivity extends ActionBarActivity implements
+public abstract class BaseActivity extends AppCompatActivity implements
         DialogControl, View.OnClickListener, BaseViewInterface {
     public static final String INTENT_ACTION_EXIT_APP = "INTENT_ACTION_EXIT_APP";
 

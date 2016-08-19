@@ -35,6 +35,7 @@ public class MyLevelActivity extends BaseActivity {
     @Override
     public void initData() {
         setActionBarTitle(getString(R.string.myleve));
+        if (mProgressBar==null||mWbView==null) return;
         mProgressBar.setMax(100);
         mWbView.setWebChromeClient(new WebViewClient());
         WebSettings settings = mWbView.getSettings();
@@ -55,6 +56,7 @@ public class MyLevelActivity extends BaseActivity {
     private class WebViewClient extends WebChromeClient{
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
+            if (mProgressBar==null) return;
             mProgressBar.setProgress(newProgress);
             if(newProgress == 100){
                 mProgressBar.setVisibility(View.GONE);

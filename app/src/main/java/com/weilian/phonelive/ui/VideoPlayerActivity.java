@@ -1243,8 +1243,11 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
 
     }
 
+
+
     //直播结束释放资源
     private void videoPlayEnd() {
+
         mService.execute(new Runnable() {
             @Override
             public void run() {
@@ -1285,6 +1288,8 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
                 }
             }
         });
+
+
 
     }
 

@@ -86,7 +86,7 @@ public class HotFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
     @Override
     public void onDestroy() {
         super.onDestroy();
-        BaseApplication.getRefWatcher(BaseApplication.context()).watch(this);
+//        BaseApplication.getRefWatcher(BaseApplication.context()).watch(this);
     }
 
     @Override

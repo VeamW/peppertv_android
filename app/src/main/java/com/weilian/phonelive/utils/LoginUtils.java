@@ -2,7 +2,6 @@ package com.weilian.phonelive.utils;
 
 import android.content.Context;
 
-import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 import com.weilian.phonelive.AppContext;
@@ -19,13 +18,13 @@ public class LoginUtils {
         }
         return loginUtils;
     }
-    public void                                                                                                           OtherInit(Context context){
+    public void  OtherInit(Context context){
         new Thread(){
             @Override
             public void run() {
                 int uid = AppContext.getInstance().getLoginUid();
                 try {
-                    EMClient.getInstance().createAccount(String.valueOf(uid), "wl" + uid);//同步方法
+                    EMClient.getInstance().createAccount("pt"+ String.valueOf(uid), "wl" + uid);//同步方法
                     TLog.log("注册成功");
                 } catch (HyphenateException e) {
                     int errorCode=e.getErrorCode();

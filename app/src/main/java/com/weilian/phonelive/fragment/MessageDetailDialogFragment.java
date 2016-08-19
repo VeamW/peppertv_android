@@ -24,7 +24,6 @@ import com.weilian.phonelive.adapter.MessageAdapter;
 import com.weilian.phonelive.bean.PrivateChatUserBean;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.ui.other.PhoneLivePrivateChat;
-import com.weilian.phonelive.utils.UIHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +35,7 @@ import butterknife.OnClick;
 /**
  * Created by Administrator on 2016/5/26.
  */
-public class MessageDetailDialogFragment extends DialogFragment{
+public class MessageDetailDialogFragment extends DialogFragment {
     @InjectView(R.id.tv_private_chat_title)
     TextView mTitle;
 
@@ -61,27 +60,27 @@ public class MessageDetailDialogFragment extends DialogFragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dialog_fragment_private_chat_message,null);
-        ButterKnife.inject(this,view);
+        View view = inflater.inflate(R.layout.dialog_fragment_private_chat_message, null);
+        ButterKnife.inject(this, view);
         initView(view);
         initData();
         return view;
     }
 
-    @OnClick({R.id.iv_private_chat_send,R.id.et_private_chat_message,R.id.iv_close})
+    @OnClick({R.id.iv_private_chat_send, R.id.et_private_chat_message, R.id.iv_close})
 
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.iv_close:
                 dismiss();
                 break;
             case R.id.iv_private_chat_send:
-                if(mMessageInput.getText().toString().equals(""))
-                    AppContext.showToastAppMsg(getActivity(),"内容为空");
+                if (mMessageInput.getText().toString().equals(""))
+                    AppContext.showToastAppMsg(getActivity(), "内容为空");
                 updateChatList(PhoneLivePrivateChat.sendChatMessage(
                         mMessageInput.getText().toString()
-                        ,mToUser
-                        ,mUser));
+                        , mToUser
+                        , mUser));
                 mMessageInput.setText("");
                 break;
             case R.id.et_private_chat_message:
@@ -97,7 +96,7 @@ public class MessageDetailDialogFragment extends DialogFragment{
         mToUser = (PrivateChatUserBean) getArguments().getSerializable("user");
         mTitle.setText(mToUser.getUser_nicename());
         getUnreadRecord();
-        mMessageAdapter = new MessageAdapter(AppContext.getInstance().getLoginUid(),getActivity());
+        mMessageAdapter = new MessageAdapter(AppContext.getInstance().getLoginUid(), getActivity());
         mMessageAdapter.setChatList(mChats);
         mChatMessageListView.setAdapter(mMessageAdapter);
         mChatMessageListView.setSelection(mChats.size() - 1);
@@ -105,12 +104,12 @@ public class MessageDetailDialogFragment extends DialogFragment{
     }
 
     private void getUnreadRecord() {
-        EMConversation conversation = EMClient.getInstance().chatManager().getConversation(String.valueOf(mToUser.getId()));
+        EMConversation conversation = EMClient.getInstance().chatManager().getConversation( String.valueOf(mToUser.getId()));
         EMClient.getInstance().chatManager().markAllConversationsAsRead();
         //获取此会话的所有消息
         try {
             mChats = conversation.getAllMessages();
-        }catch(Exception e){
+        } catch (Exception e) {
             //无历史消息纪录
         }
 
@@ -126,11 +125,11 @@ public class MessageDetailDialogFragment extends DialogFragment{
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(!mMessageInput.getText().toString().equals("")){
+                if (!mMessageInput.getText().toString().equals("")) {
                     mSendChatBtn.setVisibility(View.VISIBLE);
-                   // mShowGiftBtn.setVisibility(View.GONE);
-                }else{
-                   // mSendChatBtn.setVisibility(View.GONE);
+                    // mShowGiftBtn.setVisibility(View.GONE);
+                } else {
+                    // mSendChatBtn.setVisibility(View.GONE);
                     //   mShowGiftBtn.setVisibility(View.VISIBLE);   zxy  0419  礼物按钮不显示
                 }
             }
@@ -141,11 +140,13 @@ public class MessageDetailDialogFragment extends DialogFragment{
             }
         });
     }
-    private void updateChatList(EMMessage message){
+
+    private void updateChatList(EMMessage message) {
         mMessageAdapter.addMessage(message);
         mChatMessageListView.setAdapter(mMessageAdapter);
-        mChatMessageListView.setSelection(mMessageAdapter.getCount()-1);
+        mChatMessageListView.setSelection(mMessageAdapter.getCount() - 1);
     }
+
     EMMessageListener msgListener = new EMMessageListener() {
 
         @Override
@@ -206,6 +207,7 @@ public class MessageDetailDialogFragment extends DialogFragment{
             }*/
         }
     };
+
     @Override
     public void onResume() {
         super.onResume();
@@ -232,7 +234,7 @@ public class MessageDetailDialogFragment extends DialogFragment{
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(null != msgListener){
+        if (null != msgListener) {
             EMClient.getInstance().chatManager().removeMessageListener(msgListener);
         }
     }

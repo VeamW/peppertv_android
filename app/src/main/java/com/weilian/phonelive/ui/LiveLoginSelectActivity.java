@@ -4,6 +4,7 @@ package com.weilian.phonelive.ui;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import com.google.gson.Gson;
 import com.umeng.analytics.MobclickAgent;
@@ -47,9 +48,8 @@ public class LiveLoginSelectActivity extends BaseActivity implements PlatformAct
     @Override
     public void initView() {
         getSupportActionBar().hide();
-        bmp = null;
+    /*    bmp = null;
         bmp = BitmapFactory.decodeResource(getResources(),R.drawable.live_show_login_bg);
-
         // 第一次解析将inJustDecodeBounds设置为true，来获取图片大小
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
@@ -58,7 +58,7 @@ public class LiveLoginSelectActivity extends BaseActivity implements PlatformAct
         options.inSampleSize = calculateInSampleSize(options, (int)TDevice.getScreenWidth(), (int)TDevice.getScreenHeight());
         // 使用获取到的inSampleSize值再次解析图片
         options.inJustDecodeBounds = false;
-        mBg.setImageBitmap(bmp);
+        mBg.setImageBitmap(bmp);*/
 
     }
 

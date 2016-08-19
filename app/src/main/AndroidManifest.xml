@@ -71,15 +71,11 @@
         </activity>
 
 
-        <!-- 设置环信应用的appkey -->
-        <meta-data
-            android:name="EASEMOB_APPKEY"
-            android:value="advance1989#phonelive" />
-        <!-- 声明sdk所需的service -->
-        <service android:name="com.hyphenate.chat.EMChatService"
-            android:exported="true"
-            />
-        <!-- 声明sdk所需的receiver -->
+        <!-- 设置环信应用的AppKey -->
+        <meta-data android:name="EASEMOB_APPKEY"  android:value="qianrongnetwork#qianrongpeppertv2016" />
+        <!-- 声明SDK所需的service SDK核心功能-->
+        <service android:name="com.hyphenate.chat.EMChatService" android:exported="true"/>
+        <!-- 声明SDK所需的receiver -->
         <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REMOVED"/>
@@ -91,8 +87,6 @@
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
-
-
         <activity
             android:name=".ui.MainActivity"
             android:label="使用手机号登录"
@@ -356,8 +350,6 @@
         <!-- Required. AppKey copied from Portal -->
         <meta-data android:name="JPUSH_APPKEY" android:value="88199d595b151e7b52daedeb"/>
         <!--jpush-->
-
-
         <service android:name="com.amap.api.location.APSService"></service>
         <meta-data android:name="com.amap.api.v2.apikey" android:value="f4d0e76523e752619690dcd8e7d5e240">//开发者申请的key
 

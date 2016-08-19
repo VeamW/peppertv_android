@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.weilian.phonelive.AppContext;
 import com.weilian.phonelive.R;
@@ -20,7 +21,7 @@ public class PrivateChatCorePagerFragment extends BaseViewPagerFragment {
 
     @Override
     protected void onSetupTabAdapter(View view,ViewPageFragmentAdapter adapter,ViewPager viewPager) {
-        ((ImageView)view.findViewById(R.id.iv_private_chat_back)).setOnClickListener(this);
+        ((LinearLayout)view.findViewById(R.id.iv_private_chat_back)).setOnClickListener(this);
         initData();
         Bundle b1 = new Bundle();
         b1.putInt("ACTION",1);
@@ -56,7 +57,7 @@ public class PrivateChatCorePagerFragment extends BaseViewPagerFragment {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iv_private_chat_back:
-                AppContext.showToastAppMsg(getActivity(), "7");
+//                AppContext.showToastAppMsg(getActivity(), "7");
                 getActivity().finish();
                 break;
         }

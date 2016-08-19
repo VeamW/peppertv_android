@@ -53,7 +53,8 @@
 
 -dontwarn org.apache.**
 -dontwarn android.support.**
-
+-keep class com.hyphenate.** {*;}
+-dontwarn  com.hyphenate.**
 #基础配置
 # 保持哪些类不被混淆
 # 系统组件
@@ -122,7 +123,7 @@
 -dontwarn okhttp3.**
 -keep class okhttp3.**{*;}
 -keep interface okhttp3.**{*;}
--libraryjars libs/libksyplayer.jar
+#-libraryjars libs/libksyplayer.jar
 #phonelive
  #-keep class com.weilian.phonelive.ui.**{ *;}
 
@@ -222,8 +223,7 @@
 
 ##  huanxin
 
--keep class com.hyphenate.** {*;}
--dontwarn  com.hyphenate.**
+
 
 #jiguang
 

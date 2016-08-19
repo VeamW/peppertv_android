@@ -40,7 +40,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         _context = getApplicationContext();
         _resource = _context.getResources();
-        mRefWatcher = LeakCanary.install(this);
+//        mRefWatcher = LeakCanary.install(this);
     }
 
 

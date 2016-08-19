@@ -24,10 +24,12 @@ import com.weilian.phonelive.base.BaseFragment;
 import com.weilian.phonelive.bean.PrivateChatUserBean;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.ui.other.PhoneLivePrivateChat;
+import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.utils.UIHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -51,26 +53,26 @@ public class MessageDetailFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_private_chat_message,null);
-        ButterKnife.inject(this,view);
+        View view = inflater.inflate(R.layout.fragment_private_chat_message, null);
+        ButterKnife.inject(this, view);
         initView(view);
         initData();
         return view;
     }
 
-    @OnClick({R.id.iv_private_chat_send,R.id.et_private_chat_message,R.id.iv_private_chat_back,R.id.iv_private_chat_user})
+    @OnClick({R.id.iv_private_chat_send, R.id.et_private_chat_message, R.id.iv_private_chat_back, R.id.iv_private_chat_user})
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.iv_private_chat_send:
-                if(mMessageInput.getText().toString().equals("")){
-                    AppContext.showToastAppMsg(getActivity(),"内容为空");
+                if (mMessageInput.getText().toString().equals("")) {
+                    AppContext.showToastAppMsg(getActivity(), "内容为空");
                     return;
                 }
                 updateChatList(PhoneLivePrivateChat.sendChatMessage(
                         mMessageInput.getText().toString()
-                        ,mToUser
-                        ,mUser));
+                        , mToUser
+                        , mUser));
                 mMessageInput.setText("");
                 break;
             case R.id.et_private_chat_message:
@@ -80,7 +82,7 @@ public class MessageDetailFragment extends BaseFragment {
                 getActivity().finish();
                 break;
             case R.id.iv_private_chat_user:
-                UIHelper.showHomePageActivity(getActivity(),mToUser.getId());
+                UIHelper.showHomePageActivity(getActivity(), mToUser.getId());
                 break;
         }
 
@@ -93,7 +95,7 @@ public class MessageDetailFragment extends BaseFragment {
         mToUser = (PrivateChatUserBean) getActivity().getIntent().getSerializableExtra("user");
         mTitle.setText(mToUser.getUser_nicename());
         getUnreadRecord();
-        mMessageAdapter = new MessageAdapter(AppContext.getInstance().getLoginUid(),getActivity());
+        mMessageAdapter = new MessageAdapter(AppContext.getInstance().getLoginUid(), getActivity());
         mMessageAdapter.setChatList(mChats);
         mChatMessageListView.setAdapter(mMessageAdapter);
         mChatMessageListView.setSelection(mChats.size() - 1);
@@ -101,15 +103,14 @@ public class MessageDetailFragment extends BaseFragment {
     }
 
     private void getUnreadRecord() {
-        EMConversation conversation = EMClient.getInstance().chatManager().getConversation(String.valueOf(mToUser.getId()));
+        EMConversation conversation = EMClient.getInstance().chatManager().getConversation("pt" + String.valueOf(mToUser.getId()));
         EMClient.getInstance().chatManager().markAllConversationsAsRead();
         //获取此会话的所有消息
         try {
             mChats = conversation.getAllMessages();
-        }catch(Exception e){
+        } catch (Exception e) {
             //无历史消息纪录
         }
-
     }
 
     @Override
@@ -117,19 +118,18 @@ public class MessageDetailFragment extends BaseFragment {
         mMessageInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-               if(!mMessageInput.getText().toString().equals("")){
-                   mSendChatBtn.setVisibility(View.VISIBLE);
-                   //mShowGiftBtn.setVisibility(View.GONE);
-               }else{
-                 //  mSendChatBtn.setVisibility(View.GONE);
-                //   mShowGiftBtn.setVisibility(View.VISIBLE);   zxy  0419  礼物按钮不显示
-               }
+                if (!mMessageInput.getText().toString().equals("")) {
+                    mSendChatBtn.setVisibility(View.VISIBLE);
+                    //mShowGiftBtn.setVisibility(View.GONE);
+                } else {
+                    //  mSendChatBtn.setVisibility(View.GONE);
+                    //   mShowGiftBtn.setVisibility(View.VISIBLE);   zxy  0419  礼物按钮不显示
+                }
             }
 
             @Override
@@ -138,16 +138,17 @@ public class MessageDetailFragment extends BaseFragment {
             }
         });
     }
-    private void updateChatList(EMMessage message){
+
+    private void updateChatList(EMMessage message) {
         mMessageAdapter.addMessage(message);
         mChatMessageListView.setAdapter(mMessageAdapter);
-        mChatMessageListView.setSelection(mMessageAdapter.getCount()-1);
+        mChatMessageListView.setSelection(mMessageAdapter.getCount() - 1);
     }
+
     EMMessageListener msgListener = new EMMessageListener() {
 
         @Override
-        public void onMessageReceived(List<EMMessage> messages) {
-
+        public void onMessageReceived(final List<EMMessage> messages) {
             for (final EMMessage message : messages) {
                 String username = null;
                 // 群组消息
@@ -203,6 +204,7 @@ public class MessageDetailFragment extends BaseFragment {
             }*/
         }
     };
+
     @Override
     public void onResume() {
         super.onResume();
@@ -229,7 +231,7 @@ public class MessageDetailFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(null != msgListener){
+        if (null != msgListener) {
             EMClient.getInstance().chatManager().removeMessageListener(msgListener);
         }
     }
