@@ -300,6 +300,9 @@ public class MyInformationFragment extends BaseFragment {
 
     @Override
     public void initData() {
+        if (mIvNewMessage == null) {
+            return;
+        }
         //获取私信未读数量
         int count = EMClient.getInstance().chatManager().getUnreadMsgsCount();
         if (count > 0) {
@@ -318,12 +321,12 @@ public class MyInformationFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (broadcastReceiver==null||broadcastReceiver.getAbortBroadcast()) return;
+        if (broadcastReceiver == null || broadcastReceiver.getAbortBroadcast()) return;
         try {
             getActivity().unregisterReceiver(broadcastReceiver);
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             broadcastReceiver.setDebugUnregister(true);
             broadcastReceiver = null;
         }

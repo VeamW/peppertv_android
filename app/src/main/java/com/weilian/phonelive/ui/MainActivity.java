@@ -244,6 +244,8 @@ public class MainActivity extends ActionBarActivity implements
                 if (res.equals(ApiUtils.TOKEN_TIMEOUT)) {
                     AppContext.showToastAppMsg(MainActivity.this, "登陆过期,请重新登陆");
                     UIHelper.showLoginSelectActivity(MainActivity.this);
+                    finish();
+                    AppManager.getAppManager().finishAllActivity();
                     return;
                 }
 

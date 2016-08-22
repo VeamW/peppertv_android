@@ -23,7 +23,24 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1112d456-83f8-432b-a6f3-c63155e6d3c3" name="Default" comment="" />
+    <list default="true" id="1112d456-83f8-432b-a6f3-c63155e6d3c3" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/app-arm-release.apk" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileArmDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileArmDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileArmDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileArmDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileArmDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileArmDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileArmDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileArmDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/MyInformationFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/MyInformationFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/ui/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/ui/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/LoginUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/LoginUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+    </list>
     <ignored path="peppertv_android.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,45 +69,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FollowPrivateChatFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/FollowPrivateChatFragment.java">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/ui/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="170" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
+              <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2025#3020#0" expanded="true" />
-                <element signature="e#3019#3020#0" expanded="true" />
-                <element signature="e#3731#3732#0" expanded="true" />
-                <element signature="e#3805#3806#0" expanded="true" />
-                <element signature="e#7231#7232#0" expanded="true" />
-                <element signature="e#7302#7303#0" expanded="true" />
+                <element signature="e#3199#3344#0" expanded="true" />
+                <element signature="e#3343#3344#0" expanded="true" />
+                <element signature="e#4168#4375#0" expanded="true" />
+                <element signature="e#4374#4375#0" expanded="true" />
+                <element signature="e#6270#6675#0" expanded="true" />
+                <element signature="e#6674#6675#0" expanded="true" />
+                <element signature="e#7012#7289#0" expanded="true" />
+                <element signature="e#7288#7289#0" expanded="true" />
+                <element signature="e#7635#7860#0" expanded="true" />
+                <element signature="e#7859#7860#0" expanded="true" />
+                <element signature="e#10997#10998#0" expanded="true" />
+                <element signature="e#11025#11026#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrivateChatCorePagerFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/viewpagerfragment/PrivateChatCorePagerFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-34.466667">
-              <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
-              <folding>
-                <element signature="e#1030#1057#0" expanded="true" />
-                <element signature="e#1131#1159#0" expanded="true" />
-                <element signature="e#1612#1613#0" expanded="true" />
-                <element signature="e#1645#1646#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseViewPagerFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/base/BaseViewPagerFragment.java">
+      <file leaf-file-name="MainTab.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/em/MainTab.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+              <caret line="13" column="61" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyInformationFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/MyInformationFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.13365155">
+              <caret line="235" column="21" selection-start-line="235" selection-start-column="21" selection-end-line="235" selection-end-column="21" />
+              <folding>
+                <element signature="e#10634#10832#0" expanded="true" />
+                <element signature="e#10831#10832#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,18 +119,43 @@
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <file leaf-file-name="InputMethodUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/InputMethodUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7108722">
-              <caret line="358" column="58" selection-start-line="358" selection-start-column="34" selection-end-line="358" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppStart.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/AppStart.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/LoginUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="47" column="63" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
+              <folding>
+                <element signature="e#640#1169#0" expanded="true" />
+                <element signature="e#1168#1169#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -3879,9 +3924,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/base/BaseApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/BlackListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/MessageDetailDialogFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/LoginUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/ui/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/AppContext.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/ui/other/PhoneLivePrivateChat.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/widget/PhoneLiveChatRowText.java" />
@@ -3893,7 +3936,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/Utils.java" />
         <option value="$PROJECT_DIR$/app/proguard-rules.pro" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/widget/PagerSlidingTabStrip.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/InputMethodUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_show_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/AppStart.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/base/BaseActivity.java" />
@@ -3905,6 +3947,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/NotFollowPrivateChatFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_search_index.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/ui/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/MyInformationFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/InputMethodUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/LoginUtils.java" />
       </list>
     </option>
   </component>
@@ -3939,6 +3985,27 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="peppertv_android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="peppertv_android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
       <pane id="ColorIdeProjectViewPane">
         <subPane>
@@ -4014,36 +4081,15 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="peppertv_android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="peppertv_android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="F:/android_tools/android-studio-sdk" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="device.picker.selection" value="5LM0216117015424" />
+    <property name="device.picker.selection" value="CB5A1MMLBR" />
     <property name="UI_DESIGNER_EDITOR_MODE.CaptureAnalysis.SHOW" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="SearchFragment&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/SearchFragment.java&#10;cor&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/viewpagerfragment/PrivateChatCorePagerFragment.java&#10;Loginsel&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/ui/LiveLoginSelectActivity.java&#10;LoginUtils&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/utils/LoginUtils.java&#10;NotFollowprivate&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/NotFollowPrivateChatFragment.java&#10;FollowPrivate&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/FollowPrivateChatFragment.java&#10;Login&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/ui/LiveLoginSelectActivity.java&#10;PhoneLiveApi&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/api/remote/PhoneLiveApi.java&#10;Appconfig&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/AppConfig.java&#10;Searchf&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/SearchFragment.java&#10;privatepager&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/viewpagerfragment/PrivateChatCorePagerFragment.java&#10;NotFollow&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/NotFollowPrivateChatFragment.java&#10;Indexpagerfragment&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/viewpagerfragment/IndexPagerFragment.java&#10;Appstart&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/AppStart.java&#10;Appcontext&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/AppContext.java&#10;fragment_private_chat_message&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/res/layout/dialog_fragment_private_chat_message.xml&#10;IndexPagerfragment&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/viewpagerfragment/IndexPagerFragment.java&#10;Loginutils&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/utils/LoginUtils.java&#10;ChatFragment&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/viewpagerfragment/PrivateChatCorePagerFragment.java&#10;MainActivity&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/ui/MainActivity.java&#10;MyInformationfragment&#9;PSI&#9;JAVA://com.weilian.phonelive.fragment.MyInformationFragment&#10;EMConversation&#9;PSI&#9;JAVA://com.hyphenate.chat.EMConversation&#10;HomeP&#9;PSI&#9;JAVA://com.weilian.phonelive.ui.HomePageActivity&#10;Home&#9;PSI&#9;JAVA://com.weilian.phonelive.ui.HomePageActivity&#10;Homepage&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/ui/HomePageActivity.java&#10;MainA&#9;PSI&#9;JAVA://com.weilian.phonelive.ui.MainActivity&#10;AppStart&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/AppStart.java&#10;Baseapplication&#9;PSI&#9;JAVA://com.weilian.phonelive.base.BaseApplication&#10;Blacklistfragment&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/BlackListFragment.java&#10;searchfragm&#9;PSI&#9;JAVA://com.weilian.phonelive.fragment.SearchMusicDialogFragment.SearchMusicFragmentInterface&#10;HotFragment&#9;PSI&#9;JAVA://com.weilian.phonelive.fragment.HotFragment&#10;UserListAdapter&#9;PSI&#9;JAVA://com.weilian.phonelive.adapter.UserListAdapter&#10;VideoPlayerAc&#9;PSI&#9;JAVA://com.weilian.phonelive.ui.VideoPlayerActivity" />
+    <property name="SearchEverywhereHistoryKey" value="LoginUtils&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/utils/LoginUtils.java&#10;MainActivity&#9;PSI&#9;JAVA://com.weilian.phonelive.ui.MainActivity&#10;Appstart&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/AppStart.java&#10;indexpagerfragment&#9;PSI&#9;JAVA://com.weilian.phonelive.viewpagerfragment.IndexPagerFragment&#10;SearchFragment&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/SearchFragment.java&#10;cor&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/viewpagerfragment/PrivateChatCorePagerFragment.java&#10;Loginsel&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/ui/LiveLoginSelectActivity.java&#10;NotFollowprivate&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/NotFollowPrivateChatFragment.java&#10;FollowPrivate&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/FollowPrivateChatFragment.java&#10;Login&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/ui/LiveLoginSelectActivity.java&#10;PhoneLiveApi&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/api/remote/PhoneLiveApi.java&#10;Appconfig&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/AppConfig.java&#10;Searchf&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/SearchFragment.java&#10;privatepager&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/viewpagerfragment/PrivateChatCorePagerFragment.java&#10;NotFollow&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/NotFollowPrivateChatFragment.java&#10;Indexpagerfragment&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/viewpagerfragment/IndexPagerFragment.java&#10;Appcontext&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/AppContext.java&#10;fragment_private_chat_message&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/res/layout/dialog_fragment_private_chat_message.xml&#10;IndexPagerfragment&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/viewpagerfragment/IndexPagerFragment.java&#10;Loginutils&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/utils/LoginUtils.java&#10;ChatFragment&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/viewpagerfragment/PrivateChatCorePagerFragment.java&#10;MyInformationfragment&#9;PSI&#9;JAVA://com.weilian.phonelive.fragment.MyInformationFragment&#10;EMConversation&#9;PSI&#9;JAVA://com.hyphenate.chat.EMConversation&#10;HomeP&#9;PSI&#9;JAVA://com.weilian.phonelive.ui.HomePageActivity&#10;Home&#9;PSI&#9;JAVA://com.weilian.phonelive.ui.HomePageActivity&#10;Homepage&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/ui/HomePageActivity.java&#10;MainA&#9;PSI&#9;JAVA://com.weilian.phonelive.ui.MainActivity&#10;AppStart&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/AppStart.java&#10;Baseapplication&#9;PSI&#9;JAVA://com.weilian.phonelive.base.BaseApplication&#10;Blacklistfragment&#9;FILE&#9;file://F:/work/peppertv_android/peppertv_android/app/src/main/java/com/weilian/phonelive/fragment/BlackListFragment.java&#10;searchfragm&#9;PSI&#9;JAVA://com.weilian.phonelive.fragment.SearchMusicDialogFragment.SearchMusicFragmentInterface&#10;HotFragment&#9;PSI&#9;JAVA://com.weilian.phonelive.fragment.HotFragment&#10;UserListAdapter&#9;PSI&#9;JAVA://com.weilian.phonelive.adapter.UserListAdapter&#10;VideoPlayerAc&#9;PSI&#9;JAVA://com.weilian.phonelive.ui.VideoPlayerActivity" />
     <property name="MemoryMonitor.position" value="1" />
     <property name="CpuMonitor.position" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/phonelive.jks" />
@@ -4355,16 +4401,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5229211" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5207889" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.51282054" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.89632106" sideWeight="0.45042643" order="7" side_tool="true" content_ui="tabs" x="169" y="442" width="936" height="362" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.89632106" sideWeight="0.54957354" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3188406" sideWeight="0.45255864" order="7" side_tool="true" content_ui="tabs" x="169" y="442" width="936" height="362" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34448162" sideWeight="0.54744136" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2793177" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -4389,6 +4435,14 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -4399,139 +4453,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/TLog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/base/PrivateChatPageBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3436754">
-          <caret line="40" column="32" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="32" />
-          <folding>
-            <element signature="e#1424#1425#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_private_chat.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16356878">
-          <caret line="6" column="39" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_private_chat.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.72131145">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://F:/android_tools/android-studio-sdk/sources/android-23/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3329493">
-          <caret line="19781" column="23" selection-start-line="19781" selection-start-column="23" selection-end-line="19781" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/AppConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.4018693">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/UIHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="240" column="87" selection-start-line="240" selection-start-column="87" selection-end-line="240" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/bean/SimpleBackPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="66" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
-          <folding>
-            <element signature="e#737#757#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://F:/android_tools/android-studio-sdk/sources/android-23/android/widget/ListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3329493">
-          <caret line="1998" column="16" selection-start-line="1998" selection-start-column="16" selection-end-line="1998" selection-end-column="16" />
-          <folding>
-            <element signature="e#78957#78958#0" expanded="false" />
-            <element signature="e#79005#79006#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/adapter/MessageAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.21658987">
-          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-          <folding>
-            <element signature="e#817#818#0" expanded="false" />
-            <element signature="e#853#854#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/StringUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3317757">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/Strings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/TimeZoneUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.85046726">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/ThreadManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.05140187">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6168224">
           <caret line="12" column="50" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4539,7 +4464,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.94859815">
           <caret line="75" column="33" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4547,7 +4471,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13603818">
           <caret line="122" column="20" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4555,9 +4478,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30414745">
           <caret line="12" column="56" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4565,10 +4485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16359447">
           <caret line="105" column="90" selection-start-line="105" selection-start-column="90" selection-end-line="105" selection-end-column="90" />
-          <folding>
-            <element signature="e#5816#6011#0" expanded="false" />
-            <element signature="e#6010#6011#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4586,7 +4502,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4594,7 +4509,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2345238">
           <caret line="56701" column="24" selection-start-line="56701" selection-start-column="24" selection-end-line="56701" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4606,14 +4520,6 @@
             <element signature="e#3399#3400#0" expanded="false" />
             <element signature="e#3454#3455#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3548387">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4629,19 +4535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/AppContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35829493">
-          <caret line="475" column="20" selection-start-line="475" selection-start-column="20" selection-end-line="475" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#14793#14794#0" expanded="true" />
-            <element signature="e#14821#14822#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4654,7 +4547,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3329493">
           <caret line="790" column="25" selection-start-line="790" selection-start-column="25" selection-end-line="790" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4662,36 +4554,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3329493">
           <caret line="108" column="21" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
-          <folding>
-            <element signature="e#4188#4189#0" expanded="false" />
-            <element signature="e#4246#4247#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_show_login.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5997522">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/AppManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5322581">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/InputMethodUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5691244">
-          <caret line="69" column="83" selection-start-line="69" selection-start-column="83" selection-end-line="69" selection-end-column="83" />
+        <state vertical-scroll-proportion="0.5997522">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -4718,26 +4590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/AppStart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8364055">
-          <caret line="117" column="17" selection-start-line="117" selection-start-column="17" selection-end-line="117" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2867#3069#0" expanded="true" />
-            <element signature="e#3068#3069#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/LoginUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36812145">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/api/remote/ApiUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.9976904">
@@ -4751,10 +4603,10 @@
         <state vertical-scroll-proportion="-0.013824885">
           <caret line="159" column="28" selection-start-line="159" selection-start-column="28" selection-end-line="159" selection-end-column="28" />
           <folding>
-            <element signature="e#2316#2317#0" expanded="true" />
-            <element signature="e#2376#2377#0" expanded="true" />
-            <element signature="e#3800#3983#0" expanded="true" />
-            <element signature="e#3982#3983#0" expanded="true" />
+            <element signature="e#2316#2317#0" expanded="false" />
+            <element signature="e#2376#2377#0" expanded="false" />
+            <element signature="e#3800#3983#0" expanded="false" />
+            <element signature="e#3982#3983#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -4771,20 +4623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.0529954">
           <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/viewpagerfragment/PrivateChatCorePagerFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-34.466667">
-          <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
-          <folding>
-            <element signature="e#1030#1057#0" expanded="true" />
-            <element signature="e#1131#1159#0" expanded="true" />
-            <element signature="e#1612#1613#0" expanded="true" />
-            <element signature="e#1645#1646#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4800,33 +4638,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="5.576037">
           <caret line="220" column="41" selection-start-line="220" selection-start-column="41" selection-end-line="220" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2110#3106#0" expanded="true" />
-            <element signature="e#3105#3106#0" expanded="true" />
-            <element signature="e#7472#7473#0" expanded="true" />
-            <element signature="e#7534#7535#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/FollowPrivateChatFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="170" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2025#3020#0" expanded="true" />
-            <element signature="e#3019#3020#0" expanded="true" />
-            <element signature="e#3731#3732#0" expanded="true" />
-            <element signature="e#3805#3806#0" expanded="true" />
-            <element signature="e#7231#7232#0" expanded="true" />
-            <element signature="e#7302#7303#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_search_index.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32713756">
           <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
@@ -4836,27 +4654,18 @@
           </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/SearchFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3156682">
           <caret line="44" column="65" selection-start-line="44" selection-start-column="65" selection-end-line="44" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/base/BaseViewPagerFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/base_viewpage_fragment.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.354399">
           <caret line="14" column="49" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="49" />
@@ -4865,31 +4674,262 @@
           </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/ManageListDialogFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17741935">
           <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/FollowPrivateChatFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="169" column="41" selection-start-line="169" selection-start-column="41" selection-end-line="169" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/viewpagerfragment/PrivateChatCorePagerFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="49" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="49" />
+          <folding>
+            <element signature="e#1131#1159#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/base/BaseViewPagerFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7108722">
-          <caret line="358" column="58" selection-start-line="358" selection-start-column="34" selection-end-line="358" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.47431302">
+          <caret line="316" column="38" selection-start-line="316" selection-start-column="38" selection-end-line="316" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_start.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.027261462">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32713756">
+          <caret line="12" column="43" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/btn_tab_home_background.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/tab_indicator.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10904585">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/btn_tab_live_background.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07885305">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/btn_tab_hot_background.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.052568696">
+          <caret line="2" column="100" selection-start-line="2" selection-start-column="100" selection-end-line="2" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/AppManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="6" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_hot.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.94547707">
+          <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/viewpagerfragment/IndexPagerFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6300716">
+          <caret line="50" column="52" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
+          <folding>
+            <element signature="e#2298#2496#0" expanded="true" />
+            <element signature="e#2495#2496#0" expanded="true" />
+            <element signature="e#3323#3352#0" expanded="true" />
+            <element signature="e#3438#3461#0" expanded="true" />
+            <element signature="e#3541#3566#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/ui/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
+          <folding>
+            <element signature="e#3199#3344#0" expanded="true" />
+            <element signature="e#3343#3344#0" expanded="true" />
+            <element signature="e#4168#4375#0" expanded="true" />
+            <element signature="e#4374#4375#0" expanded="true" />
+            <element signature="e#6270#6675#0" expanded="true" />
+            <element signature="e#6674#6675#0" expanded="true" />
+            <element signature="e#7012#7289#0" expanded="true" />
+            <element signature="e#7288#7289#0" expanded="true" />
+            <element signature="e#7635#7860#0" expanded="true" />
+            <element signature="e#7859#7860#0" expanded="true" />
+            <element signature="e#10997#10998#0" expanded="true" />
+            <element signature="e#11025#11026#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/em/MainTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="61" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_information.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68773234">
+          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_information_head.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3457249">
+          <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/AppContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="481" column="16" selection-start-line="481" selection-start-column="16" selection-end-line="481" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/SharedPreUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24878049">
+          <caret line="89" column="54" selection-start-line="89" selection-start-column="54" selection-end-line="89" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/LoginUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="63" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
+          <folding>
+            <element signature="e#640#1169#0" expanded="true" />
+            <element signature="e#1168#1169#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/AppStart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/utils/InputMethodUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3548387">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/weilian/phonelive/fragment/MyInformationFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13365155">
+          <caret line="235" column="21" selection-start-line="235" selection-start-column="21" selection-end-line="235" selection-end-column="21" />
+          <folding>
+            <element signature="e#10634#10832#0" expanded="true" />
+            <element signature="e#10831#10832#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

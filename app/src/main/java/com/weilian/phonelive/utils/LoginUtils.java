@@ -5,6 +5,7 @@ import android.content.Context;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 import com.weilian.phonelive.AppContext;
+import com.weilian.phonelive.AppManager;
 import com.weilian.phonelive.api.remote.PhoneLiveApi;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -35,11 +36,12 @@ public class LoginUtils {
             }
         }.start();
         SharedPreUtil.put(context,"isOpenPush",true);
-    }
+}
 
     public static void outLogin(Context context) {
         EMClient.getInstance().logout(true);
         AppContext.getInstance().Logout();
+        AppManager.getAppManager().finishAllActivity();
         UIHelper.showLoginSelectActivity(context);
     }
 
