@@ -378,7 +378,7 @@ public class MyInformationFragment extends BaseFragment {
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void blur(Bitmap back, View container) {
-        isBurl = true;
+     /*   isBurl = true;
         float radius = 5;
         if (null == container) return;
         Canvas canvas = null;
@@ -392,15 +392,15 @@ public class MyInformationFragment extends BaseFragment {
                     Bitmap.Config.ARGB_8888);
             canvas = new Canvas(overlay);
              canvas.translate(-container.getLeft() / scaleFactor, -container.getTop() / scaleFactor);
-        canvas.scale(1 / scaleFactor, 1 / scaleFactor);
+             canvas.scale(1 / scaleFactor, 1 / scaleFactor);
             Paint paint = new Paint();
             paint.setFlags(Paint.FILTER_BITMAP_FLAG);
             canvas.drawBitmap(back, 0, 0, paint);
             overlay = FastBlur.doBlur(overlay, (int) radius, true);
             container.setBackgroundDrawable(new BitmapDrawable(getResources(), overlay));
             isBurl = false;
-        }
-      /*  float scaleFactor = 1;
+        }*/
+        float scaleFactor = 1;
         float radius = 20;
         if (isAdded()) {
             scaleFactor = 8;
@@ -408,13 +408,13 @@ public class MyInformationFragment extends BaseFragment {
         }
         Bitmap overlay = Bitmap.createBitmap((int) (container.getMeasuredWidth() / scaleFactor), (int) (container.getMeasuredHeight() / scaleFactor), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(overlay);
-        canvas.translate(-container.getLeft() / scaleFactor, -container.getTop() / scaleFactor);
-        canvas.scale(1 / scaleFactor, 1 / scaleFactor);
+     /*   canvas.translate(-container.getLeft() / scaleFactor, -container.getTop() / scaleFactor);
+        canvas.scale(1 / scaleFactor, 1 / scaleFactor);*/
         Paint paint = new Paint();
         paint.setFlags(Paint.FILTER_BITMAP_FLAG);
         canvas.drawBitmap(back, 0, 0, paint);
         overlay = FastBlur.doBlur(overlay, (int) radius, true);
-        container.setBackground(new BitmapDrawable(getResources(), overlay));*/
+        container.setBackground(new BitmapDrawable(getResources(), overlay));
     }
 
 
