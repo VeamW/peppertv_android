@@ -1,15 +1,14 @@
 package com.weilian.phonelive.fragment;
 
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.annotation.TargetApi;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -22,7 +21,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.hyphenate.chat.EMClient;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.weilian.phonelive.AppConfig;
 import com.weilian.phonelive.AppContext;
@@ -95,7 +93,7 @@ public class MyInformationFragment extends BaseFragment {
 
     private UserBean mInfo;
     private AvatarView[] mOrderTopThree;
-//    private BroadcastReceiver broadcastReceiver;
+    //    private BroadcastReceiver broadcastReceiver;
     private boolean isBurl = false;
     private MyTask mMyTask;
 
@@ -378,10 +376,10 @@ public class MyInformationFragment extends BaseFragment {
      * @param back
      * @param container
      */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void blur(Bitmap back, View container) {
         isBurl = true;
         float radius = 5;
-        long startMs = System.currentTimeMillis();
         if (null == container) return;
         Canvas canvas = null;
         Bitmap overlay = null;
@@ -393,6 +391,8 @@ public class MyInformationFragment extends BaseFragment {
                     (int) (container.getMeasuredHeight() / (scaleFactor)),
                     Bitmap.Config.ARGB_8888);
             canvas = new Canvas(overlay);
+             canvas.translate(-container.getLeft() / scaleFactor, -container.getTop() / scaleFactor);
+        canvas.scale(1 / scaleFactor, 1 / scaleFactor);
             Paint paint = new Paint();
             paint.setFlags(Paint.FILTER_BITMAP_FLAG);
             canvas.drawBitmap(back, 0, 0, paint);
@@ -400,7 +400,21 @@ public class MyInformationFragment extends BaseFragment {
             container.setBackgroundDrawable(new BitmapDrawable(getResources(), overlay));
             isBurl = false;
         }
-
+      /*  float scaleFactor = 1;
+        float radius = 20;
+        if (isAdded()) {
+            scaleFactor = 8;
+            radius = 2;
+        }
+        Bitmap overlay = Bitmap.createBitmap((int) (container.getMeasuredWidth() / scaleFactor), (int) (container.getMeasuredHeight() / scaleFactor), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(overlay);
+        canvas.translate(-container.getLeft() / scaleFactor, -container.getTop() / scaleFactor);
+        canvas.scale(1 / scaleFactor, 1 / scaleFactor);
+        Paint paint = new Paint();
+        paint.setFlags(Paint.FILTER_BITMAP_FLAG);
+        canvas.drawBitmap(back, 0, 0, paint);
+        overlay = FastBlur.doBlur(overlay, (int) radius, true);
+        container.setBackground(new BitmapDrawable(getResources(), overlay));*/
     }
 
 
