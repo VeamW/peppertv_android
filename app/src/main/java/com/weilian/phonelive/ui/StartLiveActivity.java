@@ -3,17 +3,20 @@ package com.weilian.phonelive.ui;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -33,6 +36,7 @@ import com.ksy.recordlib.service.view.CameraGLSurfaceView;
 import com.umeng.analytics.MobclickAgent;
 import com.weilian.phonelive.AppConfig;
 import com.weilian.phonelive.AppContext;
+import com.weilian.phonelive.AppManager;
 import com.weilian.phonelive.R;
 import com.weilian.phonelive.adapter.UserListAdapter;
 import com.weilian.phonelive.api.remote.ApiUtils;
@@ -54,7 +58,6 @@ import com.weilian.phonelive.utils.ThreadManager;
 import com.weilian.phonelive.utils.UIHelper;
 import com.weilian.phonelive.viewpagerfragment.PrivateChatCorePagerDialogFragment;
 import com.weilian.phonelive.widget.AvatarView;
-import com.weilian.phonelive.widget.LoadUrlImageView;
 import com.weilian.phonelive.widget.music.DefaultLrcBuilder;
 import com.weilian.phonelive.widget.music.ILrcBuilder;
 import com.weilian.phonelive.widget.music.LrcRow;
@@ -69,15 +72,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
-import cn.sharesdk.framework.Platform;
-import cn.sharesdk.framework.PlatformActionListener;
 import okhttp3.Call;
 
 /**
@@ -96,8 +96,8 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
     EditText mStartLiveTitle;
 
     //开始直播遮罩层
-    @InjectView(R.id.rl_start_live_bg)
-    RelativeLayout mStartLiveBg;
+/*    @InjectView(R.id.rl_start_live_bg)
+    RelativeLayout mStartLiveBg;*/
 
     //渲染视频
     @InjectView(R.id.camera_preview)
@@ -208,11 +208,14 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
     @Override
     public void initView() {
         super.initView();
+        if (null == mButtonMenu) return;
         mButtonMenu.setVisibility(View.GONE);
+        if (null == mEmceeHead) return;
         mEmceeHead.setEnabled(false);
         //默认新浪微博share
-        ImageView mSinnaWeiBoShare = (ImageView) findViewById(R.id.iv_live_share_weibo);
-        ImageView mBack = (ImageView) findViewById(R.id.iv_startlive_back);
+//        ImageView mSinnaWeiBoShare = (ImageView) findViewById(R.id.iv_live_share_weibo);
+//        ImageView mBack = (ImageView) findViewById(R.id.iv_startlive_back);   //返回按钮
+//        LinearLayout lBack = (LinearLayout) findViewById(R.id.ll_startlive_back);
         /*mSinnaWeiBoShare.post(new Runnable() {
             @Override
             public void run() {
@@ -220,22 +223,27 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
                 shareType = 0 == shareType?7:0;
             }
         });*/
+
         /**
          * 修改
          */
+        if (null == mHead) return;
         mHead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LiveCommon.showOwnInfoDialogEmcee(StartLiveActivity.this, mUser);
             }
         });
-        mBack.setOnClickListener(new View.OnClickListener() {
+       /* lBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(StartLiveActivity.this, MainActivity.class);
+                startActivity(intent);
                 finish();
+
             }
-        });
-        mSinnaWeiBoShare.setOnClickListener(new View.OnClickListener() {
+        });*/
+       /* mSinnaWeiBoShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startLiveShare(v, 0);
@@ -270,8 +278,9 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
                 startLiveShare(v, 4);
                 shareType = 4 == shareType ? 7 : 4;
             }
-        });
+        });*/
 
+        if (null == mRoot) return;
         //防止聊天软键盘挤压屏幕
         mRoot.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
             @Override
@@ -282,7 +291,7 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
                 }
             }
         });
-
+        InputMethodUtils.closeSoftKeyboard(this);
     }
 
     /**
@@ -381,19 +390,106 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
         mWl = mPm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "MyTag");
         mUser = AppContext.getInstance().getLoginUser();
         mRoomNum = mUser.getId();
-        //主播id
-        mTvLiveNumber.setText("ID号:" + mUser.getId());
+        if (mTvLiveNumber != null) {
+            //主播id
+            mTvLiveNumber.setText("ID号:" + mUser.getId());
+        }
+
         //主播昵称
         mTvEmceeName.setText(mUser.getUser_nicename());
         //封面
-        ((LoadUrlImageView) findViewById(R.id.iv_live_start_cover)).setImageLoadUrl(mUser.getAvatar());
+      /* ((LoadUrlImageView) findViewById(R.id.iv_live_start_cover)).setImageLoadUrl(mUser.getAvatar());
 
-        ((AvatarView) findViewById(R.id.av_live_mask_emcee_head)).setAvatarUrl(mUser.getAvatar());
+        ((AvatarView) findViewById(R.id.av_live_mask_emcee_head)).setAvatarUrl(mUser.getAvatar());*/
         //连接聊天服务器
         initChatConnection();
         initLivePlay();
         //获取僵尸粉丝
         getZombieFans();
+
+//        createRoom();
+
+        if (mCameraPreview != null) mCameraPreview.setVisibility(View.VISIBLE);
+        if (mButtonMenu != null) mButtonMenu.setVisibility(View.VISIBLE);
+       /* o*/
+
+//        readyStart();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+//        AppManager.getAppManager().addActivity(this);
+    }
+
+    /**
+     * @dw 准备直播
+     * 弹框提示输入标题！
+     */
+    private void readyStart() {
+        final EditText inputServer = new EditText(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("请输入标题(不输使用默认标题)").setView(inputServer).setNegativeButton("Cancel", new android.content.DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(android.content.DialogInterface dialog, int which) {
+                    //避免开播没有进入分享页面,然后点击其他页面后返回当前页面重复执行start方法
+                mark += 1;
+                //请求服务端存储开播纪录
+                String title = "美食家";
+                PhoneLiveApi.createLive(mUser.getId(), title,
+                        new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e) {
+                                AppContext.showToastAppMsg(StartLiveActivity.this, "开启直播失败,请退出重试- -!");
+                                mStartLive.setVisibility(View.GONE);
+                            }
+                            @Override
+                            public void onResponse(String s) {
+                                String res = ApiUtils.checkIsSuccess(s, StartLiveActivity.this);
+                                if (res != null) {
+//                            mCameraPreview.setVisibility(View.VISIBLE);
+                                    //初始化直播
+//                            mButtonMenu.setVisibility(View.VISIBLE);
+//                            mStartLive.setVisibility(View.VISIBLE);
+                                    createRoom();
+                                }
+                            }
+                        }, mUser.getToken());
+            }
+        }).setPositiveButton("OK", new android.content.DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(android.content.DialogInterface dialog, int which) {
+                //避免开播没有进入分享页面,然后点击其他页面后返回当前页面重复执行start方法
+                mark += 1;
+                //请求服务端存储开播纪录
+                String title = "美食家";
+                if (inputServer != null && !inputServer.getText().toString().replace(" ", "").equals("")) {
+                    title = inputServer.getText().toString().replace("\n", "");
+                }
+                PhoneLiveApi.createLive(mUser.getId(), title,
+                        new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e) {
+                                AppContext.showToastAppMsg(StartLiveActivity.this, "开启直播失败,请退出重试- -!");
+                                mStartLive.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onResponse(String s) {
+                                String res = ApiUtils.checkIsSuccess(s, StartLiveActivity.this);
+                                if (res != null) {
+//                            mCameraPreview.setVisibility(View.VISIBLE);
+                                    //初始化直播
+//                            mButtonMenu.setVisibility(View.VISIBLE);
+//                            mStartLive.setVisibility(View.VISIBLE);
+                                    createRoom();
+                                }
+                            }
+                        }, mUser.getToken());
+            }
+        });
+
+        builder.show();
     }
 
     /**
@@ -484,8 +580,31 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
         mEmceeHead.setAvatarUrl(mUser.getAvatar());
     }
 
+    //分享pop弹窗
+    private void showSharePopWindow(View v) {
+        View view = LayoutInflater.from(this).inflate(R.layout.pop_view_share, null);
+        PopupWindow p = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        view.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        p.setBackgroundDrawable(new BitmapDrawable());
+        p.setOutsideTouchable(true);
+        int[] location = new int[2];
+        v.getLocationOnScreen(location);
+        p.showAtLocation(v, Gravity.NO_GRAVITY, location[0] + v.getWidth() / 2 - view.getMeasuredWidth() / 2, location[1] - view.getMeasuredHeight());
 
-    @OnClick({R.id.btn_live_end_music, R.id.iv_live_music, R.id.iv_live_meiyan, R.id.iv_live_switch_camera, R.id.camera_preview, R.id.iv_live_privatechat, R.id.iv_live_back, R.id.ll_yp_labe, R.id.btn_start_live, R.id.iv_live_chat, R.id.bt_send_chat, R.id.btn_back_index})
+    }
+
+
+    /**
+     * 分享
+     *
+     * @param v
+     */
+    //分享操作
+    public void share(View v) {
+        ShareUtils.share(this, v.getId(), mUser);
+    }
+
+    @OnClick({R.id.iv_live_shar, R.id.btn_live_end_music, R.id.iv_live_music, R.id.iv_live_meiyan, R.id.iv_live_switch_camera, R.id.camera_preview, R.id.iv_live_privatechat, R.id.iv_live_back, R.id.ll_yp_labe, R.id.btn_start_live, R.id.iv_live_chat, R.id.bt_send_chat, R.id.btn_back_index})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -501,6 +620,15 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
             /*case R.id.ll_live_room_info:
                 LiveCommon.showOwnInfoDialogEmcee(this, mUser);
                 break;*/
+            case R.id.iv_live_shar:
+                ImageView imageView = (ImageView) findViewById(R.id.iv_live_shar);
+                if (imageView == null) {
+                    AppContext.showToast("请稍后");
+                    return;
+                }
+
+                showSharePopWindow(imageView);
+                break;
             case R.id.iv_live_music:
                 showSearchMusicDialog();
                 //UIHelper.showSearchMusic(this);
@@ -532,7 +660,11 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
                 break;
             case R.id.btn_start_live://创建房间
                 //请求服务端存储记录
-                createRoom();
+
+                if (mStartLive != null) mStartLive.setVisibility(View.GONE);
+                if (mStartLiveTitle != null) mStartLiveTitle.setVisibility(View.GONE);
+                readyStart();
+//                createRoom();
                 break;
             case R.id.iv_live_chat://chat gone or visble
                 showEditText();
@@ -621,7 +753,7 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
                 LiveCommon.showOwnInfoDialogEmcee(StartLiveActivity.this, mUser);
             }
         });
-        if (shareType != 7) {
+    /*    if (shareType != 7) {
             ShareUtils.share(this, shareType, mUser,
                     new PlatformActionListener() {
                         @Override
@@ -641,39 +773,13 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
                     });
         } else {
             readyStart();
-        }
+        }*/
         InputMethodUtils.closeSoftKeyboard(this);
         mStartLive.setEnabled(false);
         mStartLive.setTextColor(getResources().getColor(R.color.white));
+        startLive();
     }
 
-    /**
-     * @dw 准备直播
-     */
-    private void readyStart() {
-        //避免开播没有进入分享页面,然后点击其他页面后返回当前页面重复执行start方法
-        mark += 1;
-        //请求服务端存储开播纪录
-        PhoneLiveApi.createLive(mUser.getId(), mStartLiveTitle.getText().toString(),
-                new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e) {
-                        AppContext.showToastAppMsg(StartLiveActivity.this, "开启直播失败,请退出重试- -!");
-                    }
-
-                    @Override
-                    public void onResponse(String s) {
-                        String res = ApiUtils.checkIsSuccess(s, StartLiveActivity.this);
-                        if (res != null) {
-                            mCameraPreview.setVisibility(View.VISIBLE);
-                            mStartLiveBg.setVisibility(View.GONE);
-                            //初始化直播
-                            mButtonMenu.setVisibility(View.VISIBLE);
-                            startLive();
-                        }
-                    }
-                }, mUser.getToken());
-    }
 
     /**
      * @param toUser 被@用户
@@ -738,6 +844,7 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
 
             }
         }
+
 
         //用户状态改变
         @Override
@@ -845,7 +952,6 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
                     addZombieFans(ct);
                 }
             });
-
         }
 
         //服务器连接错误
@@ -862,6 +968,7 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
 
     private void fillUI() {
         mLvChatList.setAdapter(mChatListAdapter);
+        mStartLive.setVisibility(View.GONE);
     }
 
 
@@ -936,7 +1043,7 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
 
     //停止播放音乐
     private void stopMusic() {
-        if (null != mPlayer && null != mStreamer) {
+        if (null != mPlayer && null != mStreamer && mViewShowLiveMusicLrc != null) {
             mPlayer.stop();
             mPlayer = null;
             mStreamer.stopMixMusic();
@@ -971,9 +1078,11 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
     //返回键监听
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if ((!IS_START_LIVE) || ((mStartLiveBg.getVisibility() + 7) == 7)) {
+            if ((!IS_START_LIVE) /*|| ((mStartLiveBg.getVisibility() + 7) == 7)*/) {
+                /*Intent intent = new Intent(StartLiveActivity.this, MainActivity.class);
+                startActivity(intent);*/
+                finish();
                 return super.onKeyDown(keyCode, event);
             } else {
                 clickBack();
@@ -1002,6 +1111,7 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
     //关闭直播
     private void stopLive() {
         IS_START_LIVE = false;
+        if (null == mLvChatList) return;
         mLvChatList.setVisibility(View.GONE);
         PhoneLiveApi.closeLive(mUser.getId(), mUser.getToken(), new StringCallback() {
             @Override
@@ -1025,9 +1135,9 @@ public class StartLiveActivity extends ShowLiveActivityBase implements SearchMus
         mLayoutLiveStop.setVisibility(View.VISIBLE);
         mLiveChatEdit.setVisibility(View.VISIBLE);
         mTvLiveEndUserNum.setText(ChatServer.LIVEUSERNUMS + "人观看");
-        mTvLiveEndYpNum.setText("共收获:" + mLiveEndYpNum + "映票");
+        mTvLiveEndYpNum.setText("共收获:" + mLiveEndYpNum + "辣度");
         mButtonMenuFrame.setVisibility(View.GONE);
-
+        mStartLive.setVisibility(View.GONE);
 
     }
 

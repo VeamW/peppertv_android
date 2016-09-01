@@ -14,15 +14,22 @@ import java.util.Properties;
  * 应用程序配置类：用于保存用户相关信息及设置
  */
 public class AppConfig {
+    //版本初始地址
     //    public static final String MAIN_URL = "http://yy.yunbaozhibo.com/public";
     //    public static final String CHAT_URL = "http://123.56.243.107:19967";
     //    public static final String RTMP_URL = "rtmp://xp.taianweb.com/5showcam/";
 
-    //    测试服务器地址
-    public static final String MAIN_URL = "http://139.224.18.21/public/";
+    //    测试服务器地址   v1.0.0
+ /*   public static final String MAIN_URL = "http://139.224.18.21/public/";
     public static final String CHAT_URL = "http://139.224.18.21:19967";
     public static final String RTMP_URL = "rtmp://xb.yunbaozhibo.com/5showcam/";
-    public static final String RTMP_PUSH_URL = "rtmp://xp.yunbaozhibo.com/5showcam/";
+    public static final String RTMP_PUSH_URL = "rtmp://xp.yunbaozhibo.com/5showcam/";*/
+
+    //正式服务器 v1.0.0
+    public static final String MAIN_URL = "http://test.haoyidao.cc/public/";
+    public static final String CHAT_URL = "http://60.205.56.122:19967";
+    public static final String RTMP_URL = "rtmp://xb.yunbaozhibo.com/5showcam/pt";
+    public static final String RTMP_PUSH_URL = "rtmp://xp.yunbaozhibo.com/5showcam/pt";
 
 
     private final static String APP_CONFIG = "config";
@@ -151,6 +158,7 @@ public class AppConfig {
 
     public void remove(String... key) {
         Properties props = get();
+        if (null==props||key==null) return;
         for (String k : key)
             props.remove(k);
         setProps(props);

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +29,8 @@
                     android:id="@+id/iv_live_user_head"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -46,8 +46,30 @@
                         android:ellipsize="end"
                         android:maxEms="6"
                         android:singleLine="true"
-                        android:text=""
-                        android:textSize="@dimen/text_size_15" />
+                        android:text="ddd"
+                        android:textSize="@dimen/text_size_15"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|left"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/ico_location"/>
+
+                        <TextView
+                            android:id="@+id/tv_live_local"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_1"
+                            android:text=""
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_10"/>
+                    </LinearLayout>
+
 
                 </LinearLayout>
             </LinearLayout>
@@ -64,26 +86,28 @@
                 android:gravity="center_vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/space_100"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:layout_alignParentRight="true">
+                    android:gravity="center_vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toLeftOf="@+id/tv_live_usernum"
-                        android:src="@drawable/icon_guankan" />
+                        android:src="@drawable/icon_guankan"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/tv_live_usernum"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/space_80"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginLeft="10dp"
-                        android:text=""
-                        android:textColor="@color/global"
-                        android:textSize="@dimen/text_size_17" />
+                        android:background="@drawable/txt_hot_numbs_drawable"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/space_2"
+                        android:paddingTop="@dimen/space_2"
+                        android:text="1111人正在观看"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_10"/>
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
@@ -96,42 +120,19 @@
                 android:id="@+id/iv_live_user_pic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"/>
             <!--直播logo and 地址-->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_height="30dp"
                 android:layout_alignParentRight="true"
+                android:layout_gravity="center"
                 android:layout_marginRight="24dp"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:src="@drawable/live_live"/>
 
-                <ImageView
-                    android:layout_width="55dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/live_live" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="10dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/live_map_dark" />
-
-                    <TextView
-                        android:id="@+id/tv_live_local"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_size_12" />
-                </LinearLayout>
-            </LinearLayout>
         </RelativeLayout>
 
 
@@ -146,7 +147,7 @@
         android:padding="7dp"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_15"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
     <View
         android:layout_width="match_parent"

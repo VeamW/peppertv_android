@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/lv_live_room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:visibility="gone">
+        </ListView>
+
+        <RelativeLayout
+            android:id="@+id/rel_top"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/default_background"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/msj_top"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="40dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="你关注的人中没有人正在直播"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="查看热门推荐"
+                    android:textColor="@color/global"
+                    android:textSize="@dimen/sp_13"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/count_visited"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray2"
+            android:drawableLeft="@drawable/ico_live"
+            android:gravity="center|left"
+            android:padding="@dimen/space_3"
+            android:text="正在加载..."
+            android:textSize="@dimen/sp_14"/>
+
+        <ListView
+            android:id="@+id/listview_visited"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ></ListView>
+    </LinearLayout>
+</ScrollView>

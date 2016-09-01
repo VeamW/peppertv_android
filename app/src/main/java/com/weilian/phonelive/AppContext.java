@@ -17,11 +17,11 @@ import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMOptions;
-import com.hyphenate.exceptions.HyphenateException;
 import com.hyphenate.util.NetUtils;
 import com.weilian.phonelive.base.BaseApplication;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.cache.DataCleanManager;
+import com.weilian.phonelive.model.MyNotifier;
 import com.weilian.phonelive.utils.CyptoUtils;
 import com.weilian.phonelive.utils.MethodsCompat;
 import com.weilian.phonelive.utils.StringUtils;
@@ -52,7 +52,6 @@ public class AppContext extends BaseApplication {
 
 
     private static AppContext instance;
-
     private int loginUid;
     private boolean login;
     private String Token;
@@ -88,7 +87,6 @@ public class AppContext extends BaseApplication {
                     amapLocation.getAdCode();//地区编码*/
                     province = amapLocation.getProvince();
                     address = amapLocation.getCity();
-
                 } else {
                     //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                     TLog.log("AmapError", "location Error, ErrCode:"
@@ -110,7 +108,6 @@ public class AppContext extends BaseApplication {
 //                .getAppExceptionHandler(this));
         UIHelper.sendBroadcastForNotice(this);
     }
-
 
     /**
      * 初始化操作
@@ -219,7 +216,6 @@ public class AppContext extends BaseApplication {
                     //当前网络不可用，请检查网络设置
                     TLog.log("当前网络不可用，请检查网络设置");
                 }
-
             }
         }
     }
@@ -232,10 +228,9 @@ public class AppContext extends BaseApplication {
             Intent broadcastIntent = new Intent("com.weilian.phonelive");
             broadcastIntent.putExtra("cmd_value", messages.get(0));
             sendBroadcast(broadcastIntent, null);
-            //MyNotifier notifier = new MyNotifier();
-            //notifier.init(AppContext.getInstance());
-            //notifier.sendNotification(messages.get(0),false);
-
+            MyNotifier notifier = new MyNotifier();
+            notifier.init(AppContext.getInstance());
+            notifier.sendNotification(messages.get(0),false);
             //收到消息
         }
 
@@ -270,7 +265,6 @@ public class AppContext extends BaseApplication {
             login = true;
             loginUid = user.getId();
             Token = user.getToken();
-
             new Thread(new Runnable() {
                 @Override
                 public void run() {

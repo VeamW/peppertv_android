@@ -26,6 +26,7 @@ import com.weilian.phonelive.bean.PrivateChatUserBean;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.utils.UIHelper;
+import com.weilian.phonelive.utils.Utils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONArray;
@@ -59,6 +60,7 @@ public class FollowPrivateChatFragment extends PrivateChatPageBase {
         mPrivateListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (Utils.isFastClick()) return;
                 mPosition = position;
                 mPrivateChatListData.get(position).setUnreadMessage(false);
                 if (getParentFragment() instanceof DialogFragment) {
@@ -125,7 +127,6 @@ public class FollowPrivateChatFragment extends PrivateChatPageBase {
 
         } catch (HyphenateException e) {
             //没有传送是否关注标记
-            TLog.log("没有传送是否关注标记");
             e.printStackTrace();
         }
 
@@ -171,14 +172,12 @@ public class FollowPrivateChatFragment extends PrivateChatPageBase {
 
             @Override
             public void onError(Call call, Exception e) {
-                TLog.error("获取好友消息错误" + e.getMessage());
             }
 
             @Override
             public void onResponse(String response) {
 
                 String res = ApiUtils.checkIsSuccess(response, getActivity());
-                TLog.error("获取好友消息：" + res);
                 if (null != res) {
                     try {
                         mPrivateChatListData.clear();
@@ -203,7 +202,6 @@ public class FollowPrivateChatFragment extends PrivateChatPageBase {
                         e.printStackTrace();
                     }
                 }
-
                 fillUI();
             }
         });
@@ -214,7 +212,6 @@ public class FollowPrivateChatFragment extends PrivateChatPageBase {
             return;
         }
         mUserInfoPrivateAdapter.notifyDataSetChanged();
-        TLog.error("刷新好友信息列表：" + mPrivateChatListData.size() + ">>>>>>>>" + mPrivateChatListData.get(0).getLastMessage());
     }
 
     public void onPause() {

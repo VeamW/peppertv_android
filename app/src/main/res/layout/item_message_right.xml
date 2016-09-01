@@ -1,49 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:gravity="center_horizontal"
-    android:layout_height="wrap_content"
-    android:paddingTop="13dp">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:paddingTop="13dp">
+
     <TextView
-        android:padding="10dp"
         android:id="@+id/timestamp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        android:textColor="@color/gray"
+        android:textSize="@dimen/space_10"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:padding="10dp"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-       >
+        >
 
         <com.weilian.phonelive.widget.AvatarView
-            android:layout_alignParentRight="true"
             android:id="@+id/av_message_head"
-            android:layout_centerVertical="true"
-            android:src="@drawable/live_verify_bg3x"
             android:layout_width="30dp"
-            android:layout_height="30dp" />
-        <RelativeLayout
-            android:layout_marginRight="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/live_verify_bg3x"/>
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/chat_message_item_right">
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/chat_send_nor">
+
             <TextView
+                android:id="@+id/tv_message_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:autoLink="web"
-                android:layout_centerInParent="true"
                 android:gravity="center|left"
-                android:paddingRight="6dp"
-                android:paddingLeft="1dp"
-                android:minHeight="38dp"
-                android:lineSpacingExtra="2dp"
-                android:textColor="#000000"
                 android:maxWidth="225.0dip"
-                android:textSize="15sp"
-                android:id="@+id/tv_message_text"/>
+                android:padding="@dimen/space_1"
+                android:textColor="@color/main_black"
+                android:textSize="@dimen/sp_13"/>
         </RelativeLayout>
     </RelativeLayout>
 

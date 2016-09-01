@@ -5,17 +5,25 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.hyphenate.chat.EMClient;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.weilian.phonelive.AppConfig;
 import com.weilian.phonelive.AppContext;
 import com.weilian.phonelive.AppManager;
@@ -27,11 +35,12 @@ import com.weilian.phonelive.bean.OrderBean;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.ui.DrawableRes;
 import com.weilian.phonelive.ui.SelectAvatarActivity;
+import com.weilian.phonelive.utils.FastBlur;
 import com.weilian.phonelive.utils.LoginUtils;
 import com.weilian.phonelive.utils.StringUtils;
-import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.utils.UIHelper;
 import com.weilian.phonelive.widget.AvatarView;
+import com.weilian.phonelive.widget.LoadUrlImageView;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.List;
@@ -73,6 +82,10 @@ public class MyInformationFragment extends BaseFragment {
     ImageView mPrivateCore;
     @InjectView(R.id.iv_hot_new_message)
     ImageView mIvNewMessage;
+    @InjectView(R.id.top_view)
+    FrameLayout topBack;
+    @InjectView(R.id.iv_live_start_cover)
+    LoadUrlImageView mLoadUrlImageView;
     //等级
     @InjectView(R.id.iv_info_level)
     ImageView mTvInfoLevel;
@@ -82,8 +95,9 @@ public class MyInformationFragment extends BaseFragment {
 
     private UserBean mInfo;
     private AvatarView[] mOrderTopThree;
-    private BroadcastReceiver broadcastReceiver;
-
+//    private BroadcastReceiver broadcastReceiver;
+    private boolean isBurl = false;
+    private MyTask mMyTask;
 
     private void steupUser() {
         if (mIsWatingLogin) {
@@ -104,8 +118,21 @@ public class MyInformationFragment extends BaseFragment {
 
 
     public void setNotice() {
-
+        if (null == topBack) return;
+//        initData();
+        topBack.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                if (!isBurl) {
+                    mMyTask = new MyTask();
+                    mMyTask.execute("");
+                }
+                return true;
+            }
+        });
+        sendRequestData();
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -113,8 +140,8 @@ public class MyInformationFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_my_information,
                 container, false);
         ButterKnife.inject(this, view);
+//        initData();
         initView(view);
-        initData();
         return view;
     }
 
@@ -122,7 +149,6 @@ public class MyInformationFragment extends BaseFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         requestData(true);
-
     }
 
     @Override
@@ -134,7 +160,6 @@ public class MyInformationFragment extends BaseFragment {
 
     @Override
     public void initView(View view) {
-
         view.findViewById(R.id.ll_live).setOnClickListener(this);
         view.findViewById(R.id.ll_following).setOnClickListener(this);
         view.findViewById(R.id.ll_fans).setOnClickListener(this);
@@ -160,6 +185,19 @@ public class MyInformationFragment extends BaseFragment {
     private void fillUI() {
         if (mInfo == null)
             return;
+        topBack.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                if (!isBurl) {
+                    mMyTask = new MyTask();
+                    mMyTask.execute("");
+                }
+                return true;
+            }
+        });
+        if (null == mLoadUrlImageView || null == mIvAvatar || null == mTvName || null == mIvGender || null == mTvSignature || null == mUId)
+            return;
+        mLoadUrlImageView.setImageLoadUrl(mInfo.getAvatar());
         //头像
         mIvAvatar.setAvatarUrl(mInfo.getAvatar());
         //昵称
@@ -205,8 +243,8 @@ public class MyInformationFragment extends BaseFragment {
 
         @Override
         public void onResponse(String s) {
-            TLog.error("MyinformationFragment--->" + s);
             String res = ApiUtils.checkIsSuccess(s, getActivity());
+            if (null == mFollowNum || null == mFansNum || null == mSendNum) return;
             if (res == null || res.isEmpty()) {
                 UIHelper.showLoginSelectActivity(getActivity());
                 getActivity().finish();
@@ -221,7 +259,6 @@ public class MyInformationFragment extends BaseFragment {
             if (!(0 < mInfo.getCoinrecord3().size()))
                 return;
             List<OrderBean> coinrecord3 = mInfo.getCoinrecord3();
-
             for (int i = 0; i < coinrecord3.size(); i++) {
                 mOrderTopThree[i].setAvatarUrl(coinrecord3.get(i).getAvatar());
             }
@@ -231,11 +268,9 @@ public class MyInformationFragment extends BaseFragment {
 
     @Override
     public void onClick(View v) {
-
         final int id = v.getId();
         switch (id) {
             case R.id.ll_authenticate://申请认证
-                TLog.log("申请认证被点击了");
                 UIHelper.showWebView(getActivity(), AppConfig.MAIN_URL + "/appcmf/index.php?g=User&m=Rz&a=index&uid=" + AppContext.getInstance().getLoginUid(), "申请认证");
                 break;
             case R.id.iv_info_private_core:
@@ -247,7 +282,6 @@ public class MyInformationFragment extends BaseFragment {
                 break;
 
             case R.id.iv_avatar:
-                TLog.log("被点击了");
                 Intent intent = new Intent(getActivity(), SelectAvatarActivity.class);
                 intent.putExtra("uhead", mInfo.getAvatar());
                 getActivity().startActivity(intent);
@@ -272,8 +306,7 @@ public class MyInformationFragment extends BaseFragment {
             case R.id.ll_level://我的等级
                 UIHelper.showLevel(getActivity(), AppContext.getInstance().getLoginUid());
                 break;
-            case R.id.rl_user_center:
-                break;
+
             case R.id.rl_user_unlogin:
                 AppManager.getAppManager().finishAllActivity();
                 UIHelper.showLoginSelectActivity(getActivity());
@@ -304,31 +337,85 @@ public class MyInformationFragment extends BaseFragment {
             return;
         }
         //获取私信未读数量
-        int count = EMClient.getInstance().chatManager().getUnreadMsgsCount();
+     /*    int count = EMClient.getInstance().chatManager().getUnreadMsgsCount();
         if (count > 0) {
             mIvNewMessage.setVisibility(View.VISIBLE);
         }
         IntentFilter intentFilter = new IntentFilter("com.weilian.phonelive");
-        broadcastReceiver = new BroadcastReceiver() {
+       broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 mIvNewMessage.setVisibility(View.VISIBLE);
             }
         };
-        getActivity().registerReceiver(broadcastReceiver, intentFilter);
+        getActivity().registerReceiver(broadcastReceiver, intentFilter);*/
     }
+
+
+    /**
+     * blur top bac. >> Image
+     */
+    class MyTask extends AsyncTask<String, Integer, Integer> {
+        private Bitmap mBitmap;
+
+        @Override
+        protected Integer doInBackground(String... params) {
+            mBitmap = ImageLoader.getInstance().loadImageSync(mInfo.getAvatar());
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            if (null != mBitmap) {
+                blur(mBitmap, topBack);
+            }
+        }
+    }
+
+    /**
+     * start blur
+     *
+     * @param back
+     * @param container
+     */
+    private void blur(Bitmap back, View container) {
+        isBurl = true;
+        float radius = 5;
+        long startMs = System.currentTimeMillis();
+        if (null == container) return;
+        Canvas canvas = null;
+        Bitmap overlay = null;
+        if (isAdded()) {
+            float scaleFactor = (float) container.getMeasuredWidth() / back.getWidth();  //选取比例
+            float scaleFactorh = (float) container.getMeasuredHeight() / back.getHeight();
+            overlay = Bitmap.createBitmap(
+                    (int) (container.getMeasuredWidth() / (scaleFactor)),
+                    (int) (container.getMeasuredHeight() / (scaleFactor)),
+                    Bitmap.Config.ARGB_8888);
+            canvas = new Canvas(overlay);
+            Paint paint = new Paint();
+            paint.setFlags(Paint.FILTER_BITMAP_FLAG);
+            canvas.drawBitmap(back, 0, 0, paint);
+            overlay = FastBlur.doBlur(overlay, (int) radius, true);
+            container.setBackgroundDrawable(new BitmapDrawable(getResources(), overlay));
+            isBurl = false;
+        }
+
+    }
+
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (broadcastReceiver == null || broadcastReceiver.getAbortBroadcast()) return;
-        try {
+       /*
+
+       try {
             getActivity().unregisterReceiver(broadcastReceiver);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             broadcastReceiver.setDebugUnregister(true);
             broadcastReceiver = null;
-        }
+        }*/
     }
 }

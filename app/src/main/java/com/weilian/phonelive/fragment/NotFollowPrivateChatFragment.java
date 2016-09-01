@@ -169,7 +169,6 @@ public class NotFollowPrivateChatFragment extends PrivateChatPageBase {
         StringBuilder keys = new StringBuilder();
         for (String key : emConversationMap.keySet()) {
             keys.append(key.replace("pt", "") + ",");
-            TLog.error(key);
         }
         if (keys.toString().length() == 0) return;
         Log.e("keys", keys.toString());
@@ -183,7 +182,6 @@ public class NotFollowPrivateChatFragment extends PrivateChatPageBase {
 
             @Override
             public void onResponse(String response) {
-                TLog.error("未关注：" + response);
                 String res = ApiUtils.checkIsSuccess(response, getActivity());
                 if (null != res) {
                     try {

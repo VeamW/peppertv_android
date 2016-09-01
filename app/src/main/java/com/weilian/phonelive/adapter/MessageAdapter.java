@@ -64,6 +64,7 @@ public class MessageAdapter extends BaseAdapter {
 
     private View createChatRow(Context context, EMMessage e, int position) {
         PhoneLiveChatRow chatRow = null;
+        if (e==null) return chatRow;
         switch (e.getType()) {
             case TXT:
                 chatRow = new PhoneLiveChatRowText(context, e, position, this);

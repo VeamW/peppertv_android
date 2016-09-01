@@ -82,22 +82,20 @@ public class UserBaseInfoAdapter extends BaseAdapter {
                     @Override
                     public void onError(Call call, Exception e) {
                         //adair
-                        TLog.error("There was a mistake when you follow/unfollow the people---->id:" + u.getId());
                     }
 
                     @Override
                     public void onResponse(String response) {
                         //adair     后台操作成功返回之后操作（刷新）
-                        TLog.error("follow/unfollow-->response:" + response);
                         String str = ApiUtils.checkIsSuccess(response);
                         try {
                             JSONObject object = new JSONObject(str);
                             int isfollow = object.getInt("is_followed");
                             if (isfollow == 1) {//1 已经关注成功 0:取消关注成功
-//                                u.setIsattention(0);
+                                u.setIsattention(1);
                                 ((ImageView) v.findViewById(R.id.iv_item_attention)).setImageResource(R.drawable.me_following);
                             } else {
-//                                u.setIsattention(1);
+                                u.setIsattention(0);
                                 ((ImageView) v.findViewById(R.id.iv_item_attention)).setImageResource(R.drawable.me_follow);
                             }
                         } catch (JSONException e) {

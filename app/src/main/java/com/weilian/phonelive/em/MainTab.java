@@ -1,6 +1,8 @@
 package com.weilian.phonelive.em;
 
 import com.weilian.phonelive.R;
+import com.weilian.phonelive.fragment.LiveFragment;
+import com.weilian.phonelive.fragment.MsjFragment;
 import com.weilian.phonelive.fragment.MyInformationFragment;
 import com.weilian.phonelive.ui.StartLiveActivity;
 import com.weilian.phonelive.viewpagerfragment.IndexPagerFragment;
@@ -8,21 +10,25 @@ import com.weilian.phonelive.viewpagerfragment.IndexPagerFragment;
 /**
  * Created by Administrator on 2016/3/9.
  */
-public enum  MainTab {
-    INDEX(0, R.drawable.btn_tab_hot_background,0, IndexPagerFragment.class),
-    LIVE(1, R.drawable.btn_tab_live_background,1, StartLiveActivity.class),
-    HOME(2, R.drawable.btn_tab_home_background,2, MyInformationFragment.class);
+public enum MainTab {
+    INDEX(0, R.drawable.btn_tab_hot_background, 0, IndexPagerFragment.class),
+    LIVE(1, R.drawable.btn_tab_live_background, 1, StartLiveActivity.class),
+//    LIVE(1, R.drawable.btn_tab_live_background, 1, LiveFragment.class),
+    HOME(2, R.drawable.btn_tab_msj_background, 2, MsjFragment.class),
+    INFO(3, R.drawable.btn_tab_info_background, 3, MyInformationFragment.class);
+
     private int idx;
     private int resName;
     private int resIcon;
     private Class<?> clz;
 
-    private MainTab(int idx, int resIcon,int resName, Class<?> clz) {
+    private MainTab(int idx, int resIcon, int resName, Class<?> clz) {
         this.idx = idx;
         this.resIcon = resIcon;
         this.resName = resName;
         this.clz = clz;
     }
+
 
     public int getIdx() {
         return idx;

@@ -67,7 +67,7 @@ public class InputMethodUtils {
             Field f_mCurRootView = imm.getClass().getDeclaredField("mCurRootView");
             Field f_mServedView = imm.getClass().getDeclaredField("mServedView");
             Field f_mNextServedView = imm.getClass().getDeclaredField("mNextServedView");
-            Field f_mLastSrvView = imm.getClass().getDeclaredField("mLastSrvView");
+//            Field f_mLastSrvView = imm.getClass().getDeclaredField("mLastSrvView");
 
             if (f_mCurRootView.isAccessible() == false) {
                 f_mCurRootView.setAccessible(true);
@@ -93,14 +93,14 @@ public class InputMethodUtils {
                 f_mNextServedView.set(imm, null);
             }
 
-
+/*
             if (f_mLastSrvView.isAccessible() == false) {
                 f_mLastSrvView.setAccessible(true);
             }
             obj_get = f_mLastSrvView.get(imm);
             if (obj_get != null) {
                 f_mLastSrvView.set(imm, null);
-            }
+            }*/
         } catch (Throwable t) {
             t.printStackTrace();
         }

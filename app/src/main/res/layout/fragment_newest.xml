@@ -8,13 +8,11 @@
         android:id="@+id/sl_newest"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <GridView
             android:id="@+id/gv_newest"
             android:numColumns="3"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
         </GridView>
 
     </android.support.v4.widget.SwipeRefreshLayout>

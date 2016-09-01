@@ -17,7 +17,6 @@ import com.weilian.phonelive.AppContext;
 import com.weilian.phonelive.R;
 import com.weilian.phonelive.adapter.ViewPageFragmentAdapter;
 import com.weilian.phonelive.base.BaseFragment;
-import com.weilian.phonelive.fragment.AttentionFragment;
 import com.weilian.phonelive.fragment.HotFragment;
 import com.weilian.phonelive.fragment.NewestFragment;
 import com.weilian.phonelive.interf.PagerSlidingInterface;
@@ -35,8 +34,7 @@ public class IndexPagerFragment extends BaseFragment {
     ViewPager pager;
     @InjectView(R.id.tabs)
     PagerSlidingTabStrip tabs;
-    @InjectView(R.id.iv_hot_select_region)
-    ImageView mRegion;
+    //    ImageView mRegion;
     @InjectView(R.id.iv_hot_new_message)
     ImageView mIvNewMessage;
     private ViewPageFragmentAdapter viewPageFragmentAdapter;
@@ -46,7 +44,6 @@ public class IndexPagerFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_hot, null);
             ButterKnife.inject(this, view);
@@ -99,23 +96,25 @@ public class IndexPagerFragment extends BaseFragment {
     private void initView() {
 
         viewPageFragmentAdapter = new ViewPageFragmentAdapter(getFragmentManager(), pager);
-        viewPageFragmentAdapter.addTab(getString(R.string.attention), "gz", AttentionFragment.class, getBundle());
+//        viewPageFragmentAdapter.addTab(getString(R.string.attention), "gz", AttentionFragment.class, getBundle());
         viewPageFragmentAdapter.addTab(getString(R.string.hot), "rm", HotFragment.class, getBundle());
         viewPageFragmentAdapter.addTab(getString(R.string.daren), "dr", NewestFragment.class, getBundle());
 
+
+        if (null==pager||null==tabs) return;
         pager.setAdapter(viewPageFragmentAdapter);
 
-        pager.setOffscreenPageLimit(2);
+        pager.setOffscreenPageLimit(1);
         tabs.setViewPager(pager);
-        tabs.setUnderlineColor(getResources().getColor(R.color.gray2));
-        tabs.setDividerColor(getResources().getColor(R.color.gray2));
+        tabs.setUnderlineColor(getResources().getColor(R.color.transparent));
+        tabs.setDividerColor(getResources().getColor(R.color.transparent));
         tabs.setIndicatorColor(getResources().getColor(R.color.gray2));
-        tabs.setTextColor(Color.BLACK);
+        tabs.setTextColor(Color.WHITE);
         tabs.setTextSize((int) getResources().getDimension(R.dimen.text_size_6));
-        tabs.setSelectedTextColor(getResources().getColor(R.color.global));
+        tabs.setSelectedTextColor(getResources().getColor(R.color.white));
         tabs.setIndicatorHeight(2);
         tabs.setZoomMax(0f);
-        tabs.setIndicatorColorResource(R.color.global);
+        tabs.setIndicatorColorResource(R.color.white);
         tabs.setPagerSlidingListen(new PagerSlidingInterface() {
             @Override
             public void onItemClick(View v, int currentPosition, int position) {
@@ -126,7 +125,7 @@ public class IndexPagerFragment extends BaseFragment {
             }
         });
 
-        pager.setCurrentItem(1);
+        pager.setCurrentItem(0);
 
         tabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -136,7 +135,7 @@ public class IndexPagerFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
-                mRegion.setVisibility(1 == position ? View.VISIBLE : View.GONE);
+//                mRegion.setVisibility(1 == position ? View.VISIBLE : View.GONE);
                 //tabs.setIndicatorColorResource(1 == position? R.color.white:R.color.global);
             }
 

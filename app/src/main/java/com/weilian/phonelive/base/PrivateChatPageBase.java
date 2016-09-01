@@ -27,33 +27,14 @@ public abstract class PrivateChatPageBase extends BaseFragment {
         View v = inflater.inflate(R.layout.fragment_private_chat,null);
         initCreateView(inflater,container,savedInstanceState);
         ButterKnife.inject(this,v);
-        initBroadCast();
         initView(v);
         initData();
         return v;
-    }
-
-    private void initBroadCast() {
-        IntentFilter cmdFilter = new IntentFilter("com.weilian.phonelive");
-        if(broadCastReceiver == null){
-            broadCastReceiver = new BroadcastReceiver(){
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    // TODO Auto-generated method stub
-                    onNewMessage((EMMessage)intent.getParcelableExtra("cmd_value"));
-                }
-            };
-        }
-        getActivity().registerReceiver(broadCastReceiver,cmdFilter);
     }
 
 
     protected abstract void initCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
     protected abstract void onNewMessage(EMMessage messages);
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        getActivity().unregisterReceiver(broadCastReceiver);
-    }
+
 }

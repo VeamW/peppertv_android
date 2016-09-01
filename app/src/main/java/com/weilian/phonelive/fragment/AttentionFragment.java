@@ -77,7 +77,7 @@ public class AttentionFragment extends BaseFragment {
         StringCallback callback = new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
-                TLog.error("加载正在直播列表失败!");
+                TLog.error(e.getMessage());
             }
 
             @Override
@@ -90,9 +90,7 @@ public class AttentionFragment extends BaseFragment {
 
                     try {
                         JSONObject jsonObject = new JSONObject(res);
-                        TLog.error(jsonObject.toString() + ",userId:" + uid);
                         //playback
-                        TLog.error("attentionlive>>>>>>>>" + jsonObject.get("attentionlive").toString());
                         if (jsonObject.get("attentionlive") == null || jsonObject.get("attentionlive").toString().equals("{}") || jsonObject.get("attentionlive").toString().isEmpty() || jsonObject.get("attentionlive").toString().equals("[]"))
                             return;
                         JSONArray liveAndAttentionUserJson = jsonObject.getJSONArray("attentionlive");
@@ -126,7 +124,7 @@ public class AttentionFragment extends BaseFragment {
         }
         TLog.logv("mUserList.size()-->" + mUserList.size());
         if (mAdapter == null) {
-            mAdapter = new LiveUserAdapter(this, getActivity().getLayoutInflater(), mUserList);
+            mAdapter = new LiveUserAdapter(getActivity(), mUserList);
         }
         mLvAttentions.setAdapter(mAdapter);
         mLvAttentions.setOnItemClickListener(new AdapterView.OnItemClickListener() {

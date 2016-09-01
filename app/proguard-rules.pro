@@ -50,7 +50,6 @@
 -keepattributes *Annotation*
 -keepattributes Signature
 -keepattributes Exceptions,InnerClasses
-
 -dontwarn org.apache.**
 -dontwarn android.support.**
 -keep class com.hyphenate.** {*;}
@@ -180,6 +179,7 @@
  -keep class com.ksyun.media.player.stats.**{ *;}
  -keep class com.ksyun.media.player.util.**{ *;}
  -keep class com.ksyun.media.player.**{ *;}
+ -keep class com.weilian.phonelive.utils.**{*;}
 
 
 #ksy publish

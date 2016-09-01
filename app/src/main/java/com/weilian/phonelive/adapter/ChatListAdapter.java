@@ -70,7 +70,7 @@ public class ChatListAdapter extends BaseAdapter {
         viewHolder.mChat2.setText(c.getSendChatMsg());
         return convertView;
     }
-    protected class ViewHolder{
+    static  class ViewHolder{
         TextView mChat1,mChat2;
     }
 }

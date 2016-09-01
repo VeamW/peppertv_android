@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/rl_live_root"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_live_root"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <com.weilian.phonelive.widget.VideoSurfaceView
         android:id="@+id/video_view"
@@ -37,7 +37,7 @@
                 <TextView
                     android:layout_centerHorizontal="true"
                     android:layout_alignBottom="@id/iv_loading_camera"
-                    android:text="载入ing"
+                    android:text="载入ing. . . "
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:layout_marginTop="20dp"

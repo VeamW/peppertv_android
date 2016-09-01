@@ -7,7 +7,7 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="gray">#808080</color>
-    <color name="red">#FF0000</color>
+    <color name="red">#F14040</color>
     <color name="gold">#FFD700</color>
     <color name="yellow">#FFFF00</color>
     <color name="green">#008000</color>
@@ -18,9 +18,10 @@
     <color name="graywhite">#F5F5F5</color>
     <color name="grayslate">#708090</color>
     <color name="lightblue">#0083FF</color>
-    <color name="actionbarbackground">#BC2030</color>
-    <color name="global">#BC2030</color>
+    <color name="actionbarbackground">#F14040</color>
+    <color name="global">#F14040</color><!--BC2030-->
     <color name="global2">#F14040</color>
+    <color name="msg_color">#BC2030</color>
     <color name="gray2">#EEEEEE</color>
     <color name="order1_background_color">#FFE1E6</color>
     <color name="order2_background_color">#F9F0D7</color>
@@ -106,4 +107,7 @@
     <color name="live_strat_mask_bottom_bg">#1A1A1A</color>
     <color name="live_start_mask_edittext_color">#83817F</color>
     <color name="select_avatar_btn_color">#F14040</color>
+
+
+
 </resources>

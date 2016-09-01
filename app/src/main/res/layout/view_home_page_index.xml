@@ -59,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
+                android:visibility="gone"
                 android:orientation="horizontal"
                 android:padding="15dp"
                 android:layout_width="match_parent"
@@ -66,10 +67,10 @@
                 <TextView
                     android:text="@string/number"
                     style="@style/home_user_info_item_labe"/>
-                <TextView
+              <!--  <TextView
                     android:id="@+id/tv_home_page_num"
                     style="@style/home_user_info_item_content"
-                    />
+                    />-->
 
             </LinearLayout>
             <View style="@style/h_line"/>
@@ -84,7 +85,10 @@
                     />
                 <TextView
                     android:id="@+id/tv_home_page_sign2"
-                    style="@style/home_user_info_item_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+
                    />
 
             </LinearLayout>

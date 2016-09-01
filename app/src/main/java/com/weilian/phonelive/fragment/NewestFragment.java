@@ -1,6 +1,7 @@
 package com.weilian.phonelive.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,12 +19,14 @@ import com.weilian.phonelive.api.remote.ApiUtils;
 import com.weilian.phonelive.api.remote.PhoneLiveApi;
 import com.weilian.phonelive.base.BaseFragment;
 import com.weilian.phonelive.bean.UserBean;
+import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.utils.UIHelper;
 import com.weilian.phonelive.widget.LoadUrlImageView;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.kymjs.kjframe.Core;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,15 +45,29 @@ public class NewestFragment extends BaseFragment implements SwipeRefreshLayout.O
     @InjectView(R.id.sl_newest)
     SwipeRefreshLayout mRefresh;
     private int wh;
-
+    private View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_newest,null);
-        ButterKnife.inject(this,view);
-        initData();
+        if (null == view) {
+            view = inflater.inflate(R.layout.fragment_newest,null);
+            ButterKnife.inject(this,view);
+        }
         initView(view);
+        ViewGroup parent = (ViewGroup) view.getParent();
+        if (parent != null) {
+            parent.removeView(view);
+        }
         return view;
     }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getUserVisibleHint()) {
+            initData();
+        }
+    }
+
 
     @Override
     public void initData() {
@@ -61,13 +78,14 @@ public class NewestFragment extends BaseFragment implements SwipeRefreshLayout.O
         StringCallback callback = new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
+                if(null==mRefresh) return;
                 mRefresh.setRefreshing(false);
-
                 AppContext.showToastAppMsg(getActivity(),"获取最新直播失败");
             }
 
             @Override
             public void onResponse(String response) {
+                if(null==mRefresh) return;
                 mRefresh.setRefreshing(false);
 
                 String res = ApiUtils.checkIsSuccess(response,getActivity());
@@ -83,9 +101,7 @@ public class NewestFragment extends BaseFragment implements SwipeRefreshLayout.O
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }
-
             }
         };
         PhoneLiveApi.getNewestUserList(callback);
@@ -98,11 +114,11 @@ public class NewestFragment extends BaseFragment implements SwipeRefreshLayout.O
             mNewestLiveView.setColumnWidth(wh);
             mNewestLiveView.setAdapter(new NewestAdapter());
         }
-
     }
 
     @Override
     public void initView(View view) {
+        if (null==mNewestLiveView||null==mRefresh) return;
         mNewestLiveView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -145,7 +161,6 @@ public class NewestFragment extends BaseFragment implements SwipeRefreshLayout.O
             if(convertView == null){
                 convertView = View.inflate(getActivity(),R.layout.item_newest_user,null);
                 convertView.setLayoutParams(new GridView.LayoutParams(GridView.LayoutParams.MATCH_PARENT,wh));
-
                 viewHolder = new ViewHolder();
                 viewHolder.mUHead = (LoadUrlImageView) convertView.findViewById(R.id.iv_newest_item_user);
                 viewHolder.mUHead.getLayoutParams();

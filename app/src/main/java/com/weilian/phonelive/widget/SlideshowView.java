@@ -330,10 +330,7 @@ public class SlideshowView extends FrameLayout {
         @Override
         public void onResponse(String s) {
             String res = ApiUtils.checkIsSuccess(s);
-            Log.e(TAG, s + "------>" + res);
             if (s == null || s.isEmpty() || res == null || res.isEmpty()) return;
-
-            Log.e(TAG, res);
             try {
                 JSONArray rollPics = new JSONArray(res);
                 if (rollPics == null) return;

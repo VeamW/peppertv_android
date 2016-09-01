@@ -4,6 +4,7 @@ package com.weilian.phonelive.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -33,6 +34,7 @@ import com.weilian.phonelive.ui.SettingActivity;
 import com.weilian.phonelive.ui.SimpleBackActivity;
 import com.weilian.phonelive.ui.StartLiveActivity;
 import com.weilian.phonelive.ui.VideoPlayerActivity;
+import com.weilian.phonelive.ui.VodVideoPlayerActivity;
 import com.weilian.phonelive.ui.WebViewActivity;
 
 /**
@@ -71,7 +73,6 @@ public class UIHelper {
     public static void showLoginSelectActivity(Context context) {
         Intent intent = new Intent(context, LiveLoginSelectActivity.class);
         context.startActivity(intent);
-
     }
 
     /**
@@ -81,6 +82,7 @@ public class UIHelper {
      */
     public static void showMainActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
+//        Intent intent = new Intent(context, IndexActivity.class);
         context.startActivity(intent);
 
     }
@@ -181,6 +183,20 @@ public class UIHelper {
         intent.putExtra(VideoPlayerActivity.USER_INFO,bundle);
         context.startActivity(intent);
     }
+
+    /**
+     * 看点播
+     * @param context
+     * @param bundle
+     */
+    public static void showVodActivity(Context context, Bundle bundle) {
+        Intent intent = new Intent(context, VodVideoPlayerActivity.class);
+        intent.putExtra(VodVideoPlayerActivity.USER_INFO,bundle);
+        context.startActivity(intent);
+    }
+
+
+
     /**
      * 直播
      *
@@ -256,11 +272,15 @@ public class UIHelper {
     }
     //打开网页
     public static void showWebView(Context context,String url, String title) {
-        Intent intent = new Intent(context, WebViewActivity.class);
-        Bundle bundle = new Bundle();
+        Intent intent = new Intent(/*context, WebViewActivity.class*/);
+        intent.setAction(Intent. ACTION_VIEW );
+        intent.setData(Uri.parse( url ));
+
+    /*    Bundle bundle = new Bundle();
         bundle.putString("url",url);
         bundle.putString("title",title);
-        intent.putExtra("URL_INFO",bundle);
+        intent.putExtra("URL_INFO",bundle);*/
+
         context.startActivity(intent);
     }
     //黑名单

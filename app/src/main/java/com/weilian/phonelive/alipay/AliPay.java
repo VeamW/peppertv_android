@@ -4,27 +4,32 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.widget.Toast;
+
 import com.alipay.sdk.app.PayTask;
 import com.weilian.phonelive.AppContext;
 import com.weilian.phonelive.api.remote.ApiUtils;
 import com.weilian.phonelive.api.remote.PhoneLiveApi;
 import com.weilian.phonelive.ui.MyDiamondsActivity;
+import com.weilian.phonelive.utils.TLog;
 import com.zhy.http.okhttp.callback.StringCallback;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Set;
+
 import okhttp3.Call;
 
-public class AliPay{
+public class AliPay {
     public static final String TAG = "alipay-sdk";
-    private String notify_url = "http://yy.yunbaozhibo.com/public/appcmf/alipay_app/notify_url.php";
-
 
     private static final int SDK_PAY_FLAG = 1;
 
     private static final int SDK_CHECK_FLAG = 2;
 
     private static final int ALIPAY = 3;
-    private String mOut_trade_no;
     private MyDiamondsActivity mPayActivity;
     private String rechargeNum;
 
@@ -32,64 +37,56 @@ public class AliPay{
         this.mPayActivity = payActivity;
     }
 
-    public void initPay(String money,String num){
-            rechargeNum = num;
-            final  String subject = num + "钻石";
-            final String body = num +"钻石";
-            final String total_fee = "0.01";
-            int uid =AppContext.getInstance().getLoginUid();
-            //服务器异步通知页面路径,需要自己定义  参数 notify_url，如果商户没设定，则不会进行该操作
-            final String url = notify_url;
+    public void initPay(String money, String num) {
+        rechargeNum = num;
+        int uid = AppContext.getInstance().getLoginUid();
+        //获取订单号码
+        StringCallback callback = new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e) {
+                AppContext.showToastAppMsg(mPayActivity, "支付失败");
+            }
 
-            //获取订单号码
-            StringCallback callback = new StringCallback() {
-                @Override
-                public void onError(Call call, Exception e) {
-                    AppContext.showToastAppMsg(mPayActivity,"支付失败");
-                }
-
-                @Override
-                public void onResponse(String response) {
-                    String res = ApiUtils.checkIsSuccess(response,mPayActivity);
-                    if(null != res){
-                        mOut_trade_no = res.trim();
-                        String orderInfo = getOrderInfo(mOut_trade_no,subject, body,total_fee,url);
-                        String sign = sign(orderInfo);
-                        try {
-                            // 仅需对sign 做URL编码
-                            sign = URLEncoder.encode(sign, "UTF-8");
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
+            @Override
+            public void onResponse(String response) {
+                String res = ApiUtils.checkIsSuccess(response, mPayActivity);
+                if (null != res) {
+                    try {
+                        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+                        JSONObject object = new JSONObject(res);
+                        Iterator<String> iterator = object.keys();
+                        while (iterator.hasNext()) {
+                            String key = iterator.next();
+                            String value = object.getString(key);
+                            map.put(key, "\"" + value + "\"");
                         }
-                        final String payInfo = orderInfo + "&sign=\"" + sign + "\"&"
-                                + getSignType();
+                        String orderInfo = getOrderInfo(map);
                         Message msg = new Message();
                         msg.what = ALIPAY;
-                        msg.obj = payInfo;
+                        msg.obj = orderInfo;
                         mHandler.sendMessage(msg);
-                    }else{
-                        AppContext.showToastAppMsg(mPayActivity,"支付失败");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
 
+                } else {
+                    AppContext.showToastAppMsg(mPayActivity, "支付失败");
                 }
-            };
-            PhoneLiveApi.getAliPayOrderNum(uid,AppContext.getInstance().getToken(), callback);
 
-
-
+            }
+        };
+        PhoneLiveApi.getAliPayOrderNum(uid, money,AppContext.getInstance().getToken(), callback);
     }
 
 
-    private void AldiaoYong(final String payInfo){
+    private void AldiaoYong(final String payInfo) {
         Runnable payRunnable = new Runnable() {
-
             @Override
             public void run() {
                 // 构造PayTask 对象
                 PayTask alipay = new PayTask(mPayActivity);
                 // 调用支付接口
                 String result = alipay.pay(payInfo);
-
                 Message msg = new Message();
                 msg.what = SDK_PAY_FLAG;
                 msg.obj = result;
@@ -107,9 +104,7 @@ public class AliPay{
             switch (msg.what) {
                 case SDK_PAY_FLAG: {
                     Result resultObj = new Result((String) msg.obj);
-
                     String resultStatus = resultObj.toString();
-
                     // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
                     if (TextUtils.equals(resultObj.getResultStatus(), "9000")) {
                         AppContext.showToastAppMsg(mPayActivity, "支付成功");
@@ -117,7 +112,7 @@ public class AliPay{
                         intent.putExtra("result", 1);
                         mPayActivity.startActivity(intent);
                         mPayActivity.finish();*/
-                        mPayActivity.rechargeResult(true,rechargeNum);
+                        mPayActivity.rechargeResult(true, rechargeNum);
 
                     } else {
                         // 判断resultStatus 为非“9000”则代表可能支付失败
@@ -139,22 +134,34 @@ public class AliPay{
                             Toast.LENGTH_SHORT).show();
                     break;
                 }
-                case ALIPAY:{
-
+                case ALIPAY: {
                     AldiaoYong((String) msg.obj);
                     break;
                 }
                 default:
                     break;
             }
-        };
+        }
+
     };
+
+    public String getOrderInfo(LinkedHashMap<String, String> map) {
+        StringBuilder info = new StringBuilder();
+        Set<String> set = map.keySet();
+        for (String key :
+                set) {
+            info.append(key + "=" + map.get(key));
+            info.append("&");
+        }
+        info.substring(0, info.length() - 1);
+        return info.substring(0, info.length() - 1);
+    }
+
 
     /**
      * create the order info. 创建订单信息
-     *
      */
-    public String getOrderInfo( String out_trade_no,String subject,String body, String price,String url) {
+    public String getOrderInfo(String out_trade_no, String subject, String body, String price, String url) {
         // 合作者身份ID
         String orderInfo = "partner=" + "\"" + Keys.DEFAULT_PARTNER + "\"";
 
@@ -200,11 +207,11 @@ public class AliPay{
 
         return orderInfo;
     }
+
     /**
      * sign the order info. 对订单信息进行签名
      *
-     * @param content
-     *            待签名订单信息
+     * @param content 待签名订单信息
      */
     public String sign(String content) {
         return SignUtils.sign(content, Keys.PRIVATE);
@@ -212,7 +219,6 @@ public class AliPay{
 
     /**
      * get the sign type we use. 获取签名方式
-     *
      */
     public String getSignType() {
         return "sign_type=\"RSA\"";

@@ -74,6 +74,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
         init(savedInstanceState);
         init(this);
         _isVisible = true;
+
     }
 
     protected void onBeforeSetContentLayout() {}

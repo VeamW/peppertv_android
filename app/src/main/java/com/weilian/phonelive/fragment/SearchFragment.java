@@ -18,6 +18,7 @@ import com.weilian.phonelive.api.remote.PhoneLiveApi;
 import com.weilian.phonelive.base.BaseFragment;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.utils.UIHelper;
+import com.weilian.phonelive.utils.Utils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONArray;
@@ -40,10 +41,11 @@ public class SearchFragment extends BaseFragment {
     @InjectView(R.id.lv_search)
     ListView mLvSearch;
     private List<UserBean> mUserList = new ArrayList<>();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search_index,null);
-        ButterKnife.inject(this,view);
+        View view = inflater.inflate(R.layout.fragment_search_index, null);
+        ButterKnife.inject(this, view);
         initView(view);
         initData();
         return view;
@@ -51,10 +53,12 @@ public class SearchFragment extends BaseFragment {
 
     @Override
     public void initView(View view) {
+        if (null == mLvSearch) return;
         mLvSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                UIHelper.showHomePageActivity(getActivity(),mUserList.get(position).getId());
+                if (Utils.isFastClick()) return;
+                UIHelper.showHomePageActivity(getActivity(), mUserList.get(position).getId());
             }
         });
     }
@@ -63,13 +67,14 @@ public class SearchFragment extends BaseFragment {
     public void initData() {
 
     }
-    @OnClick({R.id.iv_private_chat_back,R.id.tv_search_btn})
+
+    @OnClick({R.id.iv_private_chat_back, R.id.tv_search_btn})
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.iv_private_chat_back:
                 getActivity().finish();
-            break;
+                break;
             case R.id.tv_search_btn:
                 search();
                 break;
@@ -80,7 +85,7 @@ public class SearchFragment extends BaseFragment {
     private void search() {
         showWaitDialog();
         String screenKey = mSearchKey.getText().toString().trim();
-        if(!screenKey.equals("")){
+        if (!screenKey.equals("")) {
             StringCallback callback = new StringCallback() {
                 @Override
                 public void onError(Call call, Exception e) {
@@ -90,15 +95,15 @@ public class SearchFragment extends BaseFragment {
                 @Override
                 public void onResponse(String response) {
                     hideWaitDialog();
-                    String res = ApiUtils.checkIsSuccess(response,getActivity());
+                    String res = ApiUtils.checkIsSuccess(response, getActivity());
 
-                    if(null != res){
+                    if (null != res) {
                         Gson g = new Gson();
                         try {
                             JSONArray searchUserJsonArray = new JSONArray(res);
                             mUserList.clear();
-                            for(int i=0;i<searchUserJsonArray.length();i++){
-                                mUserList.add(g.fromJson(searchUserJsonArray.getString(i),UserBean.class));
+                            for (int i = 0; i < searchUserJsonArray.length(); i++) {
+                                mUserList.add(g.fromJson(searchUserJsonArray.getString(i), UserBean.class));
                             }
                             fillUI();
                         } catch (JSONException e) {
@@ -108,20 +113,22 @@ public class SearchFragment extends BaseFragment {
                     }
                 }
             };
-            PhoneLiveApi.search(screenKey,callback, AppContext.getInstance().getLoginUid());
+            PhoneLiveApi.search(screenKey, callback, AppContext.getInstance().getLoginUid());
         }
     }
 
     private void fillUI() {
-
+        if (null == mLvSearch) return;
         mLvSearch.setAdapter(new UserBaseInfoAdapter(mUserList));
 
     }
+
     public void onResume() {
         super.onResume();
         MobclickAgent.onPageStart("搜索"); //统计页面(仅有Activity的应用中SDK自动调用，不需要单独写。"SplashScreen"为页面名称，可自定义)
         MobclickAgent.onResume(getActivity());          //统计时长
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd("搜索"); // （仅有Activity的应用中SDK自动调用，不需要单独写）保证 onPageEnd 在onPause 之前调用,因为 onPause 中会保存信息。"SplashScreen"为页面名称，可自定义

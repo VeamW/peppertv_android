@@ -19,6 +19,7 @@ import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.utils.FileUtil;
 import com.weilian.phonelive.utils.ImageUtils;
 import com.weilian.phonelive.utils.StringUtils;
+import com.weilian.phonelive.utils.Utils;
 import com.weilian.phonelive.widget.LoadUrlImageView;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -40,13 +41,15 @@ public class SelectAvatarActivity extends BaseActivity {
 
     private final static String FILE_SAVEPATH = Environment
             .getExternalStorageDirectory().getAbsolutePath()
-            + "/PhoneLive/Portrait/"; 
+            + "/PhoneLive/Portrait/";
     private Uri origUri;
     private Uri cropUri;
     private File protraitFile;
     private Bitmap protraitBitmap;
     private String protraitPath;
     private String theLarge;
+    private String imgUrl;
+
     @Override
     public void initView() {
 
@@ -56,10 +59,11 @@ public class SelectAvatarActivity extends BaseActivity {
     public void initData() {
         mUHead.setImageLoadUrl(getIntent().getStringExtra("uhead"));
     }
-    @OnClick({R.id.iv_select_avatar_back,R.id.btn_avator_from_album,R.id.btn_avator_photograph})
+
+    @OnClick({R.id.iv_select_avatar_back, R.id.btn_avator_from_album, R.id.btn_avator_photograph})
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.iv_select_avatar_back:
                 finish();
                 break;
@@ -72,9 +76,10 @@ public class SelectAvatarActivity extends BaseActivity {
         }
 
     }
+
     /**
-    * 选择图片裁剪
-    */
+     * 选择图片裁剪
+     */
     private void startImagePick() {
         Intent intent;
         if (Build.VERSION.SDK_INT < 19) {
@@ -91,18 +96,18 @@ public class SelectAvatarActivity extends BaseActivity {
                     ImageUtils.REQUEST_CODE_GETIMAGE_BYCROP);
         }
     }
+
     // 裁剪头像的绝对路径
     private Uri getUploadTempFile(Uri uri) {
         String storageState = Environment.getExternalStorageState();
 
-        String extFileDir =null;
+        String extFileDir = null;
 
         if (storageState.equals(Environment.MEDIA_MOUNTED)) {
             File savedir = new File(FILE_SAVEPATH);
             if (!savedir.exists()) {
-                if(!savedir.mkdirs())
-                {
-                    extFileDir   = getExternalFilesDir(null).getAbsolutePath();
+                if (!savedir.mkdirs()) {
+                    extFileDir = getExternalFilesDir(null).getAbsolutePath();
                 }
 
             }
@@ -124,23 +129,23 @@ public class SelectAvatarActivity extends BaseActivity {
         String cropFileName = "osc_crop_" + timeStamp + "." + ext;
         // 裁剪头像的绝对路径
 
-        if(extFileDir==null) {
+        if (extFileDir == null) {
 
             protraitPath = FILE_SAVEPATH + cropFileName;
 
-        }else{
+        } else {
 
-            protraitPath = extFileDir+"/"+cropFileName;
+            protraitPath = extFileDir + "/" + cropFileName;
         }
 
 
         protraitFile = new File(protraitPath);
 
 
-
         cropUri = Uri.fromFile(protraitFile);
         return this.cropUri;
     }
+
     private void startTakePhoto() {
         Intent intent;
         // 判断是否挂载了SD卡
@@ -151,10 +156,9 @@ public class SelectAvatarActivity extends BaseActivity {
                     .getAbsolutePath() + "/oschina/Camera/";
             File savedir = new File(savePath);
             if (!savedir.exists()) {
-               if(!savedir.mkdirs())
-               {
-                   savePath =getExternalFilesDir(null).getAbsolutePath()+"/";
-               }
+                if (!savedir.mkdirs()) {
+                    savePath = getExternalFilesDir(null).getAbsolutePath() + "/";
+                }
             }
         }
 
@@ -178,6 +182,7 @@ public class SelectAvatarActivity extends BaseActivity {
         startActivityForResult(intent,
                 ImageUtils.REQUEST_CODE_GETIMAGE_BYCAMERA);
     }
+
     /**
      * 拍照后裁剪
      *
@@ -197,6 +202,7 @@ public class SelectAvatarActivity extends BaseActivity {
         startActivityForResult(intent,
                 ImageUtils.REQUEST_CODE_GETIMAGE_BYSDCARD);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnIntent) {
         if (resultCode != Activity.RESULT_OK)
@@ -214,6 +220,8 @@ public class SelectAvatarActivity extends BaseActivity {
                 break;
         }
     }
+
+
     /**
      * 上传新照片
      */
@@ -232,32 +240,32 @@ public class SelectAvatarActivity extends BaseActivity {
 
             try {
                 PhoneLiveApi.updatePortrait(AppContext.getInstance()
-                        .getLoginUid(),AppContext.getInstance().getToken(),protraitFile,
-                        new StringCallback(){
+                                .getLoginUid(), AppContext.getInstance().getToken(), protraitFile,
+                        new StringCallback() {
 
                             @Override
                             public void onError(Call call, Exception e) {
-                                AppContext.showToastAppMsg(SelectAvatarActivity.this,"上传头像失败");
+                                AppContext.showToastAppMsg(SelectAvatarActivity.this, "上传头像失败");
                                 hideWaitDialog();
                             }
 
                             @Override
                             public void onResponse(String response) {
-                                String res = ApiUtils.checkIsSuccess(response,SelectAvatarActivity.this);
-                                if(null != res){
+                                String res = ApiUtils.checkIsSuccess(response, SelectAvatarActivity.this);
+                                if (null != res) {
                                     AppContext.showToastAppMsg(SelectAvatarActivity.this, "头像修改成功");
                                     UserBean u = AppContext.getInstance().getLoginUser();
                                     u.setAvatar(res);
                                     mUHead.setImageLoadUrl(res);
                                     AppContext.getInstance().updateUserInfo(u);
-
+                                    Utils.IS_IMG_CHANGED = true;
                                 }
                                 hideWaitDialog();
                             }
                         });
 
             } catch (Exception e) {
-				hideWaitDialog();
+                hideWaitDialog();
                 AppContext.showToast("图像不存在，上传失败");
             }
         }
@@ -270,6 +278,7 @@ public class SelectAvatarActivity extends BaseActivity {
         MobclickAgent.onPageStart("头像上传"); //统计页面(仅有Activity的应用中SDK自动调用，不需要单独写。"SplashScreen"为页面名称，可自定义)
         MobclickAgent.onResume(this);          //统计时长
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd("头像上传"); // （仅有Activity的应用中SDK自动调用，不需要单独写）保证 onPageEnd 在onPause 之前调用,因为 onPause 中会保存信息。"SplashScreen"为页面名称，可自定义

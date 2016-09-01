@@ -73,7 +73,6 @@ public class AttentionActivity extends BaseActivity {
                 if (res != null) {
                     try {
                         JSONArray fansJsonArr = new JSONArray(res);
-                        TLog.error("uid:" + getIntent().getIntExtra("uid", 0) + ",ucuid:" + AppContext.getInstance().getLoginUid());
                         if (fansJsonArr.length() > 0) {
                             Gson gson = new Gson();
                             mAttentionList = new ArrayList<>();

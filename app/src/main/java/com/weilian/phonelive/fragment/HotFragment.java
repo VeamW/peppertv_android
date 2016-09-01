@@ -1,7 +1,6 @@
 package com.weilian.phonelive.fragment;
 
 
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -9,7 +8,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
@@ -22,18 +20,20 @@ import com.weilian.phonelive.AppContext;
 import com.weilian.phonelive.R;
 import com.weilian.phonelive.api.remote.ApiUtils;
 import com.weilian.phonelive.api.remote.PhoneLiveApi;
-import com.weilian.phonelive.base.BaseApplication;
 import com.weilian.phonelive.base.BaseFragment;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.ui.VideoPlayerActivity;
 import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.utils.UIHelper;
+import com.weilian.phonelive.utils.Utils;
 import com.weilian.phonelive.viewpagerfragment.IndexPagerFragment;
 import com.weilian.phonelive.widget.AvatarView;
 import com.weilian.phonelive.widget.LoadUrlImageView;
 import com.zhy.http.okhttp.callback.StringCallback;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,28 +56,41 @@ public class HotFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
     private LayoutInflater inflater;
     private HotUserListAdapter mHotUserListAdapter;
     private Handler handler;
+    private View view;
+
+
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_index_hot,null);
-        ButterKnife.inject(this,view);
         this.inflater = inflater;
+        if (null == view) {
+            view = inflater.inflate(R.layout.fragment_index_hot, null);
+            ButterKnife.inject(this, view);
+            initData();
+        }
         initView();
-        initData();
+        ViewGroup parent = (ViewGroup) view.getParent();
+        if (parent != null) {
+            parent.removeView(view);
+        }
 
         return view;
     }
-    private void initView(){
+
+
+    private void initView() {
         mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.actionbarbackground));
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mListUserRoom.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                UserBean user = mUserList.get(position-1);
+                if (Utils.isFastClick()) return;
+                UserBean user = mUserList.get(position - 1);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(VideoPlayerActivity.USER_INFO,user);
-                UIHelper.showLookLiveActivity(getActivity(),bundle);
+                bundle.putSerializable(VideoPlayerActivity.USER_INFO, user);
+                UIHelper.showLookLiveActivity(getActivity(), bundle);
             }
         });
     }
@@ -86,18 +99,16 @@ public class HotFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        BaseApplication.getRefWatcher(BaseApplication.context()).watch(this);
     }
 
     @Override
     public void initData() {
-        if(mHotUserListAdapter == null){
+        if (mHotUserListAdapter == null) {
             mHotUserListAdapter = new HotUserListAdapter();
-            mListUserRoom.addHeaderView(inflater.inflate(R.layout.view_hot_rollpic,null));
+            mListUserRoom.addHeaderView(inflater.inflate(R.layout.view_hot_rollpic, null));
         }
         PhoneLiveApi.getIndexHotUserList(callback);
-
-        if(handler == null){
+        if (handler == null) {
             handler = new Handler();
         }
         handler.postDelayed(new Runnable() {
@@ -105,46 +116,53 @@ public class HotFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
             public void run() {
                 initData();
             }
-        },60000);
+        }, 60000);
 
     }
 
     private void fillUI() {
-        if(null != mDefaultLayoutView ){
+        if (null != mDefaultLayoutView) {
             mDefaultLayoutView.setVisibility(View.GONE);
             mDefaultLayoutView = null;
         }
-
+        if (null == mListUserRoom || null == mSwipeRefreshLayout || null == mHotUserListAdapter)
+            return;
         mListUserRoom.setVisibility(View.VISIBLE);
-        if(mSwipeRefreshLayout.isRefreshing()){
+        if (mSwipeRefreshLayout.isRefreshing()) {
             mHotUserListAdapter.notifyDataSetChanged();
-        }else{
+        } else {
             mListUserRoom.setAdapter(mHotUserListAdapter);
         }
 
     }
+
     private StringCallback callback = new StringCallback() {
         @Override
         public void onError(Call call, Exception e) {
-            AppContext.showToastAppMsg(getActivity(),"获取数据失败请刷新重试~");
+            AppContext.showToastAppMsg(getActivity(), "获取数据失败请刷新重试~");
+            if (null == mSwipeRefreshLayout) return;
             mSwipeRefreshLayout.setRefreshing(false);
         }
 
         @Override
         public void onResponse(String s) {
+            if (null == mSwipeRefreshLayout) return;
             mSwipeRefreshLayout.setRefreshing(false);
             mUserList.clear();
-            String res = ApiUtils.checkIsSuccess(s,getActivity());
+            String res = ApiUtils.checkIsSuccess(s, getActivity());
             try {
-                if(res == null) return;
+                if (res == null) return;
                 JSONArray resJa = new JSONArray(res);
-                if(resJa == null )return;
-                if(resJa.length()>0){
-                    for(int i = 0;i<resJa.length();i++){
-                        UserBean user =new Gson().fromJson(resJa.getJSONObject(i).toString(),UserBean.class);
+                if (resJa == null) return;
+                if (resJa.length() > 0) {
+                    for (int i = 0; i < resJa.length(); i++) {
+                        UserBean user = new Gson().fromJson(resJa.getJSONObject(i).toString(), UserBean.class);
                         mUserList.add(user);
                     }
                     fillUI();
+                } else {
+                    if (mDefaultLayoutView != null)
+                        mDefaultLayoutView.setVisibility(View.VISIBLE);
                 }
 
             } catch (JSONException e) {
@@ -152,26 +170,28 @@ public class HotFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
             }
         }
     };
+
     @Override
     public void onResume() {
         super.onResume();
-        if(IndexPagerFragment.mSex != 0 || !IndexPagerFragment.mArea.equals("")){
-            selectTermsScreen(IndexPagerFragment.mSex,IndexPagerFragment.mArea);
+        if (IndexPagerFragment.mSex != 0 || !IndexPagerFragment.mArea.equals("")) {
+            selectTermsScreen(IndexPagerFragment.mSex, IndexPagerFragment.mArea);
         }
 
     }
 
-    public void selectTermsScreen(int sex, String area){
-        PhoneLiveApi.selectTermsScreen(sex,area,callback);
+    public void selectTermsScreen(int sex, String area) {
+        PhoneLiveApi.selectTermsScreen(sex, area, callback);
     }
+
     //下拉刷新
     @Override
     public void onRefresh() {
         //PhoneLiveApi.getIndexHotUserList(callback);
-        PhoneLiveApi.selectTermsScreen(IndexPagerFragment.mSex,IndexPagerFragment.mArea,callback);
+        PhoneLiveApi.selectTermsScreen(IndexPagerFragment.mSex, IndexPagerFragment.mArea, callback);
     }
 
-    private class HotUserListAdapter extends BaseAdapter{
+    private class HotUserListAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
@@ -192,8 +212,8 @@ public class HotFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
         public View getView(int position, View convertView, ViewGroup parent) {
 
             ViewHolder viewHolder;
-            if(convertView == null){
-                convertView = inflater.inflate(R.layout.item_hot_user,null);
+            if (convertView == null) {
+                convertView = inflater.inflate(R.layout.item_hot_user, null);
                 viewHolder = new ViewHolder();
                 viewHolder.mUserNick = (TextView) convertView.findViewById(R.id.tv_live_nick);
                 viewHolder.mUserLocal = (TextView) convertView.findViewById(R.id.tv_live_local);
@@ -202,11 +222,10 @@ public class HotFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
                 viewHolder.mUserPic = (LoadUrlImageView) convertView.findViewById(R.id.iv_live_user_pic);
                 viewHolder.mRoomTitle = (TextView) convertView.findViewById(R.id.tv_hot_room_title);
                 convertView.setTag(viewHolder);
-            }else{
+            } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
             UserBean user = mUserList.get(position);
-
             viewHolder.mUserNick.setText(user.getUser_nicename());
             viewHolder.mUserLocal.setText(user.getCity());
             //viewHolder.mUserPic.setImageLoadUrl(user.getAvatar());
@@ -218,19 +237,30 @@ public class HotFragment extends BaseFragment implements SwipeRefreshLayout.OnRe
                     .placeholder(R.drawable.null_blacklist)
                     .crossFade()
                     .into(viewHolder.mUserPic);
+//            viewHolder.mUserPic.setImageLoadUrl(user.getAvatar());
+
+        /*    Glide
+                    .with(HotFragment.this)
+                    .load(user.getAvatar())
+                    .placeholder(R.drawable.null_blacklist)
+                    .skipMemoryCache(false)
+                    .into(viewHolder.mUserHead);*/
             viewHolder.mUserHead.setAvatarUrl(user.getAvatar());
-            viewHolder.mUserNums.setText(String.valueOf(user.getNums()));
-            if(null !=user.getTitle()){
+            viewHolder.mUserNums.setText(String.valueOf(user.getNums() + "人正在观看"));
+            if (null != user.getTitle()) {
                 viewHolder.mRoomTitle.setVisibility(View.VISIBLE);
                 viewHolder.mRoomTitle.setText(user.getTitle());
             }
             return convertView;
         }
     }
-    private class ViewHolder{
-        public TextView mUserNick,mUserLocal,mUserNums,mRoomTitle;
+
+    private class ViewHolder {
+        public TextView mUserNick, mUserLocal, mUserNums, mRoomTitle;
         public LoadUrlImageView mUserPic;
         public AvatarView mUserHead;
     }
+
+
 
 }

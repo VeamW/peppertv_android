@@ -24,8 +24,8 @@ import com.weilian.phonelive.base.BaseFragment;
 import com.weilian.phonelive.bean.PrivateChatUserBean;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.ui.other.PhoneLivePrivateChat;
-import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.utils.UIHelper;
+import com.weilian.phonelive.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +82,7 @@ public class MessageDetailFragment extends BaseFragment {
                 getActivity().finish();
                 break;
             case R.id.iv_private_chat_user:
+                if (Utils.isFastClick()) return;
                 UIHelper.showHomePageActivity(getActivity(), mToUser.getId());
                 break;
         }
@@ -90,6 +91,7 @@ public class MessageDetailFragment extends BaseFragment {
 
     @Override
     public void initData() {
+        if (null==mTitle||null==mChatMessageListView) return;
         EMClient.getInstance().chatManager().addMessageListener(msgListener);
         mUser = AppContext.getInstance().getLoginUser();
         mToUser = (PrivateChatUserBean) getActivity().getIntent().getSerializableExtra("user");
@@ -97,6 +99,7 @@ public class MessageDetailFragment extends BaseFragment {
         getUnreadRecord();
         mMessageAdapter = new MessageAdapter(AppContext.getInstance().getLoginUid(), getActivity());
         mMessageAdapter.setChatList(mChats);
+        if (null == mChatMessageListView) return;
         mChatMessageListView.setAdapter(mMessageAdapter);
         mChatMessageListView.setSelection(mChats.size() - 1);
 
@@ -115,6 +118,7 @@ public class MessageDetailFragment extends BaseFragment {
 
     @Override
     public void initView(View view) {
+        if (null == mMessageInput) return;
         mMessageInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -122,7 +126,7 @@ public class MessageDetailFragment extends BaseFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if (null == mSendChatBtn) return;
                 if (!mMessageInput.getText().toString().equals("")) {
                     mSendChatBtn.setVisibility(View.VISIBLE);
                     //mShowGiftBtn.setVisibility(View.GONE);
@@ -140,6 +144,7 @@ public class MessageDetailFragment extends BaseFragment {
     }
 
     private void updateChatList(EMMessage message) {
+        if (null == mMessageAdapter || null == mChatMessageListView) return;
         mMessageAdapter.addMessage(message);
         mChatMessageListView.setAdapter(mMessageAdapter);
         mChatMessageListView.setSelection(mMessageAdapter.getCount() - 1);
@@ -241,6 +246,5 @@ public class MessageDetailFragment extends BaseFragment {
         MobclickAgent.onPageEnd("私信聊天页面"); // （仅有Activity的应用中SDK自动调用，不需要单独写）保证 onPageEnd 在onPause 之前调用,因为 onPause 中会保存信息。"SplashScreen"为页面名称，可自定义
         MobclickAgent.onPause(getActivity());
     }
-
 
 }

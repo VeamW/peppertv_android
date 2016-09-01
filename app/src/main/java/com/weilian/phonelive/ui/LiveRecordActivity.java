@@ -1,9 +1,12 @@
 package com.weilian.phonelive.ui;
 
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -21,16 +24,20 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 import okhttp3.Call;
 
 /**
  * 直播记录
  */
-public class LiveRecordActivity extends BaseActivity{
+public class LiveRecordActivity extends BaseActivity {
     @InjectView(R.id.lv_live_record)
     ListView mLiveRecordList;
     ArrayList<LiveRecordBean> mRecordList = new ArrayList<>();
+
+
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_live_record;
@@ -47,21 +54,25 @@ public class LiveRecordActivity extends BaseActivity{
         StringCallback callback = new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
-                AppContext.showToastAppMsg(LiveRecordActivity.this,"获取直播纪录失败");
+                AppContext.showToastAppMsg(LiveRecordActivity.this, "获取直播纪录失败");
+
             }
 
             @Override
             public void onResponse(String response) {
-                String res = ApiUtils.checkIsSuccess(response,LiveRecordActivity.this);
-                if(null != res){
+                String res = ApiUtils.checkIsSuccess(response, LiveRecordActivity.this);
+                if (null == res) {
+                    return;
+                }
+                if (null != res) {
                     //TLog.log(res);
                     try {
                         JSONObject liveRecordJsonObj = new JSONObject(res);
                         JSONArray liveRecordJsonArray = liveRecordJsonObj.getJSONArray("list");
-                        if(0 < liveRecordJsonArray.length()){
+                        if (0 < liveRecordJsonArray.length()) {
                             Gson g = new Gson();
-                            for(int i = 0; i < liveRecordJsonArray.length(); i++){
-                                mRecordList.add(g.fromJson(liveRecordJsonArray.getString(i),LiveRecordBean.class));
+                            for (int i = 0; i < liveRecordJsonArray.length(); i++) {
+                                mRecordList.add(g.fromJson(liveRecordJsonArray.getString(i), LiveRecordBean.class));
                             }
                         }
                         fillUI();
@@ -72,10 +83,11 @@ public class LiveRecordActivity extends BaseActivity{
                 }
             }
         };
-        PhoneLiveApi.getLiveRecord(getIntent().getIntExtra("uid",0),callback);
+        PhoneLiveApi.getLiveRecord(getIntent().getIntExtra("uid", 0), callback);
     }
 
     private void fillUI() {
+        if (null == mLiveRecordList) return;
         mLiveRecordList.setAdapter(new LiveRecordAdapter());
     }
 
@@ -88,7 +100,15 @@ public class LiveRecordActivity extends BaseActivity{
     protected boolean hasBackButton() {
         return true;
     }
-    class LiveRecordAdapter extends BaseAdapter{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.inject(this);
+    }
+
+    class LiveRecordAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
@@ -108,14 +128,14 @@ public class LiveRecordActivity extends BaseActivity{
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder viewHolder;
-            if(null == convertView){
-                convertView = View.inflate(LiveRecordActivity.this,R.layout.item_live_record,null);
+            if (null == convertView) {
+                convertView = View.inflate(LiveRecordActivity.this, R.layout.item_live_record, null);
                 viewHolder = new ViewHolder();
                 viewHolder.mLiveNum = (TextView) convertView.findViewById(R.id.tv_item_live_record_num);
                 viewHolder.mLiveTime = (TextView) convertView.findViewById(R.id.tv_item_live_record_time);
                 viewHolder.mLiveTitle = (TextView) convertView.findViewById(R.id.tv_item_live_record_title);
                 convertView.setTag(viewHolder);
-            }else{
+            } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
             LiveRecordBean l = mRecordList.get(position);
@@ -124,8 +144,9 @@ public class LiveRecordActivity extends BaseActivity{
             viewHolder.mLiveTime.setText(l.getDatetime());
             return convertView;
         }
-        class ViewHolder{
-            public TextView mLiveTime,mLiveNum,mLiveTitle;
+
+        class ViewHolder {
+            public TextView mLiveTime, mLiveNum, mLiveTitle;
         }
     }
 

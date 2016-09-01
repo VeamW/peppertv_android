@@ -31,6 +31,7 @@
         <ListView
             android:divider="@null"
             android:id="@+id/lv_message"
+            android:listSelector="@color/transparent"
             android:layout_width="match_parent"
             android:layout_height="260dp">
         </ListView>

@@ -3,12 +3,15 @@ package com.weilian.phonelive.utils;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import android.text.TextUtils;
 
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+
 public class MD5 {
     private static final char HEX_DIGITS[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-            'A', 'B', 'C', 'D', 'E', 'F' };
+            'A', 'B', 'C', 'D', 'E', 'F'};
 
     public static void main(String[] args) {
         System.out.println(md5sum("/init.rc"));
@@ -42,4 +45,84 @@ public class MD5 {
             return "";
         }
     }
+
+    /**
+     * @param str
+     * @return
+     * @Date: 2013-9-6
+     * @Author: lulei
+     * @Description: 32位小写MD5
+     */
+    public static String parseStrToMd5L32(String str) {
+        String reStr = null;
+        try {
+            MessageDigest md5 = null;
+            try {
+                md5 = MessageDigest.getInstance("MD5");
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+            byte[] bytes = md5.digest(str.getBytes());
+            StringBuffer stringBuffer = new StringBuffer();
+            for (byte b : bytes) {
+                int bt = b & 0xff;
+                if (bt < 16) {
+                    stringBuffer.append(0);
+                }
+                stringBuffer.append(Integer.toHexString(bt));
+            }
+            reStr = stringBuffer.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return reStr;
+    }
+
+    /**
+     * @param str
+     * @return
+     * @Date: 2013-9-6
+     * @Author: lulei
+     * @Description: 32位大写MD5
+     */
+    public static String parseStrToMd5U32(String str) {
+        String reStr = parseStrToMd5L32(str);
+        if (reStr != null) {
+            reStr = reStr.toUpperCase();
+        }
+        return reStr;
+    }
+
+    /**
+     * @param str
+     * @return
+     * @Date: 2013-9-6
+     * @Author: lulei
+     * @Description: 16位小写MD5
+     */
+    public static String parseStrToMd5U16(String str) {
+        String reStr = parseStrToMd5L32(str);
+        if (reStr != null) {
+            reStr = reStr.toUpperCase().substring(8, 24);
+        }
+        return reStr;
+    }
+
+    /**
+     * @param str
+     * @return
+     * @Date: 2013-9-6
+     * @Author: lulei
+     * @Description: 16位大写MD5
+     */
+    public static String parseStrToMd5L16(String str) {
+        String reStr = parseStrToMd5L32(str);
+        if (reStr != null) {
+            reStr = reStr.substring(8, 24);
+        }
+        return reStr;
+    }
+
 }

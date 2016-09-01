@@ -297,7 +297,6 @@ public abstract class ShowLiveActivityBase extends BaseActivity {
     //发送聊天
     protected void sendChat() {
         String sendMsg = mChatInput.getText().toString();
-
         if (mConnectionState && !sendMsg.equals("")) {
             mChatInput.setText("");
             mChatServer.doSendMsg(sendMsg, mUser, ACE_TEX_TO_USER);
@@ -1020,12 +1019,16 @@ public abstract class ShowLiveActivityBase extends BaseActivity {
                 }
             }
         }
+        if (mUserListAdapter!=null)
         mUserListAdapter.setUserList(mUsers);
     }
 
     //当用户状态改变
     protected void onUserStatusChange(UserBean user, boolean state) {
-        mLiveNum.setText(String.valueOf(ChatServer.LIVEUSERNUMS));
+        if (null != mLiveNum) {
+            mLiveNum.setText(String.valueOf(ChatServer.LIVEUSERNUMS));
+        }
+
         if (state) {//用户上线
             mUsers.put(user.getId(), user);
             TLog.log("加入" + user.getId());

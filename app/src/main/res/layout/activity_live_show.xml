@@ -1,77 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/rl_live_root"
-   >
+                android:id="@+id/rl_live_root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+    >
+
+
     <com.ksy.recordlib.service.view.CameraGLSurfaceView
-        android:visibility="gone"
         android:id="@+id/camera_preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="visible"
         />
 
-    <include  layout="@layout/view_live_content"/>
+
+    <include layout="@layout/start_center"></include>
+    <include layout="@layout/view_live_content"/>
 
     <!--歌词提示start-->
-    <include  layout="@layout/view_live_music_lrc"/>
+    <include layout="@layout/view_live_music_lrc"/>
     <!--歌词提示end-->
     <!--底部菜单-->
     <include layout="@layout/view_show_start_live_button_menu"></include>
 
     <!--创建直播遮罩层-->
-    <include layout="@layout/view_live_start_mask"/>
+    <!--<include layout="@layout/view_live_start_mask"/>-->
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/rl_livestop"
-        android:background="#1c1c1c"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#1c1c1c"
+        android:visibility="gone">
+
         <TextView
-            android:textColor="@color/global"
-            android:textSize="@dimen/text_size_25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
-            android:layout_centerHorizontal="true"
             android:text="@string/liveend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textColor="@color/global"
+            android:textSize="@dimen/text_size_25"/>
+
         <LinearLayout
-            android:gravity="center"
-            android:layout_marginTop="120dp"
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true">
-            <TextView
-                android:text="0"
-                android:id="@+id/tv_live_end_num"
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="0"
-                android:id="@+id/tv_live_end_yp_num"
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-         </LinearLayout>
-        <LinearLayout
             android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
+            android:layout_marginTop="120dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_live_end_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/tv_live_end_yp_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="50dp">
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical">
+
             <Button
                 android:id="@+id/btn_back_index"
-                android:textColor="@color/global2"
-                android:text="@string/gobackindex"
+                android:layout_width="220dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/background_live_end_button"
-                android:layout_width="220dp"
-                android:layout_height="50dp" />
+                android:text="@string/gobackindex"
+                android:textColor="@color/global2"/>
         </LinearLayout>
+
+
     </RelativeLayout>
+
+
 
 </RelativeLayout>

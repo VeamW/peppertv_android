@@ -20,9 +20,7 @@ import com.weilian.phonelive.AppContext;
 import com.weilian.phonelive.R;
 import com.weilian.phonelive.adapter.SearchMusicAdapter;
 import com.weilian.phonelive.api.remote.PhoneLiveApi;
-import com.weilian.phonelive.base.BaseFragment;
 import com.weilian.phonelive.bean.MusicBean;
-import com.weilian.phonelive.db.DBHelper;
 import com.weilian.phonelive.utils.DBManager;
 import com.weilian.phonelive.utils.TLog;
 import com.zhy.http.okhttp.callback.FileCallBack;
@@ -110,7 +108,6 @@ public class SearchMusicDialogFragment extends DialogFragment {
             return;
         }
         PhoneLiveApi.searchMusic(keyword,new StringCallback(){
-
             @Override
             public void onError(Call call, Exception e) {
                 AppContext.showToastAppMsg(getActivity(),"查询失败,请换首歌试试~");

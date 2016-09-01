@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.umeng.analytics.MobclickAgent;
+import com.weilian.phonelive.AppManager;
 import com.weilian.phonelive.R;
 import com.weilian.phonelive.base.BaseActivity;
 
@@ -33,6 +34,8 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
     public final static int FILECHOOSER_RESULTCODE = 1;
     public final static int FILECHOOSER_RESULTCODE_FOR_ANDROID_5 = 2;
 
+
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_webview;
@@ -40,11 +43,9 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void initView() {
-
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (null != wv) {
                     if (wv.canGoBack()) {
                         wv.goBack();
@@ -59,6 +60,7 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         WebSettings webSettings = wv.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDisplayZoomControls(false);
+
         webSettings.setSupportZoom(false);
         webSettings.setBuiltInZoomControls(false);
         webSettings.setUseWideViewPort(true);
@@ -77,19 +79,15 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
                 openFileChooserImpl(uploadMsg);
             }
-
             //3.0--版本
             public void openFileChooser(ValueCallback<Uri> uploadMsg) {
                 openFileChooserImpl(uploadMsg);
             }
-
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
                 openFileChooserImpl(uploadMsg);
             }
-
             // For Android > 5.0
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> uploadMsg, WebChromeClient.FileChooserParams fileChooserParams) {
-
                 openFileChooserImplForAndroid5(uploadMsg);
                 return true;
             }
@@ -105,8 +103,6 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
                 if (mTitle != null) {
                     mTitle.setText(view.getTitle());
                 }
-
-
                 setActionBarTitle(view.getTitle());
             }
 
@@ -158,6 +154,9 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         return super.onOptionsItemSelected(item);
     }
 
+
+
+
     private void openFileChooserImplForAndroid5(ValueCallback<Uri[]> uploadMsg) {
         mUploadMessageForAndroid5 = uploadMsg;
         Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -166,7 +165,6 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         Intent chooserIntent = new Intent(Intent.ACTION_CHOOSER);
         chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
         chooserIntent.putExtra(Intent.EXTRA_TITLE, "Image Chooser");
-
         startActivityForResult(chooserIntent, FILECHOOSER_RESULTCODE_FOR_ANDROID_5);
     }
 

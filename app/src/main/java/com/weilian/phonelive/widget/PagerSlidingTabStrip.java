@@ -69,8 +69,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
     private Paint rectPaint;
     private Paint dividerPaint;
 
-    private int indicatorColor = 0xFF666666;
-    private int underlineColor = 0x1A000000;
+    private int indicatorColor = getResources().getColor(R.color.transparent);
+    private int underlineColor = getResources().getColor(R.color.white);
     private int dividerColor = 0x1A000000;
 
     //该属性表示里面的TAB是否均分整个PagerSlidingTabStrip控件的宽,
@@ -80,7 +80,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     private int scrollOffset = 52;
     private int indicatorHeight = 8;
-    private int underlineHeight = 2;
+    private int underlineHeight = 1;
     private int dividerPaddingTopBottom = 12;
     private int tabPadding = 24;
     private int dividerWidth = 1;

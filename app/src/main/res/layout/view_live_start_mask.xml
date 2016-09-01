@@ -13,18 +13,20 @@
             android:layout_height="56dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:padding="10dp">
+            >
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/ll_startlive_back"
+                android:layout_width="100dp"
+                android:paddingLeft="10dp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical">
                 <ImageView
-                    android:layout_marginLeft="12dp"
                     android:id="@+id/iv_startlive_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/global_back"/>
                 <TextView
+                    android:visibility="gone"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_15"
                     android:layout_marginLeft="10dp"
@@ -34,6 +36,7 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <TextView
+                android:visibility="gone"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_15"
@@ -46,6 +49,7 @@
         <!--导航end-->
         <!--封面-->
         <RelativeLayout
+            android:visibility="gone"
             android:layout_height="270dp"
             android:layout_width="match_parent"
             android:layout_marginTop="56dp">
@@ -83,6 +87,7 @@
         <!--封面end-->
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_marginTop="370dp"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
@@ -130,5 +135,6 @@
                 android:layout_width="300dp"
                 android:layout_height="40dp" />
         </LinearLayout>
+
     </RelativeLayout>
 </merge>

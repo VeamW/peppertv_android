@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
    <LinearLayout
        android:orientation="vertical"
-       android:layout_width="300dp"
-       android:layout_height="360dp"
-       android:padding="10dp">
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:paddingBottom="@dimen/space_10"
+       >
+
        <RelativeLayout
            android:layout_width="fill_parent"
+
            android:layout_height="wrap_content"
-           android:paddingTop="15dp">
+          >
            <TextView
                android:id="@+id/tv_live_manage_or_report"
                android:textSize="@dimen/text_size_15"
                android:textColor="@color/global"
                android:text="@string/report"
+               android:paddingTop="@dimen/space_10"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content" />
            <ImageButton
                android:id="@+id/ib_show_dialog_back"
                android:layout_alignParentRight="true"
-               android:background="@drawable/room_pop_up_shut"
+               android:background="@drawable/redpacket_close"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content" />
        </RelativeLayout>

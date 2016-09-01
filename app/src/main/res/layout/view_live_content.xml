@@ -51,7 +51,7 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_10"
                         android:clickable="false"
-                        android:text="11111111"
+                        android:text=""
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
@@ -76,15 +76,7 @@
             android:layout_width="0dp"
             android:layout_height="55dp"
             />
-        <ImageView
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
-            android:id="@+id/iv_live_back"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@drawable/redpacket_close"/>
+
 
     </LinearLayout>
     <!--顶部菜单end-->
@@ -119,7 +111,12 @@
             android:src="@drawable/room_yingpiao_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+
     </LinearLayout>
+
+
+
     <!--映票labe end-->
     <!--映客号-->
     <TextView

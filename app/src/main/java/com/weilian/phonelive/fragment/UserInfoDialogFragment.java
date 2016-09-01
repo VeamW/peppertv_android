@@ -115,7 +115,7 @@ public class UserInfoDialogFragment extends DialogFragment {
                     mTvFollowNum.setText("关注:" + u.getAttention());
                     mTvFansNum.setText("粉丝:" + u.getFans());
                     mTvSendNum.setText("送出:" + u.getConsumption());
-                    mTvTicketNum.setText("映票:" + u.getVotestotal());
+                    mTvTicketNum.setText("辣度:" + u.getVotestotal());
 
                     if(u.getVotestotal() > 0 ){
                         mFirstHead.setImageLoadUrl(u.getContribute().getAvatar());

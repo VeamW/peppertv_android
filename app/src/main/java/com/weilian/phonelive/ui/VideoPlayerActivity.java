@@ -280,7 +280,6 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
         oa2.setRepeatCount(ObjectAnimator.INFINITE);
         oa1.start();
         oa2.start();
-
     }
 
     @Override
@@ -411,6 +410,7 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
         ksyMediaPlayer = new KSYMediaPlayer.Builder(BaseApplication.context()).build();
         ksyMediaPlayer.setBufferTimeMax(5);
         try {
+            //"http://139.224.18.21/public/upload/vod/mv/942_1470816386.mp4"
             ksyMediaPlayer.setDataSource(mrl);
             //rtmp://live.hkstv.hk.lxdns.com/live/hks
             ksyMediaPlayer.prepareAsync();
@@ -478,6 +478,8 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
                 break;
             case R.id.iv_live_emcee_head:
                 LiveCommon.showUserInfoDialog(this, mUser, mEmceeInfo, mEmceeInfo.getId(), mChatServer);
+              /* RelativeLayout r = (RelativeLayout) findViewById(R.id.rl_live_root);
+                LiveCommon.showUserInfoPop(this, mUser, mEmceeInfo, mEmceeInfo.getId(), mChatServer, r);*/
                 break;
             case R.id.iv_live_shar:
                 showSharePopWindow(v);
@@ -526,10 +528,8 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
         ShareUtils.share(this, v.getId(), mEmceeInfo);
     }
 
-
     //分享pop弹窗
     private void showSharePopWindow(View v) {
-
         View view = LayoutInflater.from(this).inflate(R.layout.pop_view_share, null);
         PopupWindow p = new PopupWindow(view, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, true);
         view.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
@@ -966,7 +966,6 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
                 @Override
                 public void run() {
                     try {
-                        TLog.error(contentJson.toString());
                         if (contentJson == null || contentJson.length() <= 0 || !contentJson.has("touid"))
                             return;
                         if (contentJson.getInt("touid") == mUser.getId()) {
@@ -1062,12 +1061,10 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
         @Override
         public void onPrepared(IMediaPlayer mp) {
             ksyMediaPlayer.start();
-            TLog.error("加载完成" + mp.getDataSource());
             //直播开始
             if (null != mLoadingView && null != mRoot) {
                 mRoot.removeView(mLoadingView);
                 mLoadingView = null;
-
                 mLayoutLoading.setVisibility(View.GONE);
                 mLayoutLoading = null;
             }
@@ -1094,7 +1091,6 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
 
                     // maybe we could call scaleVideoView here.
                     if (mVideoSurfaceView != null) {
-
                         mVideoSurfaceView.setVideoDimension(mVideoWidth, mVideoHeight);
                         mVideoSurfaceView.requestLayout();
                     }
@@ -1369,7 +1365,6 @@ public class VideoPlayerActivity extends ShowLiveActivityBase implements View.On
 
         @Override
         public void surfaceCreated(SurfaceHolder holder) {
-            TLog.error("holder被创建---->" + holder.getSurface().toString());
 
         }
 

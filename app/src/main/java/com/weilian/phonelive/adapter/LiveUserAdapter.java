@@ -1,6 +1,6 @@
 package com.weilian.phonelive.adapter;
 
-import android.support.v4.app.Fragment;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.transcode.GlideBitmapDrawableTranscoder;
 import com.weilian.phonelive.R;
 import com.weilian.phonelive.bean.UserBean;
 import com.weilian.phonelive.widget.AvatarView;
@@ -16,20 +15,18 @@ import com.weilian.phonelive.widget.LoadUrlImageView;
 
 import java.util.List;
 
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-
 
 public class LiveUserAdapter extends BaseAdapter {
     private List<UserBean> mUserList;
     private LayoutInflater inflater;
-    private Fragment mFragment;
+    private Context mFragment;
 
-    public LiveUserAdapter(Fragment fragment,LayoutInflater inflater, List<UserBean> mUserList) {
+    public LiveUserAdapter(Context fragment, List<UserBean> mUserList) {
         this.mUserList = mUserList;
-        this.inflater = inflater;
+        this.inflater = LayoutInflater.from(fragment);
         this.mFragment = fragment;
     }
+
 
     @Override
     public int getCount() {
@@ -50,8 +47,8 @@ public class LiveUserAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ViewHolder viewHolder;
-        if(convertView == null){
-            convertView = inflater.inflate(R.layout.item_hot_user,null);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.item_hot_user, null);
             viewHolder = new ViewHolder();
             viewHolder.mUserNick = (TextView) convertView.findViewById(R.id.tv_live_nick);
             viewHolder.mUserLocal = (TextView) convertView.findViewById(R.id.tv_live_local);
@@ -60,7 +57,7 @@ public class LiveUserAdapter extends BaseAdapter {
             viewHolder.mUserPic = (LoadUrlImageView) convertView.findViewById(R.id.iv_live_user_pic);
             viewHolder.mRoomTitle = (TextView) convertView.findViewById(R.id.tv_hot_room_title);
             convertView.setTag(viewHolder);
-        }else{
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
@@ -69,7 +66,7 @@ public class LiveUserAdapter extends BaseAdapter {
         viewHolder.mUserLocal.setText(user.getCity());
         //viewHolder.mUserPic.setImageLoadUrl(user.getAvatar());
         viewHolder.mUserHead.setAvatarUrl(user.getAvatar());
-        viewHolder.mUserNums.setText(String.valueOf(user.getNums()));
+        viewHolder.mUserNums.setText(String.valueOf(user.getNums()) + "人正在观看");
         //用于平滑加载图片
         Glide
                 .with(mFragment)
@@ -78,14 +75,15 @@ public class LiveUserAdapter extends BaseAdapter {
                 .placeholder(R.drawable.null_blacklist)
                 .crossFade()
                 .into(viewHolder.mUserPic);
-        if(null !=user.getTitle()){
+        if (null != user.getTitle()) {
             viewHolder.mRoomTitle.setVisibility(View.VISIBLE);
             viewHolder.mRoomTitle.setText(user.getTitle());
         }
         return convertView;
     }
-    private class ViewHolder{
-        public TextView mUserNick,mUserLocal,mUserNums,mRoomTitle;
+
+    private class ViewHolder {
+        public TextView mUserNick, mUserLocal, mUserNums, mRoomTitle;
         public LoadUrlImageView mUserPic;
         public AvatarView mUserHead;
     }

@@ -17,7 +17,6 @@ public class PhoneLivePrivateChat {
         }
         EMMessage message = null;
         try {
-            TLog.error("私聊发送的消息：fromId：" + mUser.getId() + "   toId     pt" + toUser.getId());
             message = EMMessage.createTxtSendMessage(content, "pt" + toUser.getId());
             if (message != null) {
                 message.setAttribute("uhead", mUser.getAvatar());

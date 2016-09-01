@@ -16,7 +16,7 @@ import com.weilian.phonelive.interf.DialogControl;
 /**
  * 碎片基类
  */
-public class BaseFragment extends Fragment implements
+public abstract class BaseFragment extends Fragment implements
         View.OnClickListener, BaseFragmentInterface {
     public static final int STATE_NONE = 0;
     public static final int STATE_REFRESH = 1;
@@ -115,6 +115,11 @@ public class BaseFragment extends Fragment implements
     }
     protected void requestData(boolean refresh){
 
-
     }
+
+
+
+
+
+
 }

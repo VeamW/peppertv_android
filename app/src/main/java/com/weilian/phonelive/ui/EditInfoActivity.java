@@ -34,7 +34,7 @@ public class EditInfoActivity extends BaseActivity {
     @InjectView(R.id.tv_text)
     TextView mSaveInfo;
     @InjectView(R.id.iv_back)
-    ImageView mIvBack;
+    LinearLayout mIvBack;
     @InjectView(R.id.iv_editInfo_clean)
     ImageView mInfoClean;
     public final static String EDITKEY     = "EDITKEY";
@@ -82,8 +82,6 @@ public class EditInfoActivity extends BaseActivity {
             case R.id.iv_editInfo_clean:
                 mInPutText.setText("  ");
                 //TODO
-
-
                 break;
         }
     }

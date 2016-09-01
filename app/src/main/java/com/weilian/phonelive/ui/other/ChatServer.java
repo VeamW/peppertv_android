@@ -129,7 +129,7 @@ public class ChatServer {
                             Drawable levelDrawable = context.getResources().getDrawable(DrawableRes.LevelImg[(level!=0?level-1:0)]);
                             levelDrawable.setBounds(0,0, (int) TDevice.dpToPixel(30),(int) TDevice.dpToPixel(15));
                             ImageSpan levelImage = new ImageSpan(levelDrawable,ImageSpan.ALIGN_BASELINE);
-                            name.setSpan(new ForegroundColorSpan(Color.rgb(215,126,23)), 1, name.length(),
+                            name.setSpan(new ForegroundColorSpan(Color.rgb(215,20,23)), 1, name.length(),
                                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                             name.setSpan(levelImage,0,1,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -181,7 +181,7 @@ public class ChatServer {
                             Drawable d = context.getResources().getDrawable(DrawableRes.LevelImg[(level!=0?level-1:0)]);
                             d.setBounds(0,0, (int) TDevice.dpToPixel(30),(int) TDevice.dpToPixel(15));
                             ImageSpan is = new ImageSpan(d,ImageSpan.ALIGN_BASELINE);
-                            name.setSpan(new ForegroundColorSpan(Color.rgb(215,126,23)), 1, name.length(),
+                            name.setSpan(new ForegroundColorSpan(Color.rgb(215,20,23)), 1, name.length(),
                                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                             name.setSpan(is,0,1,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -198,7 +198,7 @@ public class ChatServer {
                             //系统消息
                             SpannableStringBuilder msg = new SpannableStringBuilder(contentJson.getString("ct"));
                             SpannableStringBuilder name = new SpannableStringBuilder("系统消息:");
-                            name.setSpan(new ForegroundColorSpan(Color.rgb(215,126,23)), 0, name.length(),
+                            name.setSpan(new ForegroundColorSpan(Color.rgb(215,20,23)), 0, name.length(),
                                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                             ChatBean c = new ChatBean();
                             c.setType(13);
@@ -225,9 +225,9 @@ public class ChatServer {
                     case PRIVELEGE:
                         SpannableStringBuilder msg = new SpannableStringBuilder(contentJson.getString("ct"));
                         SpannableStringBuilder name = new SpannableStringBuilder("系统消息:");
-                        name.setSpan(new ForegroundColorSpan(Color.rgb(215,126,23)), 0, name.length(),
+                        name.setSpan(new ForegroundColorSpan(Color.rgb(215,20,23)), 0, name.length(),
                                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        msg.setSpan(new ForegroundColorSpan(Color.rgb(109,198,232)),0,msg.length(),
+                        msg.setSpan(new ForegroundColorSpan(Color.rgb(109,20,232)),0,msg.length(),
                                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                         ChatBean c = new ChatBean();
                         c.setType(13);

@@ -241,7 +241,6 @@ public class OnekeyShare {
 		} catch (Throwable t) {}
 		OnekeyShareTheme theme = OnekeyShareTheme.fromValue(iTheme);
 		OnekeyShareThemeImpl themeImpl = theme.getImpl();
-
 		themeImpl.setShareParamsMap(shareParamsMap);
 		themeImpl.setDialogMode(shareParamsMap.containsKey("dialogMode") ? ((Boolean) shareParamsMap.remove("dialogMode")) : false);
 		themeImpl.setSilent(shareParamsMap.containsKey("silent") ? ((Boolean) shareParamsMap.remove("silent")) : false);

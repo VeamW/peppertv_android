@@ -4,6 +4,7 @@ package com.weilian.phonelive.ui;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -14,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMMessageListener;
@@ -31,6 +33,7 @@ import com.weilian.phonelive.utils.LoginUtils;
 import com.weilian.phonelive.utils.TLog;
 import com.weilian.phonelive.utils.UIHelper;
 import com.weilian.phonelive.utils.UpdateManager;
+import com.weilian.phonelive.viewpagerfragment.IndexPagerFragment;
 import com.weilian.phonelive.widget.MyFragmentTabHost;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -43,14 +46,10 @@ import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 import okhttp3.Call;
 
-public class MainActivity extends ActionBarActivity implements
-        TabHost.OnTabChangeListener, BaseViewInterface,
+public class MainActivity extends ActionBarActivity implements TabHost.OnTabChangeListener, BaseViewInterface,
         View.OnTouchListener {
     @InjectView(android.R.id.tabhost)
     MyFragmentTabHost mTabHost;
-    @InjectView(R.id.iv_live_start)
-    ImageView mIvStartLive;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +58,13 @@ public class MainActivity extends ActionBarActivity implements
         ButterKnife.inject(this);
         initView();
         initData();
-        AppManager.getAppManager().addActivity(this);
+//        AppManager.getAppManager().addActivity(this);
     }
 
     @Override
     public void initView() {
         //ShareUtils.shareFacebook(this, false, "www", "http://www.mob.com/mob/images/index/popwinimg.png",null);
+        if (null == mTabHost) return;
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
         if (android.os.Build.VERSION.SDK_INT > 10) {
             mTabHost.getTabWidget().setShowDividers(0);
@@ -75,54 +75,39 @@ public class MainActivity extends ActionBarActivity implements
         mTabHost.setCurrentTab(100);
         mTabHost.setOnTabChangedListener(this);
         mTabHost.setNoTabChangedTag("1");
-        //IntentFilter filter = new IntentFilter(SyncStateContract.Constants.INTENT_ACTION_NOTICE);
-        //filter.addAction(SyncStateContract.Constants.INTENT_ACTION_LOGOUT);
-        //registerReceiver(mReceiver, filter);
-        //NoticeUtils.bindToService(this);
 
-        /*if (AppContext.isFristStart()) {
-            mNavigationDrawerFragment.openDrawerMenu();
-            DataCleanManager.cleanInternalCache(AppContext.getInstance());
-            AppContext.setFristStart(false);
-        }*/
-        mIvStartLive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startLive();
-            }
-        });
+    }
 
+    public void setTab(int index) {
+        if (mTabHost != null) {
+            mTabHost.setCurrentTab(0);
+        }
     }
 
     private void initTabs() {
         MainTab[] tabs = MainTab.values();
+        String[] titles = getResources().getStringArray(R.array.tab_titles);
         final int size = tabs.length;
         for (int i = 0; i < size; i++) {
             MainTab mainTab = tabs[i];
-
             TabHost.TabSpec tab = mTabHost.newTabSpec(String.valueOf(mainTab.getResName()));
             View indicator = LayoutInflater.from(getApplicationContext())
                     .inflate(R.layout.tab_indicator, null);
             ImageView tabImg = (ImageView) indicator.findViewById(R.id.tab_img);
-
+            TextView tabTitle = (TextView) indicator.findViewById(R.id.txt_tab_title);
             Drawable drawable = this.getResources().getDrawable(
                     mainTab.getResIcon());
             tabImg.setImageDrawable(drawable);
-            if (i == 1) {
-                tabImg.setVisibility(View.GONE);
-            }
+            tabTitle.setText(titles[i]);
             tab.setIndicator(indicator);
             tab.setContent(new TabHost.TabContentFactory() {
-
                 @Override
                 public View createTabContent(String tag) {
                     return new View(MainActivity.this);
                 }
             });
-
             mTabHost.addTab(tab, mainTab.getClz(), null);
             mTabHost.getTabWidget().getChildAt(i).setOnTouchListener(this);
-
         }
     }
 
@@ -209,7 +194,6 @@ public class MainActivity extends ActionBarActivity implements
                     }
                 });
 
-
     }
 
     /**
@@ -223,7 +207,6 @@ public class MainActivity extends ActionBarActivity implements
                         TLog.log(i + "I" + s + "S");
                     }
                 });
-
     }
 
     /**
@@ -239,7 +222,6 @@ public class MainActivity extends ActionBarActivity implements
             @Override
             public void onResponse(String response) {
                 String res = ApiUtils.checkIsSuccess(response, MainActivity.this);
-
                 if (null == res) return;
                 if (res.equals(ApiUtils.TOKEN_TIMEOUT)) {
                     AppContext.showToastAppMsg(MainActivity.this, "登陆过期,请重新登陆");
@@ -302,6 +284,12 @@ public class MainActivity extends ActionBarActivity implements
         EMClient.getInstance().chatManager().addMessageListener(messageListener);
         MobclickAgent.onPageStart("主页"); //统计页面(仅有Activity的应用中SDK自动调用，不需要单独写。"SplashScreen"为页面名称，可自定义)
         MobclickAgent.onResume(this);          //统计时长
+        if (mTabHost != null) {
+            if (mTabHost.getCurrentTabTag().equals("1")) {
+                mTabHost.setCurrentTab(0);
+            }
+
+        }
 
     }
 
@@ -313,7 +301,7 @@ public class MainActivity extends ActionBarActivity implements
 
     //开始直播初始化
     public void startLive() {
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
+        if (Build.VERSION.SDK_INT >= 23) {
             //摄像头权限检测
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -335,6 +323,5 @@ public class MainActivity extends ActionBarActivity implements
     public boolean onTouch(View v, MotionEvent event) {
         return false;
     }
-
 
 }

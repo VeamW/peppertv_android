@@ -50,19 +50,33 @@
             明道	           http://open.mingdao.com/
             Line           http://media.line.me/zh-hant/
             Pocket         http://getpocket.com/developer/apps/new
+
+
+
+
+
+            150f135fd2200
     -->
 
 
 	<ShareSDK
-		AppKey = "150f135fd2200"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
+		AppKey = "16a71e8594b60"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
 
 	<!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
-	<SinaWeibo
+	<!--<SinaWeibo
 		Id="1"
 		SortId="1"
 		AppKey="2647803221"
 		AppSecret="ac68377096c5f1c7ba6a96c979fbce96"
 		RedirectUrl="http://www.yunbaozhibo.com/"
+		Enable="true" />-->
+
+	<SinaWeibo
+		Id="1"
+		SortId="1"
+		AppKey="667590394"
+		AppSecret="7a4d3f7fd69cd3b167220ac4663c4721"
+		RedirectUrl="http://sns.whalecloud.com/sina2/callback"
 		Enable="true" />
 
 	<TencentWeibo
@@ -74,11 +88,20 @@
 		Enable="true" />
 
 	<!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
-	<QZone
+<!--	<QZone
 		Id="3"
 		SortId="3"
 		AppId="100371282"
 		AppKey="aed9b0303e3ed1e27bae87c33761161d"
+		ShareByAppClient="true"
+		Enable="true" />-->
+
+
+	<QZone
+		Id="3"
+		SortId="3"
+		AppId="1105657958"
+		AppKey="fSeMaRnjnRNCoA8b"
 		ShareByAppClient="true"
 		Enable="true" />
 
@@ -94,35 +117,65 @@
         审核的应用也可以执行分享，但是仅限于分享文字和图片，不能分享其他类型，
         默认值为false。此外，微信收藏不支持此字段。
     -->
-	<Wechat
+<!--	<Wechat
 		Id="4"
 		SortId="4"
 		AppId="wxff35f1442deb1bd1"
 		AppSecret="ce3966067c9b68ea43714239eff3f2d6"
 		BypassApproval="false"
-		Enable="true" />
+		Enable="true" />-->
 
+	<Wechat
+		Id="4"
+		SortId="4"
+		AppId="wx17eb1de2b376294f"
+		AppSecret="ec4af567d0ceb3ce2ef3234644582a8d"
+		BypassApproval="false"
+		Enable="true" />
+<!--
 	<WechatMoments
 		Id="5"
 		SortId="5"
 		AppId="wxff35f1442deb1bd1"
 		AppSecret="ce3966067c9b68ea43714239eff3f2d6"
 		BypassApproval="false"
-		Enable="true" />
+		Enable="true" />-->
 
-	<WechatFavorite
+	<WechatMoments
+		Id="5"
+		SortId="5"
+		AppId="wx17eb1de2b376294f"
+		AppSecret="ec4af567d0ceb3ce2ef3234644582a8d"
+		BypassApproval="false"
+		Enable="true" />
+	<!--<WechatFavorite
 		Id="6"
 		SortId="6"
 		AppId="wxff35f1442deb1bd1"
 		AppSecret="ce3966067c9b68ea43714239eff3f2d6"
+		Enable="true" />-->
+
+	<WechatFavorite
+		Id="6"
+		SortId="6"
+		AppId="wx17eb1de2b376294f"
+		AppSecret="ec4af567d0ceb3ce2ef3234644582a8d"
 		Enable="true" />
 
 	<!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
-	<QQ
+	<!--<QQ
 		Id="7"
 		SortId="7"
 		AppId="100371282"
 		AppKey="aed9b0303e3ed1e27bae87c33761161d"
+		ShareByAppClient="true"
+		Enable="true" />-->
+
+	<QQ
+		Id="7"
+		SortId="7"
+		AppId="1105657958"
+		AppKey="fSeMaRnjnRNCoA8b"
 		ShareByAppClient="true"
 		Enable="true" />
 

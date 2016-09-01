@@ -3,6 +3,7 @@ package com.weilian.phonelive.fragment;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,8 +76,11 @@ public class MessageDetailDialogFragment extends DialogFragment {
                 dismiss();
                 break;
             case R.id.iv_private_chat_send:
-                if (mMessageInput.getText().toString().equals(""))
+                if (mMessageInput == null || mMessageInput.getText() == null || TextUtils.isEmpty(mMessageInput.getText().toString()))
+                    return;
+                if (mMessageInput.getText().toString().replace(" ", "").equals(""))
                     AppContext.showToastAppMsg(getActivity(), "内容为空");
+
                 updateChatList(PhoneLivePrivateChat.sendChatMessage(
                         mMessageInput.getText().toString()
                         , mToUser
@@ -84,13 +88,13 @@ public class MessageDetailDialogFragment extends DialogFragment {
                 mMessageInput.setText("");
                 break;
             case R.id.et_private_chat_message:
-
                 break;
         }
 
     }
 
     public void initData() {
+        if (null == mTitle || null == mChatMessageListView) return;
         EMClient.getInstance().chatManager().addMessageListener(msgListener);
         mUser = AppContext.getInstance().getLoginUser();
         mToUser = (PrivateChatUserBean) getArguments().getSerializable("user");
@@ -104,7 +108,7 @@ public class MessageDetailDialogFragment extends DialogFragment {
     }
 
     private void getUnreadRecord() {
-        EMConversation conversation = EMClient.getInstance().chatManager().getConversation( String.valueOf(mToUser.getId()));
+        EMConversation conversation = EMClient.getInstance().chatManager().getConversation("pt" + mToUser.getId());
         EMClient.getInstance().chatManager().markAllConversationsAsRead();
         //获取此会话的所有消息
         try {
