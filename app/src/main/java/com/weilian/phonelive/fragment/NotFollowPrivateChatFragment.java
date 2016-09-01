@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -66,6 +67,15 @@ public class NotFollowPrivateChatFragment extends PrivateChatPageBase {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mPosition = position;
                 mPrivateChatListData.get(position).setUnreadMessage(false);
+                if (parent != null) {
+                    View childAt = parent.getChildAt(position);
+                    if (childAt != null) {
+                        ImageView img = (ImageView) childAt.findViewById(R.id.iv_unread_dot);
+                        if (img != null) {
+                            img.setVisibility(View.GONE);
+                        }
+                    }
+                }
                 if (getParentFragment() instanceof DialogFragment) {
                     MessageDetailDialogFragment messageFragment = new MessageDetailDialogFragment();
                     Bundle bundle = new Bundle();
@@ -88,7 +98,6 @@ public class NotFollowPrivateChatFragment extends PrivateChatPageBase {
 
             if ((message.getIntAttribute("isfollow") != 0)) return;
             if (!emConversationMap.containsKey(message.getFrom())) {
-                TLog.log("not in conversations not follow");
                 emConversationMap = EMClient.getInstance().chatManager().getAllConversations();
                 PhoneLiveApi.getPmUserInfo(mUser.getId(), Integer.parseInt(message.getFrom().replace("pt", "")), new StringCallback() {
                     @Override

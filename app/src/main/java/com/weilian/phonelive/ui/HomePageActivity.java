@@ -146,7 +146,6 @@ public class HomePageActivity extends BaseActivity {
     }
 
 
-
     private void fillUI() {//ui填充
         if (null == mHomePageTopBack || null == mUserHomePageBean) return;
         mHomePageTopBack.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -159,6 +158,8 @@ public class HomePageActivity extends BaseActivity {
                 return true;
             }
         });
+        if (null == mSendNum || null == mUHead || null == mUNice || null == mUSex || null == mULevel || null == mUFansNum || null == mUFollowNum || null == mUSign || null == mUSign2 || null == mUNum || null == mFollowState || null == mTvBlackState)
+            return;
         mSendNum.setText(getString(R.string.send) + "" + mUserHomePageBean.getConsumption());
         mUHead.setAvatarUrl(mUserHomePageBean.getAvatar());
         mUNice.setText(mUserHomePageBean.getUser_nicename());
@@ -175,7 +176,6 @@ public class HomePageActivity extends BaseActivity {
         for (int i = 0; i < os.size(); i++) {
             mOrderTopNoThree[i].setAvatarUrl(os.get(i).getAvatar());
         }
-
     }
 
     @OnClick({R.id.top_back, R.id.ll_home_page_menu_lahei, R.id.ll_home_page_menu_privatechat, R.id.tv_home_page_menu_follow, R.id.rl_home_pager_yi_order, R.id.tv_home_page_follow, R.id.tv_home_page_index_btn, R.id.tv_home_page_video_btn, R.id.iv_home_page_back, R.id.tv_home_page_fans})
@@ -319,18 +319,6 @@ public class HomePageActivity extends BaseActivity {
         super.onResume();
         MobclickAgent.onPageStart("个人主页"); //统计页面(仅有Activity的应用中SDK自动调用，不需要单独写。"SplashScreen"为页面名称，可自定义)
         MobclickAgent.onResume(this);          //统计时长
-
-        if (null==mHomePageTopBack) return;
-        mHomePageTopBack.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            @Override
-            public boolean onPreDraw() {
-                if (!isBurl) {
-                    mMyTask = new MyTask();
-                    mMyTask.execute("");
-                }
-                return true;
-            }
-        });
     }
 
     /**

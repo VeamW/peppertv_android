@@ -68,6 +68,8 @@ public class UserBaseInfoPrivateChatAdapter extends BaseAdapter {
         return convertView;
     }
 
+
+
     public void setPrivateChatUserList(ArrayList<PrivateChatUserBean> privateChatUserList) {
         if (this.users != null) {
             this.users.clear();

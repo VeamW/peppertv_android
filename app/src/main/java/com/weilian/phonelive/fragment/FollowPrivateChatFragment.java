@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -33,7 +34,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import okhttp3.Call;
@@ -63,6 +63,17 @@ public class FollowPrivateChatFragment extends PrivateChatPageBase {
                 if (Utils.isFastClick()) return;
                 mPosition = position;
                 mPrivateChatListData.get(position).setUnreadMessage(false);
+                if (parent != null) {
+                    View childAt = parent.getChildAt(position);
+                    if (childAt != null) {
+                        ImageView img = (ImageView) childAt.findViewById(R.id.iv_unread_dot);
+                        if (img != null) {
+                            img.setVisibility(View.GONE);
+                        }
+                    }
+                }
+
+
                 if (getParentFragment() instanceof DialogFragment) {
                     MessageDetailDialogFragment messageFragment = new MessageDetailDialogFragment();
                     Bundle bundle = new Bundle();
@@ -164,7 +175,7 @@ public class FollowPrivateChatFragment extends PrivateChatPageBase {
         emConversationMap = EMClient.getInstance().chatManager().getAllConversations();
         StringBuilder keys = new StringBuilder();
         for (String key : emConversationMap.keySet()) {
-            keys.append(key.replace("pt","") + ",");
+            keys.append(key.replace("pt", "") + ",");
         }
         if (keys.toString().length() == 0) return;
         String uidList = keys.toString().substring(0, keys.length() - 1);
